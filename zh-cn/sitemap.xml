@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://suechinrry.github.io/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2025-01-13T22:27:13+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -14,6 +14,12 @@
                 hreflang="zh-cn"
                 href="https://suechinrry.github.io/"
                 />
+  </url><url>
+    <loc>https://suechinrry.github.io/p/firstblog/</loc>
+    <lastmod>2025-01-13T22:27:13+08:00</lastmod>
+  </url><url>
+    <loc>https://suechinrry.github.io/post/</loc>
+    <lastmod>2025-01-13T22:27:13+08:00</lastmod>
   </url><url>
     <loc>https://suechinrry.github.io/categories/</loc>
     <lastmod>2020-09-09T00:00:00+00:00</lastmod>
@@ -29,9 +35,6 @@
                 />
   </url><url>
     <loc>https://suechinrry.github.io/p/test-chinese/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://suechinrry.github.io/post/</loc>
     <lastmod>2020-09-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://suechinrry.github.io/categories/test/</loc>
