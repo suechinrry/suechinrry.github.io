@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Java on SueChinrry</title>
+        <link>https://suechinrry.github.io/tags/java/</link>
+        <description>Recent content in Java on SueChinrry</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>SueChinrry</copyright>
+        <lastBuildDate>Wed, 15 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://suechinrry.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Linux</title>
+        <link>https://suechinrry.github.io/p/linux/</link>
+        <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://suechinrry.github.io/p/linux/</guid>
+        <description>&lt;h1 id=&#34;安装虚拟机&#34;&gt;安装虚拟机
+&lt;/h1&gt;&lt;p&gt;下载：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://softwareupdate.vmware.com/cds/vmw-desktop/ws/17.6.2/24409262/windows/core/VMware-workstation-17.6.2-24409262.exe.tar&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://softwareupdate.vmware.com/cds/vmw-desktop/ws/17.6.2/24409262/windows/core/VMware-workstation-17.6.2-24409262.exe.tar&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;检查虚拟网卡：&lt;/p&gt;
+&lt;p&gt;win+r 输入 ncpa.cpl，检查有无虚拟网卡VMnet1和VMnet8&lt;/p&gt;
+&lt;h1 id=&#34;安装linux&#34;&gt;安装Linux
+&lt;/h1&gt;&lt;p&gt;centOS7下载：&lt;a class=&#34;link&#34; href=&#34;https://vault.centos.org/7.6.1810/isos/x86_64/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Index of /7.6.1810/isos/x86_64&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;新建虚拟机，选择典型&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250116115029817.png&#34;
+	width=&#34;1436&#34;
+	height=&#34;735&#34;
+	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250116115029817_hu823523944726023950.png 480w, https://suechinrry.github.io/p/linux/image-20250116115029817_hu4902751332482557162.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;195&#34;
+		data-flex-basis=&#34;468px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;选择文件&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250116115244494.png&#34;
+	width=&#34;1440&#34;
+	height=&#34;748&#34;
+	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250116115244494_hu7256439160177524957.png 480w, https://suechinrry.github.io/p/linux/image-20250116115244494_hu13809733784319307495.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;192&#34;
+		data-flex-basis=&#34;462px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;设置名称、密码&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250116115640919.png&#34;
+	width=&#34;1443&#34;
+	height=&#34;736&#34;
+	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250116115640919_hu11611466275040334253.png 480w, https://suechinrry.github.io/p/linux/image-20250116115640919_hu2726907939482715454.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;196&#34;
+		data-flex-basis=&#34;470px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;放到D盘&lt;/li&gt;
+&lt;li&gt;更改最大磁盘大小为40GB&lt;/li&gt;
+&lt;li&gt;启动&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;远程连接linux&#34;&gt;远程连接Linux
+&lt;/h1&gt;&lt;p&gt;通过第三方软件：FinalShell&lt;/p&gt;
+&lt;h2 id=&#34;下载网址&#34;&gt;下载网址
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.hostbuf.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;FinalShell官网&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;连接操作&#34;&gt;连接操作
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;打开vm虚拟机&lt;/li&gt;
+&lt;li&gt;打开终端，输入ifconfig，获取ip&lt;/li&gt;
+&lt;li&gt;用finalshell进行连接&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250116123932949.png&#34;
+	width=&#34;1352&#34;
+	height=&#34;1011&#34;
+	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250116123932949_hu14567412561742924714.png 480w, https://suechinrry.github.io/p/linux/image-20250116123932949_hu12977507450748736325.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;建立连接，双击启动&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;快照&#34;&gt;快照
+&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;打开快照管理器&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250117213216845.png&#34;
+	width=&#34;1004&#34;
+	height=&#34;741&#34;
+	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250117213216845_hu15932358433207857533.png 480w, https://suechinrry.github.io/p/linux/image-20250117213216845_hu14697664857830258549.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;325px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;选择一个快照进行跳转&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250117213354755.png&#34;
+	width=&#34;875&#34;
+	height=&#34;695&#34;
+	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250117213354755_hu10113546438228431697.png 480w, https://suechinrry.github.io/p/linux/image-20250117213354755_hu1375929068583706006.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;125&#34;
+		data-flex-basis=&#34;302px&#34;
+	
+&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;linux&#34;&gt;Linux
+&lt;/h1&gt;&lt;h2 id=&#34;linux的目录结构&#34;&gt;linux的目录结构
+&lt;/h2&gt;&lt;p&gt;/为根路径。                     例如： /user/test/hello.txt&lt;/p&gt;
+&lt;h2 id=&#34;路径&#34;&gt;路径
+&lt;/h2&gt;&lt;h2 id=&#34;命令和命令行&#34;&gt;命令和命令行
+&lt;/h2&gt;&lt;p&gt;命令：一个命令就是一个linux程序，没有图形化界面，可以在命令行提供字符化反馈&lt;/p&gt;
+&lt;p&gt;命令行：linux终端，是一种命令提示符页面&lt;/p&gt;
+&lt;h2 id=&#34;命令格式&#34;&gt;命令格式
+&lt;/h2&gt;&lt;p&gt;在 Linux 中，命令的一般格式如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;command&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;options&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;arguments&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;command&lt;/strong&gt;：要执行的命令，比如 &lt;code&gt;ls&lt;/code&gt;、&lt;code&gt;cd&lt;/code&gt;、&lt;code&gt;cp&lt;/code&gt; 等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;options（可选项）&lt;/strong&gt;：修改命令行为的选项，通常以一个或两个连字符（&lt;code&gt;-&lt;/code&gt; 或 &lt;code&gt;--&lt;/code&gt;）开头。例如：&lt;code&gt;-l&lt;/code&gt;、&lt;code&gt;--help&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;arguments（参数，可选项）&lt;/strong&gt;：命令操作的对象，通常是文件名、目录名或者其他需要命令处理的内容&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;home目录和工作目录&#34;&gt;Home目录和工作目录
+&lt;/h2&gt;&lt;p&gt;Home目录：每个用户通常都会在 &lt;code&gt;/home&lt;/code&gt; 目录下有一个以用户名命名的子目录，作为该用户的主目录。 例如：/home/用户名&lt;/p&gt;
+&lt;p&gt;工作目录：命令行在执行命令时，需要一个工作目录，默认设置工作目录在该用户的home目录&lt;/p&gt;
+&lt;h2 id=&#34;命令&#34;&gt;命令
+&lt;/h2&gt;&lt;h3 id=&#34;ls命令&#34;&gt;ls命令
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;ls&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;-a&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;-l&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;-h&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;linux路径&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;作用：列出当前目录的内容，默认为home目录&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;-a：-all，列出全部文件夹，包括隐藏的文件/文件夹（==文件或文件夹以 . 开头就能自动隐藏==）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;-l：以列表（竖向）展示内容，并且展示更多的信息&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;-h：可读格式显示文件大小&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;==混合使用==：&lt;/p&gt;
+&lt;p&gt;例如：同时使用-a和-l&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;写法一：-a -l&lt;/li&gt;
+&lt;li&gt;写法二：-al，-la&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;目录切换相关命令&#34;&gt;目录切换相关命令
+&lt;/h3&gt;&lt;h4 id=&#34;cd&#34;&gt;cd
+&lt;/h4&gt;&lt;p&gt;格式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;linux路径&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;带参数：切换到指定目录&lt;/li&gt;
+&lt;li&gt;不带参数：切换到home目录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;pwd&#34;&gt;pwd
+&lt;/h3&gt;&lt;p&gt;格式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;pwd&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;查看当前工作目录&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

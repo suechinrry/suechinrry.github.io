@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Redis on SueChinrry</title>
+        <link>https://suechinrry.github.io/tags/redis/</link>
+        <description>Recent content in Redis on SueChinrry</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>SueChinrry</copyright>
+        <lastBuildDate>Wed, 15 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://suechinrry.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Redis</title>
+        <link>https://suechinrry.github.io/p/redis/</link>
+        <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://suechinrry.github.io/p/redis/</guid>
+        <description>&lt;h1 id=&#34;redis简介&#34;&gt;Redis简介
+&lt;/h1&gt;&lt;p&gt;Redis 是一个基于键值对（Key-Value）的 NoSQL 数据库，属于非关系型数据库。&lt;/p&gt;
+&lt;p&gt;官网：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;中文：https://www.redis.com.cn/documentation.html&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;英文：&lt;a class=&#34;link&#34; href=&#34;https://redis.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Redis - The Real-time Data Platform&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;参考命令：http://doc.redisfans.com/&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;下载&#34;&gt;下载
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/redis/redis-hashes?tab=readme-ov-file&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;redis/redis-hashes: Redis tarball SHA1 hashes&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
