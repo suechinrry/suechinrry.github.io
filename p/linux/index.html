@@ -292,8 +292,18 @@
             <li><a href="#cp复制文件或文件夹">cp复制文件或文件夹</a></li>
             <li><a href="#mv移动文件或文件夹">mv移动文件或文件夹</a></li>
             <li><a href="#rm删除文件或文件夹">rm删除文件或文件夹</a></li>
+            <li><a href="#which查找命令所在位置">which查找命令所在位置</a></li>
+            <li><a href="#find查找文件所在位置">find查找文件所在位置</a></li>
+            <li><a href="#grep筛选文件中特定的行">grep筛选文件中特定的行</a></li>
+            <li><a href="#wc统计文件内容">wc统计文件内容</a></li>
+            <li><a href="#tail查看文件尾部的内容">tail查看文件尾部的内容</a></li>
           </ol>
         </li>
+        <li><a href="#切换root用户">切换root用户</a></li>
+        <li><a href="#echo让命令行输出指定内容">echo让命令行输出指定内容</a></li>
+        <li><a href="#管道符-">管道符 <code>|</code></a></li>
+        <li><a href="#反引号">反引号``</a></li>
+        <li><a href="#重定向符">重定向符</a></li>
       </ol>
     </li>
   </ol>
@@ -364,7 +374,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 5 分钟
                 </time>
             </div>
         
@@ -641,8 +651,160 @@
 <li>参数2：是要复制到的地方</li>
 </ul>
 <h4 id="mv移动文件或文件夹">mv移动文件或文件夹
-</h4><h4 id="rm删除文件或文件夹">rm删除文件或文件夹
-</h4>
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mv 参数1 参数2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>参数1：是被移动的文件（文件夹）</li>
+<li>参数2：是要移动到的地方</li>
+<li>mv也可以用来重命名文件，例如：mv test1.txt test2.txt，将test1重命名为test2</li>
+</ul>
+<h4 id="rm删除文件或文件夹">rm删除文件或文件夹
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rm <span class="o">[</span>-r -f<span class="o">]</span> 参数1 参数2 ... ... 参数n
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>-r：和cp一样，-r用于操作文件夹</li>
+<li>-f：强制删除，强制删除不会有提示。普通用户删除内容不会有提示，root用户删除内容时才有提示。（普通用户一般用不到-f）。</li>
+<li>参数1 参数2 &hellip; &hellip; 参数n，参数代表要删除的文件或路径，用空格隔开。</li>
+</ul>
+<p><strong>通配符</strong>  *</p>
+<ul>
+<li>
+<p>abc* 表示以abc开头</p>
+</li>
+<li>
+<p>*abc * 表示含有abc的</p>
+</li>
+<li>
+<p>*abc 表示以abc结尾的</p>
+</li>
+</ul>
+<h4 id="which查找命令所在位置">which查找命令所在位置
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">which 要查找的命令
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>例如：which cd，which cp等</p>
+<h4 id="find查找文件所在位置">find查找文件所在位置
+</h4><ul>
+<li>
+<p>按文件名查找</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find 起始路径 -name 文件名
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>有空格或特殊字符时，打引号，“文件名”</li>
+</ul>
+<p><strong>例如</strong>，在/路径下查找文件名为aaa的所在位置， find / -name “aaa”</p>
+</li>
+<li>
+<p>按文件大小查找</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find 起始路径 -size +<span class="o">(</span>或-<span class="o">)</span>n<span class="o">[</span>kMG<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>+：表示大于</li>
+<li>-：表示小于</li>
+<li>n：数字n表示文件大小</li>
+<li>kMG：k为KB，M为MB，G为GB</li>
+</ul>
+<p><strong>例如</strong>，要查找大于500KB的文件，find ~ -size +500k</p>
+</li>
+</ul>
+<h4 id="grep筛选文件中特定的行">grep筛选文件中特定的行
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep <span class="o">[</span>-n<span class="o">]</span> 关键字 文件路径
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>建议关键字打引号，==有空格或特殊字符时==，“关键字”</li>
+<li>-n：显示匹配模式的行号。</li>
+<li>文件路径：==可作为内容输入端口==</li>
+</ul>
+<h4 id="wc统计文件内容">wc统计文件内容
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wc <span class="o">[</span>-l -w -c -m<span class="o">]</span> 文件路径
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>-l</code>：显示行数。</li>
+<li><code>-w</code>：显示单词数。</li>
+<li><code>-c</code>：显示字节数（通常是文件的大小。</li>
+<li><code>-m</code>：显示字符数（与字节数略有不同，主要是对多字节字符集（如 UTF-8）的处理。</li>
+<li>不使用任何选项，<code>wc</code> 命令会默认输出 <strong>行数、单词数和字节数</strong> 三项统计信息。</li>
+</ul>
+<h4 id="tail查看文件尾部的内容">tail查看文件尾部的内容
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tail <span class="o">[</span>-f -数字<span class="o">]</span> linux路径
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>-f：表示持续监视文件的变化，并显示新增的内容。</li>
+<li>-数字：不写默认查看后10行。写了，<strong>例如</strong>，-5即为查看后5行。</li>
+</ul>
+<h3 id="切换root用户">切换root用户
+</h3><ul>
+<li>su - root ，密码和普通用户的一样</li>
+<li>输入exit退出root</li>
+</ul>
+<h3 id="echo让命令行输出指定内容">echo让命令行输出指定内容
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> 想要命令行输出的内容
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有空格或特殊字符时，建议打引号。</p>
+<h3 id="管道符-">管道符 <code>|</code>
+</h3><p>将左边命令的结果作为右边命令的输入。</p>
+<p>类似于，左边命令的输出（标准输出）会作为==数据源==传递给右边命令的输入（标准输入）</p>
+<h3 id="反引号">反引号``
+</h3><p>被包围的内容，会==被当作命令执行==</p>
+<h3 id="重定向符">重定向符
+</h3><ul>
+<li>输出重定向<code>&gt;</code>：将左边命令的结果覆写到符号右边的文件中</li>
+<li>追加重定向<code>&gt;&gt;</code>：将左边命令的结果追加写到符号右边的文件中</li>
+</ul>
+
 </section>
 
 

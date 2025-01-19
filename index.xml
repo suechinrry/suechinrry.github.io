@@ -275,8 +275,160 @@
 &lt;li&gt;参数2：是要复制到的地方&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;mv移动文件或文件夹&#34;&gt;mv移动文件或文件夹
-&lt;/h4&gt;&lt;h4 id=&#34;rm删除文件或文件夹&#34;&gt;rm删除文件或文件夹
-&lt;/h4&gt;</description>
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mv 参数1 参数2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;参数1：是被移动的文件（文件夹）&lt;/li&gt;
+&lt;li&gt;参数2：是要移动到的地方&lt;/li&gt;
+&lt;li&gt;mv也可以用来重命名文件，例如：mv test1.txt test2.txt，将test1重命名为test2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;rm删除文件或文件夹&#34;&gt;rm删除文件或文件夹
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rm &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-r -f&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; 参数1 参数2 ... ... 参数n
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;-r：和cp一样，-r用于操作文件夹&lt;/li&gt;
+&lt;li&gt;-f：强制删除，强制删除不会有提示。普通用户删除内容不会有提示，root用户删除内容时才有提示。（普通用户一般用不到-f）。&lt;/li&gt;
+&lt;li&gt;参数1 参数2 &amp;hellip; &amp;hellip; 参数n，参数代表要删除的文件或路径，用空格隔开。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;通配符&lt;/strong&gt;  *&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;abc* 表示以abc开头&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;*abc * 表示含有abc的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;*abc 表示以abc结尾的&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;which查找命令所在位置&#34;&gt;which查找命令所在位置
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;which 要查找的命令
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;例如：which cd，which cp等&lt;/p&gt;
+&lt;h4 id=&#34;find查找文件所在位置&#34;&gt;find查找文件所在位置
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;按文件名查找&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find 起始路径 -name 文件名
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;有空格或特殊字符时，打引号，“文件名”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;例如&lt;/strong&gt;，在/路径下查找文件名为aaa的所在位置， find / -name “aaa”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;按文件大小查找&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find 起始路径 -size +&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;或-&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;n&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;kMG&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;+：表示大于&lt;/li&gt;
+&lt;li&gt;-：表示小于&lt;/li&gt;
+&lt;li&gt;n：数字n表示文件大小&lt;/li&gt;
+&lt;li&gt;kMG：k为KB，M为MB，G为GB&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;例如&lt;/strong&gt;，要查找大于500KB的文件，find ~ -size +500k&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;grep筛选文件中特定的行&#34;&gt;grep筛选文件中特定的行
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;grep &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-n&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; 关键字 文件路径
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;建议关键字打引号，==有空格或特殊字符时==，“关键字”&lt;/li&gt;
+&lt;li&gt;-n：显示匹配模式的行号。&lt;/li&gt;
+&lt;li&gt;文件路径：==可作为内容输入端口==&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;wc统计文件内容&#34;&gt;wc统计文件内容
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wc &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-l -w -c -m&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; 文件路径
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-l&lt;/code&gt;：显示行数。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-w&lt;/code&gt;：显示单词数。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-c&lt;/code&gt;：显示字节数（通常是文件的大小。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-m&lt;/code&gt;：显示字符数（与字节数略有不同，主要是对多字节字符集（如 UTF-8）的处理。&lt;/li&gt;
+&lt;li&gt;不使用任何选项，&lt;code&gt;wc&lt;/code&gt; 命令会默认输出 &lt;strong&gt;行数、单词数和字节数&lt;/strong&gt; 三项统计信息。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;tail查看文件尾部的内容&#34;&gt;tail查看文件尾部的内容
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tail &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-f -数字&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; linux路径
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;-f：表示持续监视文件的变化，并显示新增的内容。&lt;/li&gt;
+&lt;li&gt;-数字：不写默认查看后10行。写了，&lt;strong&gt;例如&lt;/strong&gt;，-5即为查看后5行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;切换root用户&#34;&gt;切换root用户
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;su - root ，密码和普通用户的一样&lt;/li&gt;
+&lt;li&gt;输入exit退出root&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;echo让命令行输出指定内容&#34;&gt;echo让命令行输出指定内容
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; 想要命令行输出的内容
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;有空格或特殊字符时，建议打引号。&lt;/p&gt;
+&lt;h3 id=&#34;管道符-&#34;&gt;管道符 &lt;code&gt;|&lt;/code&gt;
+&lt;/h3&gt;&lt;p&gt;将左边命令的结果作为右边命令的输入。&lt;/p&gt;
+&lt;p&gt;类似于，左边命令的输出（标准输出）会作为==数据源==传递给右边命令的输入（标准输入）&lt;/p&gt;
+&lt;h3 id=&#34;反引号&#34;&gt;反引号``
+&lt;/h3&gt;&lt;p&gt;被包围的内容，会==被当作命令执行==&lt;/p&gt;
+&lt;h3 id=&#34;重定向符&#34;&gt;重定向符
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;输出重定向&lt;code&gt;&amp;gt;&lt;/code&gt;：将左边命令的结果覆写到符号右边的文件中&lt;/li&gt;
+&lt;li&gt;追加重定向&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;：将左边命令的结果追加写到符号右边的文件中&lt;/li&gt;
+&lt;/ul&gt;
+</description>
         </item>
         <item>
         <title>Redis</title>
