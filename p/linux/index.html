@@ -261,6 +261,12 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
+    <li><a href="#安装虚拟机">安装虚拟机</a></li>
+    <li><a href="#安装linux-1">安装Linux</a></li>
+    <li><a href="#快照">快照</a></li>
+  </ol>
+
+  <ol>
     <li><a href="#下载网址">下载网址</a></li>
     <li><a href="#连接操作">连接操作</a></li>
   </ol>
@@ -304,6 +310,35 @@
         <li><a href="#管道符-">管道符 <code>|</code></a></li>
         <li><a href="#反引号">反引号``</a></li>
         <li><a href="#重定向符">重定向符</a></li>
+      </ol>
+    </li>
+    <li><a href="#vim编辑器">vim编辑器</a></li>
+    <li><a href="#用户和权限">用户和权限</a>
+      <ol>
+        <li><a href="#su切换用户">su切换用户</a></li>
+        <li><a href="#sudo授权">sudo授权</a></li>
+      </ol>
+    </li>
+    <li><a href="#用户和用户组">用户和用户组</a>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#用户组管理">用户组管理</a></li>
+          </ol>
+        </li>
+        <li><a href="#用户管理">用户管理</a></li>
+      </ol>
+    </li>
+    <li><a href="#权限信息">权限信息</a>
+      <ol>
+        <li><a href="#chmod修改权限信息">chmod修改权限信息</a></li>
+        <li><a href="#chown改变所属">chown改变所属</a></li>
+      </ol>
+    </li>
+    <li><a href="#快捷键">快捷键</a></li>
+    <li><a href="#软件安装">软件安装</a>
+      <ol>
+        <li><a href="#yum命令安装软件">yum命令安装软件</a></li>
       </ol>
     </li>
   </ol>
@@ -374,7 +409,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 5 分钟
+                    阅读时长: 7 分钟
                 </time>
             </div>
         
@@ -389,14 +424,15 @@
     <section class="article-content">
     
     
-    <h1 id="安装虚拟机">安装虚拟机
-</h1><p>下载：</p>
+    <h1 id="安装linux">安装Linux
+</h1><h2 id="安装虚拟机">安装虚拟机
+</h2><p>下载：</p>
 <p><a class="link" href="https://softwareupdate.vmware.com/cds/vmw-desktop/ws/17.6.2/24409262/windows/core/VMware-workstation-17.6.2-24409262.exe.tar"  target="_blank" rel="noopener"
     >https://softwareupdate.vmware.com/cds/vmw-desktop/ws/17.6.2/24409262/windows/core/VMware-workstation-17.6.2-24409262.exe.tar</a></p>
 <p>检查虚拟网卡：</p>
 <p>win+r 输入 ncpa.cpl，检查有无虚拟网卡VMnet1和VMnet8</p>
-<h1 id="安装linux">安装Linux
-</h1><p>centOS7下载：<a class="link" href="https://vault.centos.org/7.6.1810/isos/x86_64/"  target="_blank" rel="noopener"
+<h2 id="安装linux-1">安装Linux
+</h2><p>centOS7下载：<a class="link" href="https://vault.centos.org/7.6.1810/isos/x86_64/"  target="_blank" rel="noopener"
     >Index of /7.6.1810/isos/x86_64</a></p>
 <ol>
 <li>新建虚拟机，选择典型<img src="/p/linux/image-20250116115029817.png"
@@ -439,31 +475,8 @@
 <li>更改最大磁盘大小为40GB</li>
 <li>启动</li>
 </ol>
-<h1 id="远程连接linux">远程连接Linux
-</h1><p>通过第三方软件：FinalShell</p>
-<h2 id="下载网址">下载网址
-</h2><p><a class="link" href="https://www.hostbuf.com/"  target="_blank" rel="noopener"
-    >FinalShell官网</a></p>
-<h2 id="连接操作">连接操作
+<h2 id="快照">快照
 </h2><ol>
-<li>打开vm虚拟机</li>
-<li>打开终端，输入ifconfig，获取ip</li>
-<li>用finalshell进行连接<img src="/p/linux/image-20250116123932949.png"
-	width="1352"
-	height="1011"
-	srcset="/p/linux/image-20250116123932949_hu14567412561742924714.png 480w, /p/linux/image-20250116123932949_hu12977507450748736325.png 1024w"
-	loading="lazy"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="133"
-		data-flex-basis="320px"
-	
-></li>
-<li>建立连接，双击启动</li>
-</ol>
-<h1 id="快照">快照
-</h1><ol>
 <li>打开快照管理器<img src="/p/linux/image-20250117213216845.png"
 	width="1004"
 	height="741"
@@ -488,6 +501,29 @@
 		data-flex-basis="302px"
 	
 ></li>
+</ol>
+<h1 id="远程连接linux">远程连接Linux
+</h1><p>通过第三方软件：FinalShell</p>
+<h2 id="下载网址">下载网址
+</h2><p><a class="link" href="https://www.hostbuf.com/"  target="_blank" rel="noopener"
+    >FinalShell官网</a></p>
+<h2 id="连接操作">连接操作
+</h2><ol>
+<li>打开vm虚拟机</li>
+<li>打开终端，输入ifconfig，获取ip</li>
+<li>用finalshell进行连接<img src="/p/linux/image-20250116123932949.png"
+	width="1352"
+	height="1011"
+	srcset="/p/linux/image-20250116123932949_hu14567412561742924714.png 480w, /p/linux/image-20250116123932949_hu12977507450748736325.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="320px"
+	
+></li>
+<li>建立连接，双击启动</li>
 </ol>
 <h1 id="linux">Linux
 </h1><h2 id="linux的目录结构">linux的目录结构
@@ -535,7 +571,7 @@
 <p>-a：-all，列出全部文件夹，包括隐藏的文件/文件夹（==文件或文件夹以 . 开头就能自动隐藏==）</p>
 </li>
 <li>
-<p>-l：以列表（竖向）展示内容，并且展示更多的信息</p>
+<p>-l：以列表（竖向）展示内容，并且展示更多的信息。包含==权限信息，所属用户，所属用户组==</p>
 </li>
 <li>
 <p>-h：可读格式显示文件大小</p>
@@ -804,7 +840,273 @@
 <li>输出重定向<code>&gt;</code>：将左边命令的结果覆写到符号右边的文件中</li>
 <li>追加重定向<code>&gt;&gt;</code>：将左边命令的结果追加写到符号右边的文件中</li>
 </ul>
-
+<h2 id="vim编辑器">vim编辑器
+</h2><p>vim是vi的加强版本，vim是文本编辑器</p>
+<p><strong>工作模式</strong></p>
+<p>命令模式，输入模式，底线命令模式。</p>
+<img src="屏幕截图 2025-01-19 171615.png" style="zoom:67%;" />
+<ul>
+<li>
+<p>命令模式</p>
+<ul>
+<li>
+<p>进入命令模式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vim 文件路径
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>文件存在，则用于编辑已有文件；若不存在，则编辑新文件。</p>
+</li>
+<li>
+<p>进入输入模式</p>
+<p>按 <code>i</code>、<code>a</code>、<code>o</code> 等键进入输入模式，不同字母光标位置不同，进行编辑。</p>
+<p><strong>按 <code>i</code></strong>：在光标当前位置进入输入模式。</p>
+<p><strong>按 <code>I</code></strong>：在当前行的第一个非空字符前进入输入模式。</p>
+<p><strong>按 <code>a</code></strong>：在光标当前位置后进入输入模式（即光标后一个字符开始输入）。</p>
+<p><strong>按 <code>A</code></strong>：在当前行的末尾进入输入模式。</p>
+<p><strong>按 <code>o</code></strong>：在当前行下面新建一行并进入输入模式。</p>
+<p><strong>按 <code>O</code></strong>：在当前行上面新建一行并进入输入模式。</p>
+</li>
+<li>
+<p>快捷键操作</p>
+</li>
+<li>
+<p>进入底线命令模式</p>
+<p>按 <code>:</code> 键进入底线命令模式</p>
+</li>
+</ul>
+</li>
+<li>
+<p>输入模式</p>
+<p>按<code>esc</code>退出，进入命令模式</p>
+</li>
+<li>
+<p>底线命令</p>
+<ul>
+<li>
+<p>按<code>wq</code>，保存并退出vim</p>
+</li>
+<li>
+<p>按<code>q！</code>，强制退出</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="用户和权限">用户和权限
+</h2><p>普通用户在home目录下，权限不受限。出了home目录只有只读和执行的权限，无修改权限。</p>
+<h3 id="su切换用户">su切换用户
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">su <span class="o">[</span>-<span class="o">]</span> <span class="o">[</span>用户名<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>-：带-表示切换用户后加载环境变量。</li>
+<li>退出通过exit</li>
+<li>普通用户切换到其他用户需要密码，root用户不用</li>
+<li>不写用户名，即su -，会切换到root用户</li>
+</ul>
+<h3 id="sudo授权">sudo授权
+</h3><p>给普通命令授权，临时以root用户身份执行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo 命令
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>前提：获得sudo认证</strong></p>
+<ul>
+<li>
+<p>使用root用户，使用<code>visudo</code>命令</p>
+</li>
+<li>
+<p>在文件的最后一行添加</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">用户名 <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span>	NOPASSWD:ALL
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><code>:wq</code>保存并退出</p>
+</li>
+</ul>
+<h2 id="用户和用户组">用户和用户组
+</h2><h4 id="用户组管理">用户组管理
+</h4><ul>
+<li>
+<p>创建用户组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">groupadd 用户组名
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>删除用户组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">groupdel 用户组名
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="用户管理">用户管理
+</h3><ul>
+<li>
+<p>创建用户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">useradd <span class="o">[</span>-g -d<span class="o">]</span> 用户名
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>-g：<code>-g 用户组名</code>，将用户添加到已存在的用户组中。不带-g，会自动创建同名的用户组并加入</li>
+<li>-d：<code>-d home目录</code>，可以自定义home目录。不带则默认为/home/用户名</li>
+</ul>
+</li>
+<li>
+<p>删除用户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">userdel <span class="o">[</span>-r<span class="o">]</span> 用户名
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>-r：带了就连同home目录一起删除，不带则只删除用户不删除home目录</li>
+</ul>
+</li>
+<li>
+<p>查看用户所属组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">id 用户名
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>不带用户名则查看自身</p>
+</li>
+<li>
+<p>修改用户所属组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">usermod -aG 用户组 用户
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>查询所有用户</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">getent passwd
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>查询所有用户组</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">getent group
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="权限信息">权限信息
+</h2><p>ls -l展示出的信息中</p>
+<p>![](屏幕截图 2025-01-20 215232.png)</p>
+<p><strong>其中r为读权限，w为写权限，x为执行权限</strong></p>
+<h3 id="chmod修改权限信息">chmod修改权限信息
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chmod <span class="o">[</span>-R<span class="o">]</span> 权限 文件或文件夹
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>-R：对文件夹的全部内容应用同样操作</p>
+</li>
+<li>
+<p>例如：<code>chmod u=rwx,g=rx,o=x test.txt</code></p>
+<p><strong>其中u为所属用户的权限，g为所属用户组的权限，o为其他用户的权限</strong></p>
+<p>简化写法：</p>
+<p><strong>类似于rwx最小项。- - x表示001，即为1。</strong></p>
+<p>上面示例可简化为：<code>chmod 751 test.txt</code></p>
+</li>
+</ul>
+<h3 id="chown改变所属">chown改变所属
+</h3><p><strong>只适用于root用户</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">chown <span class="o">[</span>-R<span class="o">]</span> <span class="o">[</span>用户<span class="o">][</span>:用户组<span class="o">]</span> 文件或文件夹
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>-R：对文件夹的全部内容应用同样操作</li>
+</ul>
+<h2 id="快捷键">快捷键
+</h2><ul>
+<li>
+<p><code>ctrl+c</code>  强制停止</p>
+</li>
+<li>
+<p><code>ctrl+d</code>  退出</p>
+<p>不能用于退出vi或者vim</p>
+</li>
+<li>
+<p><code>history</code>  查看历史命令</p>
+<p><code>!内容</code>自动匹配并执行历史记录中最近的一条</p>
+</li>
+<li>
+<p><code>ctrl+r</code>  输入内容去匹配历史命令。回车后可直接执行这条历史命令；按左or右键得到该命令</p>
+</li>
+<li>
+<p><code>ctrl+l</code> 清屏，等同于<code>clear</code>命令</p>
+</li>
+</ul>
+<h2 id="软件安装">软件安装
+</h2><h3 id="yum命令安装软件">yum命令安装软件
+</h3>
 </section>
 
 
