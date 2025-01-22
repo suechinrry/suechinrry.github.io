@@ -27,7 +27,7 @@
 &lt;li&gt;新建虚拟机，选择典型&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250116115029817.png&#34;
 	width=&#34;1436&#34;
 	height=&#34;735&#34;
-	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250116115029817_hu823523944726023950.png 480w, https://suechinrry.github.io/p/linux/image-20250116115029817_hu4902751332482557162.png 1024w&#34;
+	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250116115029817_hu_66c7da03f90b4872.png 480w, https://suechinrry.github.io/p/linux/image-20250116115029817_hu_985729ac55a84b44.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -39,7 +39,7 @@
 &lt;li&gt;选择文件&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250116115244494.png&#34;
 	width=&#34;1440&#34;
 	height=&#34;748&#34;
-	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250116115244494_hu7256439160177524957.png 480w, https://suechinrry.github.io/p/linux/image-20250116115244494_hu13809733784319307495.png 1024w&#34;
+	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250116115244494_hu_12a8ae396a549a70.png 480w, https://suechinrry.github.io/p/linux/image-20250116115244494_hu_8138bd3daa61e783.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -51,7 +51,7 @@
 &lt;li&gt;设置名称、密码&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250116115640919.png&#34;
 	width=&#34;1443&#34;
 	height=&#34;736&#34;
-	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250116115640919_hu11611466275040334253.png 480w, https://suechinrry.github.io/p/linux/image-20250116115640919_hu2726907939482715454.png 1024w&#34;
+	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250116115640919_hu_5b649e01181be52b.png 480w, https://suechinrry.github.io/p/linux/image-20250116115640919_hu_ea5189a44fd0fd53.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -69,7 +69,7 @@
 &lt;li&gt;打开快照管理器&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250117213216845.png&#34;
 	width=&#34;1004&#34;
 	height=&#34;741&#34;
-	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250117213216845_hu15932358433207857533.png 480w, https://suechinrry.github.io/p/linux/image-20250117213216845_hu14697664857830258549.png 1024w&#34;
+	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250117213216845_hu_a23df01f664fea15.png 480w, https://suechinrry.github.io/p/linux/image-20250117213216845_hu_fd2822eea46adbdc.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -81,7 +81,7 @@
 &lt;li&gt;选择一个快照进行跳转&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250117213354755.png&#34;
 	width=&#34;875&#34;
 	height=&#34;695&#34;
-	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250117213354755_hu10113546438228431697.png 480w, https://suechinrry.github.io/p/linux/image-20250117213354755_hu1375929068583706006.png 1024w&#34;
+	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250117213354755_hu_67b508e538774f9b.png 480w, https://suechinrry.github.io/p/linux/image-20250117213354755_hu_f29627c39fde3045.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -103,7 +103,7 @@
 &lt;li&gt;用finalshell进行连接&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250116123932949.png&#34;
 	width=&#34;1352&#34;
 	height=&#34;1011&#34;
-	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250116123932949_hu14567412561742924714.png 480w, https://suechinrry.github.io/p/linux/image-20250116123932949_hu12977507450748736325.png 1024w&#34;
+	srcset=&#34;https://suechinrry.github.io/p/linux/image-20250116123932949_hu_93b7ae9917406f31.png 480w, https://suechinrry.github.io/p/linux/image-20250116123932949_hu_ee3907b2248f99df.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -695,6 +695,69 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;软件安装&#34;&gt;软件安装
 &lt;/h2&gt;&lt;h3 id=&#34;yum命令安装软件&#34;&gt;yum命令安装软件
+&lt;/h3&gt;&lt;p&gt;rpm是linux的安装包格式&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-y&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;install &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; remove &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; search&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; 软件名称
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;-y：自动安装，无需手动确认安装或卸载&lt;/li&gt;
+&lt;li&gt;yum命令需要root权限或sudo提权&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;systemctl命令控制软件的关闭和启动&#34;&gt;systemctl命令控制软件的关闭和启动
+&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;start &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; stop &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; restart &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; reload &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; status &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; disable&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; 服务名称
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;start&lt;/strong&gt;：启动某个服务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;stop&lt;/strong&gt;：停止某个服务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;restart&lt;/strong&gt;：重启某个服务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;reload&lt;/strong&gt;：重新加载某个服务的配置，不重启服务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;status&lt;/strong&gt;：查看某个服务的当前状态。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;enable&lt;/strong&gt;：设置服务开机启动。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;disable&lt;/strong&gt;：禁用服务的开机启动。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;systemctl&lt;/code&gt; 不仅可以控制系统内置的服务，还可以控制一些第三方软件和服务，只要这些软件或服务已经通过 systemd 配置为服务单位（unit）。没有注册可以通过手动注册来实现控制&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ln命令创建软连接&#34;&gt;ln命令创建软连接
+&lt;/h2&gt;&lt;p&gt;**软连接：**将文件或文件夹链接到其他位置，==类似于windows的快捷方式==&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ln -s 参数1 参数2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;参数1：要链接的文件或文件夹&lt;/li&gt;
+&lt;li&gt;参数1：要链接去的地方&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;日期和时区&#34;&gt;日期和时区
+&lt;/h2&gt;&lt;h3 id=&#34;date命令查看时间&#34;&gt;date命令查看时间
+&lt;/h3&gt;&lt;h3 id=&#34;ntp命令进行时间同步和校准&#34;&gt;ntp命令进行时间同步和校准
 &lt;/h3&gt;</description>
         </item>
         

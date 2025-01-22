@@ -57,7 +57,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu5764833582465303686.png" width="300"
+                        <img src="/img/avatar_hu_9d06afe20814e628.png" width="300"
                             height="297" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -289,7 +289,12 @@
     <li><a href="#长度最小的子数组">长度最小的子数组</a>
       <ol>
         <li><a href="#长度最小的子数组httpsleetcodecnproblemsminimum-size-subarray-sum"><a href="https://leetcode.cn/problems/minimum-size-subarray-sum/">长度最小的子数组</a></a></li>
-        <li><a href="#相关题目-2">相关题目</a></li>
+        <li><a href="#相关题目-2">相关题目</a>
+          <ol>
+            <li><a href="#904水果成篮httpsleetcodecnproblemsfruit-into-baskets---n"><a href="https://leetcode.cn/problems/fruit-into-baskets/">904.水果成篮</a>   N</a></li>
+            <li><a href="#76最小覆盖子串httpsleetcodecnproblemsminimum-window-substring"><a href="https://leetcode.cn/problems/minimum-window-substring/">76.最小覆盖子串</a></a></li>
+          </ol>
+        </li>
       </ol>
     </li>
   </ol>
@@ -307,8 +312,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/p/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
-                <img src="/p/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/lst_hu635501193362176603.jpg"
-                        srcset="/p/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/lst_hu635501193362176603.jpg 800w, /p/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/lst_hu17189243673719406635.jpg 1600w"
+                <img src="/p/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/lst_hu_8dc02a85fb749880.jpg"
+                        srcset="/p/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/lst_hu_8dc02a85fb749880.jpg 800w, /p/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/lst_hu_e1da734996cc0370.jpg 1600w"
                         width="800" 
                         height="450" 
                         loading="lazy"
@@ -372,7 +377,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 8 分钟
+                    阅读时长: 10 分钟
                 </time>
             </div>
         
@@ -1178,9 +1183,183 @@
 </div><h2 id="长度最小的子数组">长度最小的子数组
 </h2><h3 id="长度最小的子数组httpsleetcodecnproblemsminimum-size-subarray-sum"><a class="link" href="https://leetcode.cn/problems/minimum-size-subarray-sum/"  target="_blank" rel="noopener"
     >长度最小的子数组</a>
-</h3><p><strong>滑动窗口</strong>（<strong>双指针</strong>）</p>
-<h3 id="相关题目-2">相关题目
-</h3>
+</h3><p><strong>这道题的子数组数连续的</strong></span></p>
+<ul>
+<li>
+<p>暴力</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">minSubArrayLen</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">nums</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="o">=</span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">nums</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sum</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">nums</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">sum</span><span class="o">+=</span><span class="n">nums</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="p">;</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">sum</span><span class="o">&gt;=</span><span class="n">target</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">min</span><span class="o">=</span><span class="n">Math</span><span class="p">.</span><span class="na">min</span><span class="p">(</span><span class="n">min</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="n">i</span><span class="o">+</span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">break</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="k">return</span><span class="w"> </span><span class="n">min</span><span class="o">==</span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="o">?</span><span class="n">0</span><span class="p">:</span><span class="n">min</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>滑动窗口</strong>（<strong>双指针</strong>）</p>
+<ul>
+<li>
+<p>只用一个for循环，这个循环是确定终止位置的</p>
+</li>
+<li>
+<p>for循环里，for(int end=0; end&lt;nums.length; end++)；扩大窗口，每次通过 sum+=nums[end] 增加当前窗口的和。</p>
+</li>
+<li>
+<p>如果加上后大于target，则开始移动start。<span style="color:red;">（开始移动是指移动到sum不满足大于target为止，所以需要用while而不是if，并且每次移动后都要记录最小子数组的长度）</span></p>
+</li>
+<li>
+<p><strong>为什么start不需要再每次for循环时重置为0？</strong></p>
+<p><span style="color:red;"><strong>因为，sum满足大于target这个条件时（<code> while(sum&gt;=target)</code>）,会尝试减小，减小值为当前nums[start]，sum的和就不会再包含当前start下标的值了。如果每次循环都重置为0，就会删除sum本身不包含的数，会导致错误。</strong></span></p>
+</li>
+<li>
+<p>下面是gpt的回答：</p>
+<p><em>为什么 <code>start</code> 不需要在每次 <code>for</code> 循环时重置为 0？</em></p>
+<ol>
+<li><strong>滑动窗口的动态调整机制</strong>
+<ul>
+<li>在滑动窗口算法中，<code>start</code> 的作用是 <strong>调整窗口的左边界</strong>，使得当前窗口的和 (<code>sum</code>) 满足问题的要求（比如大于等于 <code>target</code>）。</li>
+<li>一旦 <code>sum &gt;= target</code>，我们通过移动 <code>start</code>（即增加 <code>start</code> 的值），缩小窗口的左边界，同时从 <code>sum</code> 中减去 <code>nums[start]</code> 的值。这种操作是基于当前窗口的状态进行的，不需要从头（<code>start = 0</code>）重新开始调整。</li>
+<li><strong>如果每次外层循环都重置 <code>start = 0</code>，就会丢失滑动窗口算法的核心逻辑，即在前一次窗口调整的基础上继续调整，这会导致重复计算和逻辑错误。</strong></li>
+</ul>
+</li>
+<li><strong>为什么不能删除不属于当前窗口的值？</strong>
+<ul>
+<li>如果 <code>start</code> 被重置为 0，我们就会尝试减去 <code>nums[start]</code>（比如 <code>nums[0]</code>），但这些值可能已经被移出了当前窗口（<code>while(sum &gt;= target)</code> 的过程中已经移除了）。此时的 <code>sum</code> 已经不再包含这些值，减去它们会导致错误的计算。</li>
+</ul>
+</li>
+<li><strong>动态收缩窗口 vs 重置窗口</strong>
+<ul>
+<li><strong>动态收缩窗口</strong>：每次 <code>sum &gt;= target</code> 时，只通过增加 <code>start</code> 的方式调整窗口，确保窗口和始终基于当前窗口的实际范围。</li>
+<li><strong>重置窗口</strong>：如果每次外层循环都将 <code>start</code> 重置为 0，就会导致每次都从头开始重新计算窗口。这种做法会让算法丢失滑动窗口的高效性，同时也会引入逻辑错误（因为 <code>sum</code> 不包含窗口外的值）。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">minSubArrayLen</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">nums</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="o">=</span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">end</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="n">end</span><span class="o">&lt;</span><span class="n">nums</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="n">end</span><span class="o">++</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">sum</span><span class="o">+=</span><span class="n">nums</span><span class="o">[</span><span class="n">end</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="n">sum</span><span class="o">&gt;=</span><span class="n">target</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">sum</span><span class="o">-=</span><span class="n">nums</span><span class="o">[</span><span class="n">start</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">min</span><span class="o">=</span><span class="n">Math</span><span class="p">.</span><span class="na">min</span><span class="p">(</span><span class="n">min</span><span class="p">,</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="o">+</span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">start</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">min</span><span class="o">==</span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="o">?</span><span class="n">0</span><span class="p">:</span><span class="n">min</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="相关题目-2">相关题目
+</h3><h4 id="904水果成篮httpsleetcodecnproblemsfruit-into-baskets---n"><a class="link" href="https://leetcode.cn/problems/fruit-into-baskets/"  target="_blank" rel="noopener"
+    >904.水果成篮</a>   N
+</h4><p>先减少水果数量，再检查是否移除水果键。不然会移除一个不存在的键而报错</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">totalFruit</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">fruits</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">left</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="o">=</span><span class="n">Integer</span><span class="p">.</span><span class="na">MIN_VALUE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fruitsMap</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">right</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="n">right</span><span class="o">&lt;</span><span class="n">fruits</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="n">right</span><span class="o">++</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">fruitsMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">fruits</span><span class="o">[</span><span class="n">right</span><span class="o">]</span><span class="p">,</span><span class="n">fruitsMap</span><span class="p">.</span><span class="na">getOrDefault</span><span class="p">(</span><span class="n">fruits</span><span class="o">[</span><span class="n">right</span><span class="o">]</span><span class="p">,</span><span class="n">0</span><span class="p">)</span><span class="o">+</span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="n">fruitsMap</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="o">&gt;</span><span class="n">2</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">fruitsMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">fruits</span><span class="o">[</span><span class="n">left</span><span class="o">]</span><span class="p">,</span><span class="n">fruitsMap</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">fruits</span><span class="o">[</span><span class="n">left</span><span class="o">]</span><span class="p">)</span><span class="o">-</span><span class="n">1</span><span class="p">);</span><span class="w">                
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">fruitsMap</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">fruits</span><span class="o">[</span><span class="n">left</span><span class="o">]</span><span class="p">)</span><span class="o">==</span><span class="n">0</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="n">fruitsMap</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">fruits</span><span class="o">[</span><span class="n">left</span><span class="o">]</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">left</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">max</span><span class="o">=</span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">max</span><span class="p">,</span><span class="n">right</span><span class="o">-</span><span class="n">left</span><span class="o">+</span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">max</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="76最小覆盖子串httpsleetcodecnproblemsminimum-window-substring"><a class="link" href="https://leetcode.cn/problems/minimum-window-substring/"  target="_blank" rel="noopener"
+    >76.最小覆盖子串</a>
+</h4>
 </section>
 
 

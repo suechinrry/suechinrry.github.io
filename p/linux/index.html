@@ -56,7 +56,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu5764833582465303686.png" width="300"
+                        <img src="/img/avatar_hu_9d06afe20814e628.png" width="300"
                             height="297" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -337,6 +337,14 @@
         <li><a href="#yum命令安装软件">yum命令安装软件</a></li>
       </ol>
     </li>
+    <li><a href="#systemctl命令控制软件的关闭和启动">systemctl命令控制软件的关闭和启动</a></li>
+    <li><a href="#ln命令创建软连接">ln命令创建软连接</a></li>
+    <li><a href="#日期和时区">日期和时区</a>
+      <ol>
+        <li><a href="#date命令查看时间">date命令查看时间</a></li>
+        <li><a href="#ntp命令进行时间同步和校准">ntp命令进行时间同步和校准</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -405,7 +413,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 7 分钟
+                    阅读时长: 8 分钟
                 </time>
             </div>
         
@@ -434,7 +442,7 @@
 <li>新建虚拟机，选择典型<img src="/p/linux/image-20250116115029817.png"
 	width="1436"
 	height="735"
-	srcset="/p/linux/image-20250116115029817_hu823523944726023950.png 480w, /p/linux/image-20250116115029817_hu4902751332482557162.png 1024w"
+	srcset="/p/linux/image-20250116115029817_hu_66c7da03f90b4872.png 480w, /p/linux/image-20250116115029817_hu_985729ac55a84b44.png 1024w"
 	loading="lazy"
 	
 	
@@ -446,7 +454,7 @@
 <li>选择文件<img src="/p/linux/image-20250116115244494.png"
 	width="1440"
 	height="748"
-	srcset="/p/linux/image-20250116115244494_hu7256439160177524957.png 480w, /p/linux/image-20250116115244494_hu13809733784319307495.png 1024w"
+	srcset="/p/linux/image-20250116115244494_hu_12a8ae396a549a70.png 480w, /p/linux/image-20250116115244494_hu_8138bd3daa61e783.png 1024w"
 	loading="lazy"
 	
 	
@@ -458,7 +466,7 @@
 <li>设置名称、密码<img src="/p/linux/image-20250116115640919.png"
 	width="1443"
 	height="736"
-	srcset="/p/linux/image-20250116115640919_hu11611466275040334253.png 480w, /p/linux/image-20250116115640919_hu2726907939482715454.png 1024w"
+	srcset="/p/linux/image-20250116115640919_hu_5b649e01181be52b.png 480w, /p/linux/image-20250116115640919_hu_ea5189a44fd0fd53.png 1024w"
 	loading="lazy"
 	
 	
@@ -476,7 +484,7 @@
 <li>打开快照管理器<img src="/p/linux/image-20250117213216845.png"
 	width="1004"
 	height="741"
-	srcset="/p/linux/image-20250117213216845_hu15932358433207857533.png 480w, /p/linux/image-20250117213216845_hu14697664857830258549.png 1024w"
+	srcset="/p/linux/image-20250117213216845_hu_a23df01f664fea15.png 480w, /p/linux/image-20250117213216845_hu_fd2822eea46adbdc.png 1024w"
 	loading="lazy"
 	
 	
@@ -488,7 +496,7 @@
 <li>选择一个快照进行跳转<img src="/p/linux/image-20250117213354755.png"
 	width="875"
 	height="695"
-	srcset="/p/linux/image-20250117213354755_hu10113546438228431697.png 480w, /p/linux/image-20250117213354755_hu1375929068583706006.png 1024w"
+	srcset="/p/linux/image-20250117213354755_hu_67b508e538774f9b.png 480w, /p/linux/image-20250117213354755_hu_f29627c39fde3045.png 1024w"
 	loading="lazy"
 	
 	
@@ -510,7 +518,7 @@
 <li>用finalshell进行连接<img src="/p/linux/image-20250116123932949.png"
 	width="1352"
 	height="1011"
-	srcset="/p/linux/image-20250116123932949_hu14567412561742924714.png 480w, /p/linux/image-20250116123932949_hu12977507450748736325.png 1024w"
+	srcset="/p/linux/image-20250116123932949_hu_93b7ae9917406f31.png 480w, /p/linux/image-20250116123932949_hu_ee3907b2248f99df.png 1024w"
 	loading="lazy"
 	
 	
@@ -1102,6 +1110,69 @@
 </ul>
 <h2 id="软件安装">软件安装
 </h2><h3 id="yum命令安装软件">yum命令安装软件
+</h3><p>rpm是linux的安装包格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum <span class="o">[</span>-y<span class="o">]</span> <span class="o">[</span>install <span class="p">|</span> remove <span class="p">|</span> search<span class="o">]</span> 软件名称
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>-y：自动安装，无需手动确认安装或卸载</li>
+<li>yum命令需要root权限或sudo提权</li>
+</ul>
+<h2 id="systemctl命令控制软件的关闭和启动">systemctl命令控制软件的关闭和启动
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl <span class="o">[</span>start <span class="p">|</span> stop <span class="p">|</span> restart <span class="p">|</span> reload <span class="p">|</span> status <span class="p">|</span> <span class="nb">enable</span> <span class="p">|</span> disable<span class="o">]</span> 服务名称
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p><strong>start</strong>：启动某个服务。</p>
+</li>
+<li>
+<p><strong>stop</strong>：停止某个服务。</p>
+</li>
+<li>
+<p><strong>restart</strong>：重启某个服务。</p>
+</li>
+<li>
+<p><strong>reload</strong>：重新加载某个服务的配置，不重启服务。</p>
+</li>
+<li>
+<p><strong>status</strong>：查看某个服务的当前状态。</p>
+</li>
+<li>
+<p><strong>enable</strong>：设置服务开机启动。</p>
+</li>
+<li>
+<p><strong>disable</strong>：禁用服务的开机启动。</p>
+</li>
+</ul>
+<p><strong><code>systemctl</code> 不仅可以控制系统内置的服务，还可以控制一些第三方软件和服务，只要这些软件或服务已经通过 systemd 配置为服务单位（unit）。没有注册可以通过手动注册来实现控制</strong></p>
+<h2 id="ln命令创建软连接">ln命令创建软连接
+</h2><p>**软连接：**将文件或文件夹链接到其他位置，==类似于windows的快捷方式==</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ln -s 参数1 参数2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>参数1：要链接的文件或文件夹</li>
+<li>参数1：要链接去的地方</li>
+</ul>
+<h2 id="日期和时区">日期和时区
+</h2><h3 id="date命令查看时间">date命令查看时间
+</h3><h3 id="ntp命令进行时间同步和校准">ntp命令进行时间同步和校准
 </h3>
 </section>
 
