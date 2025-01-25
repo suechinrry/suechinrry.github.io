@@ -13,15 +13,16 @@
         <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
         
         <guid>https://suechinrry.github.io/p/linux/</guid>
-        <description>&lt;h1 id=&#34;安装linux&#34;&gt;安装Linux
-&lt;/h1&gt;&lt;h2 id=&#34;安装虚拟机&#34;&gt;安装虚拟机
-&lt;/h2&gt;&lt;p&gt;下载：&lt;/p&gt;
+        <description>&lt;h1 id=&#34;linux&#34;&gt;Linux
+&lt;/h1&gt;&lt;h2 id=&#34;安装linux&#34;&gt;安装Linux
+&lt;/h2&gt;&lt;h3 id=&#34;安装虚拟机&#34;&gt;安装虚拟机
+&lt;/h3&gt;&lt;p&gt;下载：&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://softwareupdate.vmware.com/cds/vmw-desktop/ws/17.6.2/24409262/windows/core/VMware-workstation-17.6.2-24409262.exe.tar&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://softwareupdate.vmware.com/cds/vmw-desktop/ws/17.6.2/24409262/windows/core/VMware-workstation-17.6.2-24409262.exe.tar&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;检查虚拟网卡：&lt;/p&gt;
 &lt;p&gt;win+r 输入 ncpa.cpl，检查有无虚拟网卡VMnet1和VMnet8&lt;/p&gt;
-&lt;h2 id=&#34;安装linux-1&#34;&gt;安装Linux
-&lt;/h2&gt;&lt;p&gt;centOS7下载：&lt;a class=&#34;link&#34; href=&#34;https://vault.centos.org/7.6.1810/isos/x86_64/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h3 id=&#34;安装linux-1&#34;&gt;安装Linux
+&lt;/h3&gt;&lt;p&gt;centOS7下载：&lt;a class=&#34;link&#34; href=&#34;https://vault.centos.org/7.6.1810/isos/x86_64/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Index of /7.6.1810/isos/x86_64&lt;/a&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;新建虚拟机，选择典型&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250116115029817.png&#34;
@@ -64,8 +65,8 @@
 &lt;li&gt;更改最大磁盘大小为40GB&lt;/li&gt;
 &lt;li&gt;启动&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;快照&#34;&gt;快照
-&lt;/h2&gt;&lt;ol&gt;
+&lt;h3 id=&#34;快照&#34;&gt;快照
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;打开快照管理器&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250117213216845.png&#34;
 	width=&#34;1004&#34;
 	height=&#34;741&#34;
@@ -91,13 +92,13 @@
 	
 &gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;远程连接linux&#34;&gt;远程连接Linux
-&lt;/h1&gt;&lt;p&gt;通过第三方软件：FinalShell&lt;/p&gt;
-&lt;h2 id=&#34;下载网址&#34;&gt;下载网址
-&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.hostbuf.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h2 id=&#34;远程连接linux&#34;&gt;远程连接Linux
+&lt;/h2&gt;&lt;p&gt;通过第三方软件：FinalShell&lt;/p&gt;
+&lt;h3 id=&#34;下载网址&#34;&gt;下载网址
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.hostbuf.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;FinalShell官网&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;连接操作&#34;&gt;连接操作
-&lt;/h2&gt;&lt;ol&gt;
+&lt;h3 id=&#34;连接操作&#34;&gt;连接操作
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;打开vm虚拟机&lt;/li&gt;
 &lt;li&gt;打开终端，输入ifconfig，获取ip&lt;/li&gt;
 &lt;li&gt;用finalshell进行连接&lt;img src=&#34;https://suechinrry.github.io/p/linux/image-20250116123932949.png&#34;
@@ -114,14 +115,14 @@
 &gt;&lt;/li&gt;
 &lt;li&gt;建立连接，双击启动&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;linux&#34;&gt;Linux
-&lt;/h1&gt;&lt;h2 id=&#34;linux的目录结构&#34;&gt;linux的目录结构
-&lt;/h2&gt;&lt;p&gt;/为根路径。                     例如： /user/test/hello.txt&lt;/p&gt;
-&lt;h2 id=&#34;命令和命令行&#34;&gt;命令和命令行
-&lt;/h2&gt;&lt;p&gt;命令：一个命令就是一个linux程序，没有图形化界面，可以在命令行提供字符化反馈&lt;/p&gt;
+&lt;h2 id=&#34;linux相关&#34;&gt;Linux相关
+&lt;/h2&gt;&lt;h3 id=&#34;linux的目录结构&#34;&gt;linux的目录结构
+&lt;/h3&gt;&lt;p&gt;/为根路径。                     例如： /user/test/hello.txt&lt;/p&gt;
+&lt;h3 id=&#34;命令和命令行&#34;&gt;命令和命令行
+&lt;/h3&gt;&lt;p&gt;命令：一个命令就是一个linux程序，没有图形化界面，可以在命令行提供字符化反馈&lt;/p&gt;
 &lt;p&gt;命令行：linux终端，是一种命令提示符页面&lt;/p&gt;
-&lt;h2 id=&#34;命令格式&#34;&gt;命令格式
-&lt;/h2&gt;&lt;p&gt;在 Linux 中，命令的一般格式如下：&lt;/p&gt;
+&lt;h3 id=&#34;命令格式&#34;&gt;命令格式
+&lt;/h3&gt;&lt;p&gt;在 Linux 中，命令的一般格式如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -135,18 +136,18 @@
 &lt;li&gt;&lt;strong&gt;options（可选项）&lt;/strong&gt;：修改命令行为的选项，通常以一个或两个连字符（&lt;code&gt;-&lt;/code&gt; 或 &lt;code&gt;--&lt;/code&gt;）开头。例如：&lt;code&gt;-l&lt;/code&gt;、&lt;code&gt;--help&lt;/code&gt;。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;arguments（参数，可选项）&lt;/strong&gt;：命令操作的对象，通常是文件名、目录名或者其他需要命令处理的内容&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;home目录和工作目录&#34;&gt;Home目录和工作目录
-&lt;/h2&gt;&lt;p&gt;Home目录：每个用户通常都会在 &lt;code&gt;/home&lt;/code&gt; 目录下有一个以用户名命名的子目录，作为该用户的主目录。 例如：==/home/用户名==&lt;/p&gt;
+&lt;h3 id=&#34;home目录和工作目录&#34;&gt;Home目录和工作目录
+&lt;/h3&gt;&lt;p&gt;Home目录：每个用户通常都会在 &lt;code&gt;/home&lt;/code&gt; 目录下有一个以用户名命名的子目录，作为该用户的主目录。 例如：==/home/用户名==&lt;/p&gt;
 &lt;p&gt;工作目录：命令行在执行命令时，需要一个工作目录，默认设置工作目录在该用户的home目录&lt;/p&gt;
-&lt;h2 id=&#34;特殊路径符&#34;&gt;特殊路径符
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;特殊路径符&#34;&gt;特殊路径符
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;. 表示当前目录，例如：cd ./desktop等同于 cd desktop&lt;/li&gt;
 &lt;li&gt;.. 表示上级目录，例如：cd ..就是返回上一级，cd ../..就是返回上两级&lt;/li&gt;
 &lt;li&gt;~ 表示home目录，例如：cd ~等同于cd&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;命令&#34;&gt;命令
-&lt;/h2&gt;&lt;h3 id=&#34;ls命令&#34;&gt;ls命令
-&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h3 id=&#34;命令&#34;&gt;命令
+&lt;/h3&gt;&lt;h4 id=&#34;ls命令&#34;&gt;ls命令
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -174,9 +175,9 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;目录切换相关命令&#34;&gt;目录切换相关命令
-&lt;/h3&gt;&lt;h4 id=&#34;cd&#34;&gt;cd
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h4 id=&#34;目录切换相关命令&#34;&gt;目录切换相关命令
+&lt;/h4&gt;&lt;h5 id=&#34;cd&#34;&gt;cd
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -188,8 +189,8 @@
 &lt;li&gt;带参数：切换到指定目录&lt;/li&gt;
 &lt;li&gt;不带参数：切换到home目录&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;pwd&#34;&gt;pwd
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h5 id=&#34;pwd&#34;&gt;pwd
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -198,9 +199,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;查看当前工作目录&lt;/p&gt;
-&lt;h3 id=&#34;创建目录命令&#34;&gt;创建目录命令
-&lt;/h3&gt;&lt;h4 id=&#34;mkdir创建目录&#34;&gt;mkdir创建目录
-&lt;/h4&gt;&lt;p&gt;只有在home目录下才有创建目录的权限&lt;/p&gt;
+&lt;h4 id=&#34;创建目录命令&#34;&gt;创建目录命令
+&lt;/h4&gt;&lt;h5 id=&#34;mkdir创建目录&#34;&gt;mkdir创建目录
+&lt;/h5&gt;&lt;p&gt;只有在home目录下才有创建目录的权限&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -227,9 +228,9 @@
 &lt;li&gt;&lt;code&gt;mkdir&lt;/code&gt; 只会创建目录，不会切换到新目录。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;在ls -l命令下的==以d开头的是文件夹，以-开头的是文件==。&lt;/p&gt;
-&lt;h3 id=&#34;文件操作命令&#34;&gt;文件操作命令
-&lt;/h3&gt;&lt;h4 id=&#34;touch新建文件&#34;&gt;touch新建文件
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h4 id=&#34;文件操作命令&#34;&gt;文件操作命令
+&lt;/h4&gt;&lt;h5 id=&#34;touch新建文件&#34;&gt;touch新建文件
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -238,8 +239,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;例如：touch test.txt&lt;/p&gt;
-&lt;h4 id=&#34;查看文件内容&#34;&gt;查看文件内容
-&lt;/h4&gt;&lt;h5 id=&#34;cat&#34;&gt;cat
+&lt;h5 id=&#34;查看文件内容&#34;&gt;查看文件内容
+&lt;/h5&gt;&lt;h5 id=&#34;cat&#34;&gt;cat
 &lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -250,8 +251,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;例如：cat test.txt&lt;/p&gt;
 &lt;p&gt;==直接显示全部内容==&lt;/p&gt;
-&lt;h5 id=&#34;more&#34;&gt;more
-&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h6 id=&#34;more&#34;&gt;more
+&lt;/h6&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -261,8 +262,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;例如：more test.txt&lt;/p&gt;
 &lt;p&gt;==可以翻页查看文件，空格是翻到下一页，q是退出查看==&lt;/p&gt;
-&lt;h4 id=&#34;cp复制文件或文件夹&#34;&gt;cp复制文件或文件夹
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h5 id=&#34;cp复制文件或文件夹&#34;&gt;cp复制文件或文件夹
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -275,8 +276,8 @@
 &lt;li&gt;参数1：是被复制的文件（文件夹）&lt;/li&gt;
 &lt;li&gt;参数2：是要复制到的地方&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;mv移动文件或文件夹&#34;&gt;mv移动文件或文件夹
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h5 id=&#34;mv移动文件或文件夹&#34;&gt;mv移动文件或文件夹
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -289,8 +290,8 @@
 &lt;li&gt;参数2：是要移动到的地方&lt;/li&gt;
 &lt;li&gt;mv也可以用来重命名文件，例如：mv test1.txt test2.txt，将test1重命名为test2&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;rm删除文件或文件夹&#34;&gt;rm删除文件或文件夹
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h5 id=&#34;rm删除文件或文件夹&#34;&gt;rm删除文件或文件夹
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -315,8 +316,8 @@
 &lt;p&gt;*abc 表示以abc结尾的&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;which查找命令所在位置&#34;&gt;which查找命令所在位置
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h5 id=&#34;which查找命令所在位置&#34;&gt;which查找命令所在位置
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -325,8 +326,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;例如：which cd，which cp等&lt;/p&gt;
-&lt;h4 id=&#34;find查找文件所在位置&#34;&gt;find查找文件所在位置
-&lt;/h4&gt;&lt;ul&gt;
+&lt;h5 id=&#34;find查找文件所在位置&#34;&gt;find查找文件所在位置
+&lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;按文件名查找&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -361,8 +362,8 @@
 &lt;p&gt;&lt;strong&gt;例如&lt;/strong&gt;，要查找大于500KB的文件，find ~ -size +500k&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;grep筛选文件中特定的行&#34;&gt;grep筛选文件中特定的行
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h5 id=&#34;grep筛选文件中特定的行&#34;&gt;grep筛选文件中特定的行
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -375,8 +376,8 @@
 &lt;li&gt;-n：显示匹配模式的行号。&lt;/li&gt;
 &lt;li&gt;文件路径：==可作为内容输入端口==&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;wc统计文件内容&#34;&gt;wc统计文件内容
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h5 id=&#34;wc统计文件内容&#34;&gt;wc统计文件内容
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -391,8 +392,8 @@
 &lt;li&gt;&lt;code&gt;-m&lt;/code&gt;：显示字符数（与字节数略有不同，主要是对多字节字符集（如 UTF-8）的处理。&lt;/li&gt;
 &lt;li&gt;不使用任何选项，&lt;code&gt;wc&lt;/code&gt; 命令会默认输出 &lt;strong&gt;行数、单词数和字节数&lt;/strong&gt; 三项统计信息。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;tail查看文件尾部的内容&#34;&gt;tail查看文件尾部的内容
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h5 id=&#34;tail查看文件尾部的内容&#34;&gt;tail查看文件尾部的内容
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -404,13 +405,13 @@
 &lt;li&gt;-f：表示持续监视文件的变化，并显示新增的内容。&lt;/li&gt;
 &lt;li&gt;-数字：不写默认查看后10行。写了，&lt;strong&gt;例如&lt;/strong&gt;，-5即为查看后5行。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;切换root用户&#34;&gt;切换root用户
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;切换root用户&#34;&gt;切换root用户
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;su - root ，密码和普通用户的一样&lt;/li&gt;
 &lt;li&gt;输入exit退出root&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;echo让命令行输出指定内容&#34;&gt;echo让命令行输出指定内容
-&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h4 id=&#34;echo让命令行输出指定内容&#34;&gt;echo让命令行输出指定内容
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -419,18 +420,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;有空格或特殊字符时，建议打引号。&lt;/p&gt;
-&lt;h3 id=&#34;管道符-&#34;&gt;管道符 &lt;code&gt;|&lt;/code&gt;
-&lt;/h3&gt;&lt;p&gt;将左边命令的结果作为右边命令的输入。&lt;/p&gt;
+&lt;h4 id=&#34;管道符-&#34;&gt;管道符 &lt;code&gt;|&lt;/code&gt;
+&lt;/h4&gt;&lt;p&gt;将左边命令的结果作为右边命令的输入。&lt;/p&gt;
 &lt;p&gt;类似于，左边命令的输出（标准输出）会作为==数据源==传递给右边命令的输入（标准输入）&lt;/p&gt;
-&lt;h3 id=&#34;反引号&#34;&gt;反引号``
-&lt;/h3&gt;&lt;p&gt;被包围的内容，会==被当作命令执行==&lt;/p&gt;
-&lt;h3 id=&#34;重定向符&#34;&gt;重定向符
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;反引号&#34;&gt;反引号``
+&lt;/h4&gt;&lt;p&gt;被包围的内容，会==被当作命令执行==&lt;/p&gt;
+&lt;h4 id=&#34;重定向符&#34;&gt;重定向符
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;输出重定向&lt;code&gt;&amp;gt;&lt;/code&gt;：将左边命令的结果覆写到符号右边的文件中&lt;/li&gt;
 &lt;li&gt;追加重定向&lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;：将左边命令的结果追加写到符号右边的文件中&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;vim编辑器&#34;&gt;vim编辑器
-&lt;/h2&gt;&lt;p&gt;vim是vi的加强版本，vim是文本编辑器&lt;/p&gt;
+&lt;h3 id=&#34;vim编辑器&#34;&gt;vim编辑器
+&lt;/h3&gt;&lt;p&gt;vim是vi的加强版本，vim是文本编辑器&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;工作模式&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;命令模式，输入模式，底线命令模式。&lt;/p&gt;
 &lt;img src=&#34;屏幕截图 2025-01-19 171615.png&#34; style=&#34;zoom:67%;&#34; /&gt;
@@ -485,10 +486,10 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;用户和权限&#34;&gt;用户和权限
-&lt;/h2&gt;&lt;p&gt;普通用户在home目录下，权限不受限。出了home目录只有只读和执行的权限，无修改权限。&lt;/p&gt;
-&lt;h3 id=&#34;su切换用户&#34;&gt;su切换用户
-&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h3 id=&#34;用户和权限&#34;&gt;用户和权限
+&lt;/h3&gt;&lt;p&gt;普通用户在home目录下，权限不受限。出了home目录只有只读和执行的权限，无修改权限。&lt;/p&gt;
+&lt;h4 id=&#34;su切换用户&#34;&gt;su切换用户
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -502,8 +503,8 @@
 &lt;li&gt;普通用户切换到其他用户需要密码，root用户不用&lt;/li&gt;
 &lt;li&gt;不写用户名，即su -，会切换到root用户&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;sudo授权&#34;&gt;sudo授权
-&lt;/h3&gt;&lt;p&gt;给普通命令授权，临时以root用户身份执行。&lt;/p&gt;
+&lt;h4 id=&#34;sudo授权&#34;&gt;sudo授权
+&lt;/h4&gt;&lt;p&gt;给普通命令授权，临时以root用户身份执行。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -532,9 +533,9 @@
 &lt;p&gt;&lt;code&gt;:wq&lt;/code&gt;保存并退出&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;用户和用户组&#34;&gt;用户和用户组
-&lt;/h2&gt;&lt;h3 id=&#34;用户组管理&#34;&gt;用户组管理
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&#34;用户和用户组&#34;&gt;用户和用户组
+&lt;/h3&gt;&lt;h4 id=&#34;用户组管理&#34;&gt;用户组管理
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;创建用户组&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -558,8 +559,8 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;用户管理&#34;&gt;用户管理
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;用户管理&#34;&gt;用户管理
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;创建用户&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -635,12 +636,12 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;权限信息&#34;&gt;权限信息
-&lt;/h2&gt;&lt;p&gt;ls -l展示出的信息中&lt;/p&gt;
+&lt;h3 id=&#34;权限信息&#34;&gt;权限信息
+&lt;/h3&gt;&lt;p&gt;ls -l展示出的信息中&lt;/p&gt;
 &lt;p&gt;![](屏幕截图 2025-01-20 215232.png)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;其中r为读权限，w为写权限，x为执行权限&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&#34;chmod修改权限信息&#34;&gt;chmod修改权限信息
-&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h4 id=&#34;chmod修改权限信息&#34;&gt;chmod修改权限信息
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -660,8 +661,8 @@
 &lt;p&gt;上面示例可简化为：&lt;code&gt;chmod 751 test.txt&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;chown改变所属&#34;&gt;chown改变所属
-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;只适用于root用户&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;chown改变所属&#34;&gt;chown改变所属
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;只适用于root用户&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -673,8 +674,8 @@
 &lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;-R：对文件夹的全部内容应用同样操作&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;快捷键&#34;&gt;快捷键
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;快捷键&#34;&gt;快捷键
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;code&gt;ctrl+c&lt;/code&gt;  强制停止&lt;/p&gt;
 &lt;/li&gt;
@@ -693,9 +694,69 @@
 &lt;p&gt;&lt;code&gt;ctrl+l&lt;/code&gt; 清屏，等同于&lt;code&gt;clear&lt;/code&gt;命令&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;软件安装&#34;&gt;软件安装
-&lt;/h2&gt;&lt;h3 id=&#34;yum命令安装软件&#34;&gt;yum命令安装软件
-&lt;/h3&gt;&lt;p&gt;rpm是linux的安装包格式&lt;/p&gt;
+&lt;h3 id=&#34;软件安装&#34;&gt;软件安装
+&lt;/h3&gt;&lt;h4 id=&#34;yum命令安装软件&#34;&gt;yum命令安装软件
+&lt;/h4&gt;&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;&lt;strong&gt;使用报错&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;先检查是不是网络连接的问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;若不是，则&lt;span style=&#34;color: red;&#34;&gt;&lt;strong&gt;（以下操作均需要root权限）&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;下载阿里云的镜像源配置文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;清理旧缓存&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum makecache
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;PackageKit&lt;/strong&gt; 服务占用了 Yum 的锁&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;暂停并终止 PackageKit 服务&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl stop packagekit
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;禁用 PackageKit 服务&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl disable packagekit
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;rpm是linux的安装包格式&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -706,10 +767,10 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;-y：自动安装，无需手动确认安装或卸载&lt;/li&gt;
-&lt;li&gt;yum命令需要root权限或sudo提权&lt;/li&gt;
+&lt;li&gt;yum命令==需要root权限或sudo提权==&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;systemctl命令控制软件的关闭和启动&#34;&gt;systemctl命令控制软件的关闭和启动
-&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;h3 id=&#34;systemctl命令控制软件的关闭和启动&#34;&gt;systemctl命令控制软件的关闭和启动
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
@@ -741,8 +802,8 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;&lt;code&gt;systemctl&lt;/code&gt; 不仅可以控制系统内置的服务，还可以控制一些第三方软件和服务，只要这些软件或服务已经通过 systemd 配置为服务单位（unit）。没有注册可以通过手动注册来实现控制&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;ln命令创建软连接&#34;&gt;ln命令创建软连接
-&lt;/h2&gt;&lt;p&gt;**软连接：**将文件或文件夹链接到其他位置，==类似于windows的快捷方式==&lt;/p&gt;
+&lt;h3 id=&#34;ln命令创建软连接&#34;&gt;ln命令创建软连接
+&lt;/h3&gt;&lt;p&gt;**软连接：**将文件或文件夹链接到其他位置，==类似于windows的快捷方式==&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -755,10 +816,534 @@
 &lt;li&gt;参数1：要链接的文件或文件夹&lt;/li&gt;
 &lt;li&gt;参数1：要链接去的地方&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;日期和时区&#34;&gt;日期和时区
-&lt;/h2&gt;&lt;h3 id=&#34;date命令查看时间&#34;&gt;date命令查看时间
-&lt;/h3&gt;&lt;h3 id=&#34;ntp命令进行时间同步和校准&#34;&gt;ntp命令进行时间同步和校准
-&lt;/h3&gt;</description>
+&lt;h3 id=&#34;日期和时区&#34;&gt;日期和时区
+&lt;/h3&gt;&lt;h4 id=&#34;date命令查看时间&#34;&gt;date命令查看时间
+&lt;/h4&gt;&lt;p&gt;好的！按照类似的格式，&lt;code&gt;date&lt;/code&gt; 命令的说明如下：&lt;/p&gt;
+&lt;h4 id=&#34;date-命令用法&#34;&gt;&lt;code&gt;date&lt;/code&gt; 命令用法
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;date&lt;/code&gt; 命令用于显示和设置系统的日期和时间。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;date &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-d&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;+格式化字符串&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;-d&lt;/code&gt;&lt;/strong&gt;：显示指定日期的时间，可以用于计算日期（如计算未来或过去的日期）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;ntp命令进行时间同步和校准&#34;&gt;ntp命令进行时间同步和校准
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;安装ntp&lt;code&gt;yum -y install ntp&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;设置开机自启动&lt;code&gt;systemctl enable ntpd&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;手动校准，需要root权限&lt;code&gt;ntpdate -u ntp.aliyun.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;ip地址和主机名&#34;&gt;ip地址和主机名
+&lt;/h3&gt;&lt;h4 id=&#34;查询ip&#34;&gt;查询ip
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ifconfig
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;主机名&#34;&gt;主机名
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;查看主机名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hostname
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;修改主机名&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hostnamectl set-hostname 新主机名
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;域名解析&#34;&gt;域名解析
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;先查看本机记录。/etc/hosts&lt;/li&gt;
+&lt;li&gt;在联网去DNS服务器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;虚拟机配置固定ip&#34;&gt;虚拟机配置固定ip
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;虚拟机中配置ip地址的网关和网段（ip地址的范围）&lt;/p&gt;
+&lt;p&gt;![](屏幕截图 2025-01-24 165409.png)&lt;/p&gt;
+&lt;p&gt;![](屏幕截图 2025-01-24 165812.png)&lt;/p&gt;
+&lt;p&gt;![](屏幕截图 2025-01-24 165945.png)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;手动修改配置文件，固定ip&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;网卡配置文件&lt;code&gt;/etc/sysconfig/network-scripts/ifcfg-ens33&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用vim对其进行编辑&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;修改第四行&lt;/p&gt;
+&lt;p&gt;dhcp是自动获取ip，将dhcp换为static&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;新增四行内容&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;网络传输&#34;&gt;网络传输
+&lt;/h3&gt;&lt;h4 id=&#34;ping检查指定的网络服务器是否为可联通状态&#34;&gt;ping检查指定的网络服务器是否为可联通状态
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ping &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-c num&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; ip或主机名
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;-c num：检查的次数，不写则无限次数持续检查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;wget非交互式文件下载器&#34;&gt;wget非交互式文件下载器
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wget &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-b&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; url
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;-b:后台下载，将日志写到工作目录下的wget-log文件下&lt;/li&gt;
+&lt;li&gt;url：下载链接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;curl命令用于发送http网络请求&#34;&gt;curl命令用于发送http网络请求
+&lt;/h4&gt;&lt;p&gt;用于下载文件、获取信息&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-O&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; url
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;-O：用于下载文件，当url是下载链接时保存文件&lt;/li&gt;
+&lt;li&gt;url：要发起请求的网络地址&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;端口&#34;&gt;端口
+&lt;/h3&gt;&lt;p&gt;通过端口可以锁定计算机的具体程序&lt;/p&gt;
+&lt;p&gt;Linux 系统中，端口是标识网络服务的通信通道，共有 &lt;strong&gt;65535&lt;/strong&gt; 个端口号可供使用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;0 - 1023&lt;/strong&gt;：&lt;strong&gt;知名端口&lt;/strong&gt;（Well-known Ports），由 IANA（Internet Assigned Numbers Authority）分配，用于重要的服务和应用，例如 HTTP（80）、HTTPS（443）、SSH（22）、FTP（21）等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;1024 - 49151&lt;/strong&gt;：&lt;strong&gt;注册端口&lt;/strong&gt;（Registered Ports），这些端口号是为某些应用程序、服务和进程保留的，但不如知名端口那样严格，通常由开发者或组织申请使用。通常可以随意使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;49152 - 65535&lt;/strong&gt;：&lt;strong&gt;动态端口&lt;/strong&gt;（Dynamic or Private Ports），这些端口通常用于客户端的临时端口，如在建立连接时操作系统会自动分配这些端口。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;nmap命令查看端口占用&#34;&gt;nmap命令查看端口占用
+&lt;/h4&gt;&lt;p&gt;先下载nmap&lt;/p&gt;
+&lt;p&gt;查看占用情况&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nmap 要查看的ip地址
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;netstat命令查看指定端口的占用情况&#34;&gt;netstat命令查看指定端口的占用情况
+&lt;/h4&gt;&lt;p&gt;需要先下载&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum -y install net-tools
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;使用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;netstat -anp &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep 端口号
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;格式正确的情况下没返回说明&lt;strong&gt;端口没有被使用&lt;/strong&gt;：指定的端口号当前没有进程在监听。&lt;/p&gt;
+&lt;h3 id=&#34;进程管理&#34;&gt;进程管理
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;为管理运行的程序，每个运行的程序都会被操作系统注册为系统中的一个进程。并为每个进程分配一个独有的进程id。&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;ps命令查看进程信息&#34;&gt;ps命令查看进程信息
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ps &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-e -f&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;-e：展示全部进程&lt;/li&gt;
+&lt;li&gt;-f：以完全格式化的形式展示信息（展示全部信息）&lt;/li&gt;
+&lt;li&gt;一般合起来用&lt;code&gt;ps -ef&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style=&#34;color: red;&#34;&gt;可以通过管道符|和grep来进行过滤，例如查找tail命令&lt;code&gt;ps -ef | grep tail&lt;/code&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h4 id=&#34;kill关闭进程&#34;&gt;kill关闭进程
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;kill&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-9&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; 进程id
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;-9：强制关闭&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;监控主机状态&#34;&gt;监控主机状态
+&lt;/h3&gt;&lt;h4 id=&#34;top查看资源占用&#34;&gt;top查看资源占用
+&lt;/h4&gt;&lt;p&gt;类似与windows任务管理器，默认每隔5秒刷新一次&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;top
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;![](屏幕截图 2025-01-25 141245.png)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;基本选项&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-d&lt;/code&gt; &lt;code&gt;&amp;lt;时间间隔&amp;gt;&lt;/code&gt;：设置刷新间隔（单位为秒）。默认值通常为 3 秒，例如 &lt;code&gt;top -d 2&lt;/code&gt; 表示每 2 秒刷新一次。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-n&lt;/code&gt; &lt;code&gt;&amp;lt;次数&amp;gt;&lt;/code&gt;：指定刷新次数后退出。例如，&lt;code&gt;top -n 5&lt;/code&gt; 表示刷新 5 次后退出。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-b&lt;/code&gt;：以批处理模式运行，输出结果适合重定向到文件。例如，&lt;code&gt;top -b -n 1 &amp;gt; output.txt&lt;/code&gt; 将当前信息保存到 &lt;code&gt;output.txt&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p&lt;/code&gt; &lt;code&gt;&amp;lt;PID&amp;gt;&lt;/code&gt;：仅显示指定 PID 的进程信息。例如，&lt;code&gt;top -p 1234&lt;/code&gt; 只监控进程号为 1234 的进程。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-u&lt;/code&gt; &lt;code&gt;&amp;lt;用户名&amp;gt;&lt;/code&gt;：仅显示指定用户的进程。例如，&lt;code&gt;top -u root&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-U&lt;/code&gt; &lt;code&gt;&amp;lt;用户ID&amp;gt;&lt;/code&gt;：与 &lt;code&gt;-u&lt;/code&gt; 类似，但通过用户 ID 过滤。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-H&lt;/code&gt;：显示线程级别的信息。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-o&lt;/code&gt; &lt;code&gt;&amp;lt;字段&amp;gt;&lt;/code&gt;：按指定字段排序。例如，&lt;code&gt;top -o %CPU&lt;/code&gt; 按 CPU 使用率排序。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;运行时交互键&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当运行 &lt;code&gt;top&lt;/code&gt; 后，可以通过以下键盘操作动态调整显示内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;排序相关
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;P&lt;/code&gt;：按 CPU 使用率排序（默认）。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;M&lt;/code&gt;：按内存使用量排序。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;T&lt;/code&gt;：按进程运行时间排序。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;筛选相关
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;u&lt;/code&gt;：筛选特定用户的进程。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k&lt;/code&gt;：终止指定 PID 的进程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;显示相关
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;z&lt;/code&gt;：切换颜色显示。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;x&lt;/code&gt;：高亮排序列。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;c&lt;/code&gt;：切换显示完整命令行或仅显示进程名称。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;f&lt;/code&gt;：调整显示字段。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;h&lt;/code&gt;：显示帮助信息。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;q&lt;/code&gt;：退出 &lt;code&gt;top&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;df命令查看硬盘的使用情况&#34;&gt;df命令查看硬盘的使用情况
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;df &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-h&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;-h：单位显示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;iostat命令查看cpu和磁盘信息&#34;&gt;iostat命令查看cpu和磁盘信息
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;iostat &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-x&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;参数1&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;参数2&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;-x：显示更多信息&lt;/li&gt;
+&lt;li&gt;参数1：数字，表示刷新间隔（秒）&lt;/li&gt;
+&lt;li&gt;参数2：数字，表示刷新几次，不写则一直刷新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;sar查看网络的相关统计&#34;&gt;sar查看网络的相关统计
+&lt;/h4&gt;&lt;p&gt;由于十分复杂&lt;/p&gt;
+&lt;p&gt;常用的写法&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sar -n DEV num1 num2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;-n：查看网络&lt;/li&gt;
+&lt;li&gt;DEV：查看网络接口&lt;/li&gt;
+&lt;li&gt;num1：数字，表示刷新间隔（秒）&lt;/li&gt;
+&lt;li&gt;num2：数字，表示刷新几次，不写则一直刷新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;环境变量&#34;&gt;环境变量
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;环境变量是一种在操作系统中用于存储配置信息的键值对，方便系统和应用程序获取公共参数。它们像全局变量一样，可以影响系统或程序的运行环境。&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;env命令查看当前系统的环境变量&#34;&gt;env命令查看当前系统的环境变量
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;env
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;符号&#34;&gt;&lt;code&gt;$&lt;/code&gt;符号
+&lt;/h4&gt;&lt;p&gt;通过&lt;code&gt;$&lt;/code&gt;用环境变量的key去获取值&lt;/p&gt;
+&lt;p&gt;例如，&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$PATH&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;heading&#34;&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;临时&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;变量名&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;变量值
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;永久&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;针对当前用户：在~/bashrc文件中&lt;/li&gt;
+&lt;li&gt;针对所有用户：在/etc/profile文件中&lt;/li&gt;
+&lt;li&gt;在配置文件里写入&lt;code&gt;export 变量名=变量值&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;立即生效使用&lt;code&gt;source 配置文件名称&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;上传和下载&#34;&gt;上传和下载
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;可以鼠标推拽&lt;/li&gt;
+&lt;li&gt;通过命令
+&lt;ul&gt;
+&lt;li&gt;安装lrzsz&lt;/li&gt;
+&lt;li&gt;rz上传，window上传过来&lt;/li&gt;
+&lt;li&gt;sz下载&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;压缩和解压&#34;&gt;压缩和解压
+&lt;/h3&gt;&lt;p&gt;tar和gzip更为常用&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;.tar&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;：
+&lt;code&gt;.tar&lt;/code&gt; 是一种打包格式，用于将多个文件和目录合并成一个文件，方便归档和传输。&lt;/li&gt;
+&lt;li&gt;特点
+&lt;ul&gt;
+&lt;li&gt;仅&lt;strong&gt;打包&lt;/strong&gt;文件和目录，不会压缩数据。&lt;/li&gt;
+&lt;li&gt;文件大小保持不变。&lt;/li&gt;
+&lt;li&gt;通常用于备份和归档。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;.gz&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;：
+&lt;code&gt;.gz&lt;/code&gt; 是一种压缩格式，基于 Gzip（GNU zip）压缩算法，用于减少文件大小。&lt;/li&gt;
+&lt;li&gt;特点
+&lt;ul&gt;
+&lt;li&gt;只能压缩单个文件。&lt;/li&gt;
+&lt;li&gt;不具备打包功能。&lt;/li&gt;
+&lt;li&gt;常用于网络传输或磁盘存储优化。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;.tar.gz&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;：
+&lt;code&gt;.tar.gz&lt;/code&gt; 是 &lt;code&gt;.tar&lt;/code&gt; 和 &lt;code&gt;.gz&lt;/code&gt; 的组合，先将文件和目录打包成 &lt;code&gt;.tar&lt;/code&gt; 文件，再对 &lt;code&gt;.tar&lt;/code&gt; 文件进行 Gzip 压缩。&lt;/li&gt;
+&lt;li&gt;特点
+&lt;ul&gt;
+&lt;li&gt;兼具打包和压缩功能。&lt;/li&gt;
+&lt;li&gt;是 Linux 系统中最常见的压缩包格式。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;tar命令压缩或解压tar和gzip文件&#34;&gt;tar命令压缩或解压tar和gzip文件
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tar &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-z -c -x -C -v -f&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; 参数1 参数2 ... ... 参数n
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;-z：&lt;strong&gt;不管是解压还是压缩，都使用gzip算法。不写则使用tarball算法&lt;/strong&gt;，要使用的话一般&lt;strong&gt;放在第一个&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;-c：创建压缩文件，用于压缩模式&lt;/li&gt;
+&lt;li&gt;-x：解压模式&lt;/li&gt;
+&lt;li&gt;-C：用于解压模式，选择解压目的地&lt;/li&gt;
+&lt;li&gt;-v：查看进度。用于显示压缩、解压过程&lt;/li&gt;
+&lt;li&gt;-f：指定&lt;strong&gt;打包或解压的文件名&lt;/strong&gt;（如 &lt;code&gt;archive.tar&lt;/code&gt;）。必须放在所有选项的&lt;strong&gt;最后一个&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;span-stylecolor-red常用组合span&#34;&gt;&lt;span style=&#34;color: red;&#34;&gt;&lt;strong&gt;常用组合&lt;/strong&gt;&lt;/span&gt;
+&lt;/h5&gt;&lt;h6 id=&#34;压缩&#34;&gt;&lt;strong&gt;压缩&lt;/strong&gt;
+&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;-cvf 将若干文件压缩到某个.tar文件&lt;/p&gt;
+&lt;p&gt;例如，将1.txt和2.txt压缩到test.tar中&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tar -cvf test.tar 1.txt 2.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;该命令会将当前目录下的 &lt;code&gt;1.txt&lt;/code&gt; 和 &lt;code&gt;2.txt&lt;/code&gt; 文件打包到一个名为 &lt;code&gt;test.tar&lt;/code&gt; 的归档文件中。&lt;/p&gt;
+&lt;p&gt;打包完成后，&lt;code&gt;1.txt&lt;/code&gt; 和 &lt;code&gt;2.txt&lt;/code&gt; 原文件依然保留，它们的副本被存储在 &lt;code&gt;test.tar&lt;/code&gt; 中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;-zcvf&lt;/p&gt;
+&lt;p&gt;先将 &lt;code&gt;1.txt&lt;/code&gt; 和 &lt;code&gt;2.txt&lt;/code&gt; 文件打包为一个 &lt;code&gt;test.tar&lt;/code&gt; 文件，然后用 &lt;code&gt;gzip&lt;/code&gt; 压缩生成最终的 &lt;code&gt;test.tar.gz&lt;/code&gt; 文件。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tar -zcvf test.tar 1.txt 2.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&#34;解压&#34;&gt;&lt;strong&gt;解压&lt;/strong&gt;
+&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;-xvf   解压到&lt;strong&gt;当前目录&lt;/strong&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tar -xvf test.tar
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;-xvf   解压到&lt;strong&gt;指定目录&lt;/strong&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tar -xvf test.tar -C /home/jieya
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;-zxvf  解压到&lt;strong&gt;指定目录&lt;/strong&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tar -zxvf test.tar.gz -C /home/jieya
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;zipunzip命令压缩或解压zip文件&#34;&gt;zip、unzip命令压缩或解压zip文件
+&lt;/h4&gt;&lt;h5 id=&#34;zip命令压缩文件&#34;&gt;zip命令压缩文件
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;zip &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-r&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; 参数1 参数2 ... ... 参数n
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;-r：压缩内容含有文件夹要使用-r&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;例如，将a.txt和b.txt压缩到test.zip里&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;zip -r test.zip a.txt b.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;unzip解压&#34;&gt;unzip解压
+&lt;/h5&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;unzip &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;-d&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; zip压缩包文件
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;-d：同上面tar命令的-C类似，指定解压目录&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;解压到当前目录&lt;/p&gt;
+&lt;p&gt;例如，&lt;code&gt;unzip test.zip&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解压到指定目录&lt;/p&gt;
+&lt;p&gt;例如，&lt;code&gt;unzip test.zip -d /home/jieya&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;目录不存在，&lt;code&gt;unzip&lt;/code&gt; 会报错，提示目标目录不存在。有同名文件会覆盖&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
         </item>
         <item>
         <title>Redis</title>
