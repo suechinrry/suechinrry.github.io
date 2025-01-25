@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="数组 数组是存放在连续内存空间上的相同类型数据的集合。\n下标从0开始 内存空间的地址是连续的 数组的元素不能删除只能覆盖 二分法 使用前提：有序数组，无重复元素\n">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="数据结构和算法 数组 数组是存放在连续内存空间上的相同类型数据的集合。\n下标从0开始 内存空间的地址是连续的 数组的元素不能删除只能覆盖 二分法 使用前提：有序数组，无重复元素\n">
 <title>数据结构与算法</title>
 
 <link rel='canonical' href='https://suechinrry.github.io/p/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/'>
 
 <link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="数据结构与算法">
-<meta property='og:description' content="数组 数组是存放在连续内存空间上的相同类型数据的集合。\n下标从0开始 内存空间的地址是连续的 数组的元素不能删除只能覆盖 二分法 使用前提：有序数组，无重复元素\n">
+<meta property='og:description' content="数据结构和算法 数组 数组是存放在连续内存空间上的相同类型数据的集合。\n下标从0开始 内存空间的地址是连续的 数组的元素不能删除只能覆盖 二分法 使用前提：有序数组，无重复元素\n">
 <meta property='og:url' content='https://suechinrry.github.io/p/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/'>
 <meta property='og:site_name' content='SueChinrry'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='算法' /><meta property='article:tag' content='数据结构' /><meta property='article:tag' content='java' /><meta property='article:published_time' content='2025-01-13T22:27:13&#43;08:00'/><meta property='article:modified_time' content='2025-01-13T22:27:13&#43;08:00'/><meta property='og:image' content='https://suechinrry.github.io/p/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/lst.jpg' />
 <meta name="twitter:title" content="数据结构与算法">
-<meta name="twitter:description" content="数组 数组是存放在连续内存空间上的相同类型数据的集合。\n下标从0开始 内存空间的地址是连续的 数组的元素不能删除只能覆盖 二分法 使用前提：有序数组，无重复元素\n"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="数据结构和算法 数组 数组是存放在连续内存空间上的相同类型数据的集合。\n下标从0开始 内存空间的地址是连续的 数组的元素不能删除只能覆盖 二分法 使用前提：有序数组，无重复元素\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://suechinrry.github.io/p/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/lst.jpg' />
     </head>
     <body class="
@@ -262,37 +262,30 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#二分法">二分法</a>
+    <li><a href="#数组">数组</a>
       <ol>
-        <li><a href="#相关题目">相关题目</a>
+        <li><a href="#二分法">二分法</a>
           <ol>
-            <li><a href="#35搜索插入位置httpsprogrammercarlcom0035搜索插入位置html--n"><a href="https://programmercarl.com/0035.%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE.html">35.搜索插入位置</a>  N</a></li>
-            <li><a href="#34在排序数组中查找元素的第一个和最后一个位置httpsprogrammercarlcom0034在排序数组中查找元素的第一个和最后一个位置html"><a href="https://programmercarl.com/0034.%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE.html">34.在排序数组中查找元素的第一个和最后一个位置</a></a></li>
-            <li><a href="#69x-的平方根httpsleetcodecnproblemssqrtx-n"><a href="https://leetcode.cn/problems/sqrtx/">69.x 的平方根</a> N</a></li>
-            <li><a href="#367有效的完全平方数httpsleetcodecnproblemsvalid-perfect-square"><a href="https://leetcode.cn/problems/valid-perfect-square/">367.有效的完全平方数</a></a></li>
+            <li><a href="#二分法httpsleetcodecnproblemsbinary-search"><a href="https://leetcode.cn/problems/binary-search/">二分法</a></a></li>
+            <li><a href="#相关题目">相关题目</a></li>
           </ol>
         </li>
-      </ol>
-    </li>
-    <li><a href="#移除元素">移除元素</a>
-      <ol>
-        <li><a href="#相关题目-1">相关题目</a>
+        <li><a href="#移除元素">移除元素</a>
           <ol>
-            <li><a href="#26删除排序数组中的重复项httpsleetcodecnproblemsremove-duplicates-from-sorted-array--n"><a href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/">26.删除排序数组中的重复项</a>  N</a></li>
-            <li><a href="#283移动零httpsleetcodecnproblemsmove-zeroes"><a href="https://leetcode.cn/problems/move-zeroes/">283.移动零</a></a></li>
-            <li><a href="#844比较含退格的字符串httpsleetcodecnproblemsbackspace-string-compare"><a href="https://leetcode.cn/problems/backspace-string-compare/">844.比较含退格的字符串</a></a></li>
-            <li><a href="#977有序数组的平方httpsleetcodecnproblemssquares-of-a-sorted-array--n"><a href="https://leetcode.cn/problems/squares-of-a-sorted-array/">977.有序数组的平方</a>  N</a></li>
+            <li><a href="#移除元素httpsleetcodecnproblemsremove-element-n"><a href="https://leetcode.cn/problems/remove-element/">移除元素</a> N</a></li>
+            <li><a href="#相关题目-1">相关题目</a></li>
           </ol>
         </li>
-      </ol>
-    </li>
-    <li><a href="#长度最小的子数组">长度最小的子数组</a>
-      <ol>
-        <li><a href="#长度最小的子数组httpsleetcodecnproblemsminimum-size-subarray-sum"><a href="https://leetcode.cn/problems/minimum-size-subarray-sum/">长度最小的子数组</a></a></li>
-        <li><a href="#相关题目-2">相关题目</a>
+        <li><a href="#长度最小的子数组">长度最小的子数组</a>
           <ol>
-            <li><a href="#904水果成篮httpsleetcodecnproblemsfruit-into-baskets---n"><a href="https://leetcode.cn/problems/fruit-into-baskets/">904.水果成篮</a>   N</a></li>
-            <li><a href="#76最小覆盖子串httpsleetcodecnproblemsminimum-window-substring"><a href="https://leetcode.cn/problems/minimum-window-substring/">76.最小覆盖子串</a></a></li>
+            <li><a href="#长度最小的子数组httpsleetcodecnproblemsminimum-size-subarray-sum"><a href="https://leetcode.cn/problems/minimum-size-subarray-sum/">长度最小的子数组</a></a></li>
+            <li><a href="#相关题目-2">相关题目</a></li>
+          </ol>
+        </li>
+        <li><a href="#螺旋矩阵2">螺旋矩阵2</a>
+          <ol>
+            <li><a href="#59-螺旋矩阵-ii---力扣leetcodehttpsleetcodecnproblemsspiral-matrix-iidescription--n"><a href="https://leetcode.cn/problems/spiral-matrix-ii/description/">59. 螺旋矩阵 II - 力扣（LeetCode）</a>  N</a></li>
+            <li><a href="#类似题目">类似题目</a></li>
           </ol>
         </li>
       </ol>
@@ -377,7 +370,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 10 分钟
+                    阅读时长: 11 分钟
                 </time>
             </div>
         
@@ -392,18 +385,19 @@
     <section class="article-content">
     
     
-    <h1 id="数组">数组
-</h1><p><strong>数组是存放在连续内存空间上的相同类型数据的集合。</strong></p>
+    <h1 id="数据结构和算法">数据结构和算法
+</h1><h2 id="数组">数组
+</h2><p><strong>数组是存放在连续内存空间上的相同类型数据的集合。</strong></p>
 <ul>
 <li>下标从0开始</li>
 <li>内存空间的地址是连续的</li>
 <li>数组的元素不能删除只能覆盖</li>
 </ul>
-<h2 id="二分法">二分法
-</h2><p><strong>使用前提：有序数组，无重复元素</strong></p>
-<p><a class="link" href="https://leetcode.cn/problems/binary-search/"  target="_blank" rel="noopener"
-    >二分法</a></p>
-<p>left，right，middle只根据条件来改变left或right的值，middle的值自然会改变</p>
+<h3 id="二分法">二分法
+</h3><p><strong>使用前提：有序数组，无重复元素</strong></p>
+<h4 id="二分法httpsleetcodecnproblemsbinary-search"><a class="link" href="https://leetcode.cn/problems/binary-search/"  target="_blank" rel="noopener"
+    >二分法</a>
+</h4><p>left，right，middle只根据条件来改变left或right的值，middle的值自然会改变</p>
 <p><strong>写二分法，区间的定义一般为两种，左闭右闭即[left, right]，或者左闭右开即[left, right)。</strong></p>
 <ul>
 <li>
@@ -509,10 +503,10 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="相关题目">相关题目
-</h3><h4 id="35搜索插入位置httpsprogrammercarlcom0035搜索插入位置html--n"><a class="link" href="https://programmercarl.com/0035.%e6%90%9c%e7%b4%a2%e6%8f%92%e5%85%a5%e4%bd%8d%e7%bd%ae.html"  target="_blank" rel="noopener"
+</div><h4 id="相关题目">相关题目
+</h4><h5 id="35搜索插入位置httpsprogrammercarlcom0035搜索插入位置html--n"><a class="link" href="https://programmercarl.com/0035.%e6%90%9c%e7%b4%a2%e6%8f%92%e5%85%a5%e4%bd%8d%e7%bd%ae.html"  target="_blank" rel="noopener"
     >35.搜索插入位置</a>  N
-</h4><ul>
+</h5><ul>
 <li>
 <p>暴力解法</p>
 <div class="highlight"><div class="chroma">
@@ -600,9 +594,9 @@
 </div><p><span style="color:red;"><strong><code>r</code> 指针已经指向了数组中小于 <code>target</code> 的最后一个元素的位置</strong></span></p>
 </li>
 </ul>
-<h4 id="34在排序数组中查找元素的第一个和最后一个位置httpsprogrammercarlcom0034在排序数组中查找元素的第一个和最后一个位置html"><a class="link" href="https://programmercarl.com/0034.%e5%9c%a8%e6%8e%92%e5%ba%8f%e6%95%b0%e7%bb%84%e4%b8%ad%e6%9f%a5%e6%89%be%e5%85%83%e7%b4%a0%e7%9a%84%e7%ac%ac%e4%b8%80%e4%b8%aa%e5%92%8c%e6%9c%80%e5%90%8e%e4%b8%80%e4%b8%aa%e4%bd%8d%e7%bd%ae.html"  target="_blank" rel="noopener"
+<h5 id="34在排序数组中查找元素的第一个和最后一个位置httpsprogrammercarlcom0034在排序数组中查找元素的第一个和最后一个位置html"><a class="link" href="https://programmercarl.com/0034.%e5%9c%a8%e6%8e%92%e5%ba%8f%e6%95%b0%e7%bb%84%e4%b8%ad%e6%9f%a5%e6%89%be%e5%85%83%e7%b4%a0%e7%9a%84%e7%ac%ac%e4%b8%80%e4%b8%aa%e5%92%8c%e6%9c%80%e5%90%8e%e4%b8%80%e4%b8%aa%e4%bd%8d%e7%bd%ae.html"  target="_blank" rel="noopener"
     >34.在排序数组中查找元素的第一个和最后一个位置</a>
-</h4><p><span style="color:red;"><strong>含有重复元素时</strong></span></p>
+</h5><p><span style="color:red;"><strong>含有重复元素时</strong></span></p>
 <p>用两个二分法来查找左右边界</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -757,9 +751,9 @@
 </ul>
 </li>
 </ol>
-<h4 id="69x-的平方根httpsleetcodecnproblemssqrtx-n"><a class="link" href="https://leetcode.cn/problems/sqrtx/"  target="_blank" rel="noopener"
+<h5 id="69x-的平方根httpsleetcodecnproblemssqrtx-n"><a class="link" href="https://leetcode.cn/problems/sqrtx/"  target="_blank" rel="noopener"
     >69.x 的平方根</a> N
-</h4><div class="highlight"><div class="chroma">
+</h5><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -811,12 +805,12 @@
 <li><span style="color:red;"><strong>为了防止溢出，将<code>mid*mid&gt;x</code>换位<code>x/mid&lt;mid</code></strong></span></li>
 <li><span style="color:red;"><strong>二分查找最终会使得 <code>l &gt; r</code>，此时区间 <code>[l, r]</code> 会被缩小到一个无法继续分割的状态。此时，<code>r</code> 就是比 <code>sqrt(x)</code> 小的最大整数</strong>。</span></li>
 </ul>
-<h4 id="367有效的完全平方数httpsleetcodecnproblemsvalid-perfect-square"><a class="link" href="https://leetcode.cn/problems/valid-perfect-square/"  target="_blank" rel="noopener"
+<h5 id="367有效的完全平方数httpsleetcodecnproblemsvalid-perfect-square"><a class="link" href="https://leetcode.cn/problems/valid-perfect-square/"  target="_blank" rel="noopener"
     >367.有效的完全平方数</a>
-</h4><h2 id="移除元素">移除元素
-</h2><p><a class="link" href="https://leetcode.cn/problems/remove-element/"  target="_blank" rel="noopener"
-    >移除元素</a> N</p>
-<p><strong>暴力解法，两层for循环</strong></p>
+</h5><h3 id="移除元素">移除元素
+</h3><h4 id="移除元素httpsleetcodecnproblemsremove-element-n"><a class="link" href="https://leetcode.cn/problems/remove-element/"  target="_blank" rel="noopener"
+    >移除元素</a> N
+</h4><p><strong>暴力解法，两层for循环</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -892,10 +886,10 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="相关题目-1">相关题目
-</h3><h4 id="26删除排序数组中的重复项httpsleetcodecnproblemsremove-duplicates-from-sorted-array--n"><a class="link" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/"  target="_blank" rel="noopener"
+</div><h4 id="相关题目-1">相关题目
+</h4><h5 id="26删除排序数组中的重复项httpsleetcodecnproblemsremove-duplicates-from-sorted-array--n"><a class="link" href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/"  target="_blank" rel="noopener"
     >26.删除排序数组中的重复项</a>  N
-</h4><p><span style="color:red;"><strong>第一个元素不用处理，从第二个元素开始。所以slow的初始值是1，fast的初始值也为1，而且为了避免下标溢出，将nums[fast]!=nums[fast+1]换成nums[fast]!=nums[fast-1]。</strong></span></p>
+</h5><p><span style="color:red;"><strong>第一个元素不用处理，从第二个元素开始。所以slow的初始值是1，fast的初始值也为1，而且为了避免下标溢出，将nums[fast]!=nums[fast+1]换成nums[fast]!=nums[fast-1]。</strong></span></p>
 <p><span style="color:red;"><strong><code>slow</code> 指针始终指向下一个应该放置去重后元素的位置。每当我们遇到一个不重复的元素时，我们就将其放入 <code>nums[slow]</code> 位置，并且增加 <code>slow</code> 的值。</strong></span></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -929,11 +923,11 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="283移动零httpsleetcodecnproblemsmove-zeroes"><a class="link" href="https://leetcode.cn/problems/move-zeroes/"  target="_blank" rel="noopener"
+</div><h5 id="283移动零httpsleetcodecnproblemsmove-zeroes"><a class="link" href="https://leetcode.cn/problems/move-zeroes/"  target="_blank" rel="noopener"
     >283.移动零</a>
-</h4><h4 id="844比较含退格的字符串httpsleetcodecnproblemsbackspace-string-compare"><a class="link" href="https://leetcode.cn/problems/backspace-string-compare/"  target="_blank" rel="noopener"
+</h5><h5 id="844比较含退格的字符串httpsleetcodecnproblemsbackspace-string-compare"><a class="link" href="https://leetcode.cn/problems/backspace-string-compare/"  target="_blank" rel="noopener"
     >844.比较含退格的字符串</a>
-</h4><p>==对于数组，直接使用 <code>length</code>，不加括号。==</p>
+</h5><p>==对于数组，直接使用 <code>length</code>，不加括号。==</p>
 <p>==对于字符串，使用 <code>length()</code> 方法，记得加括号。==</p>
 <p><strong><code>StringBuilder</code> 和 <code>StringBuffer</code> 可变的字符串类</strong></p>
 <ul>
@@ -1037,9 +1031,9 @@
 </div>
 </div></li>
 </ol>
-<h4 id="977有序数组的平方httpsleetcodecnproblemssquares-of-a-sorted-array--n"><a class="link" href="https://leetcode.cn/problems/squares-of-a-sorted-array/"  target="_blank" rel="noopener"
+<h5 id="977有序数组的平方httpsleetcodecnproblemssquares-of-a-sorted-array--n"><a class="link" href="https://leetcode.cn/problems/squares-of-a-sorted-array/"  target="_blank" rel="noopener"
     >977.有序数组的平方</a>  N
-</h4><ul>
+</h5><ul>
 <li>
 <p>暴力</p>
 <div class="highlight"><div class="chroma">
@@ -1180,10 +1174,10 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="长度最小的子数组">长度最小的子数组
-</h2><h3 id="长度最小的子数组httpsleetcodecnproblemsminimum-size-subarray-sum"><a class="link" href="https://leetcode.cn/problems/minimum-size-subarray-sum/"  target="_blank" rel="noopener"
+</div><h3 id="长度最小的子数组">长度最小的子数组
+</h3><h4 id="长度最小的子数组httpsleetcodecnproblemsminimum-size-subarray-sum"><a class="link" href="https://leetcode.cn/problems/minimum-size-subarray-sum/"  target="_blank" rel="noopener"
     >长度最小的子数组</a>
-</h3><p><strong>这道题的子数组数连续的</strong></span></p>
+</h4><p><strong>这道题的子数组数连续的</strong></span></p>
 <ul>
 <li>
 <p>暴力</p>
@@ -1309,10 +1303,10 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="相关题目-2">相关题目
-</h3><h4 id="904水果成篮httpsleetcodecnproblemsfruit-into-baskets---n"><a class="link" href="https://leetcode.cn/problems/fruit-into-baskets/"  target="_blank" rel="noopener"
+</div><h4 id="相关题目-2">相关题目
+</h4><h5 id="904水果成篮httpsleetcodecnproblemsfruit-into-baskets---n"><a class="link" href="https://leetcode.cn/problems/fruit-into-baskets/"  target="_blank" rel="noopener"
     >904.水果成篮</a>   N
-</h4><p>先减少水果数量，再检查是否移除水果键。不然会移除一个不存在的键而报错</p>
+</h5><p>先减少水果数量，再检查是否移除水果键。不然会移除一个不存在的键而报错</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1357,9 +1351,102 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="76最小覆盖子串httpsleetcodecnproblemsminimum-window-substring"><a class="link" href="https://leetcode.cn/problems/minimum-window-substring/"  target="_blank" rel="noopener"
-    >76.最小覆盖子串</a>
-</h4>
+</div><h5 id="76最小覆盖子串httpsleetcodecnproblemsminimum-window-substring-n"><a class="link" href="https://leetcode.cn/problems/minimum-window-substring/"  target="_blank" rel="noopener"
+    >76.最小覆盖子串</a> N
+</h5><h3 id="螺旋矩阵2">螺旋矩阵2
+</h3><h4 id="59-螺旋矩阵-ii---力扣leetcodehttpsleetcodecnproblemsspiral-matrix-iidescription--n"><a class="link" href="https://leetcode.cn/problems/spiral-matrix-ii/description/"  target="_blank" rel="noopener"
+    >59. 螺旋矩阵 II - 力扣（LeetCode）</a>  N
+</h4><ul>
+<li>
+<p><span style="color:red;"><strong>确定好外循环，外循环是一共要转多少圈，n为奇数时单独的一个数不算一圈。这样的话奇数和偶数就统一了，所需圈数都为n/2</strong></span></p>
+</li>
+<li>
+<p><span style="color:red;"><strong>内循环，转一次圈需要四个。采用左闭右开<code>[ )</code>。</strong></span></p>
+<img src="屏幕截图 2025-01-25 233934.png" style="zoom:67%;" />
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="nf">generateMatrix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">answer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">n</span><span class="o">][</span><span class="n">n</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">loop</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">startx</span><span class="o">=</span><span class="n">0</span><span class="p">,</span><span class="n">starty</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="p">,</span><span class="n">j</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">offset</span><span class="o">=</span><span class="n">1</span><span class="p">,</span><span class="n">count</span><span class="o">=</span><span class="n">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">loop</span><span class="o">&lt;</span><span class="n">n</span><span class="o">/</span><span class="n">2</span><span class="p">){</span><span class="c1">//n为偶数就刚好转n/2圈</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//向右,目前i=0,j=starty</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="n">starty</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">n</span><span class="o">-</span><span class="n">offset</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">answer</span><span class="o">[</span><span class="n">startx</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//向下，目前j=n-offset了</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="n">startx</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">-</span><span class="n">offset</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//向左,目前i=n-offset，j=n-offset</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="p">(;</span><span class="n">j</span><span class="o">&gt;</span><span class="n">starty</span><span class="p">;</span><span class="n">j</span><span class="o">--</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c1">//向上，目前i=n-offset，j=starty</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">for</span><span class="p">(;</span><span class="n">i</span><span class="o">&gt;</span><span class="n">startx</span><span class="p">;</span><span class="n">i</span><span class="o">--</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">answer</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]=</span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">startx</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">starty</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">offset</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">loop</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">%</span><span class="n">2</span><span class="o">!=</span><span class="n">0</span><span class="p">){</span><span class="c1">//n为奇数，还需要加上最里面的一个单独的数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="n">answer</span><span class="o">[</span><span class="n">startx</span><span class="o">][</span><span class="n">starty</span><span class="o">]=</span><span class="n">count</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">answer</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="类似题目">类似题目
+</h4><h5 id="54螺旋矩阵httpsleetcodecnproblemsspiral-matrix"><a class="link" href="https://leetcode.cn/problems/spiral-matrix/"  target="_blank" rel="noopener"
+    >54.螺旋矩阵</a>
+</h5><h5 id="剑指offer-29顺时针打印矩阵httpsleetcodecnproblemsshun-shi-zhen-da-yin-ju-zhen-lcof"><a class="link" href="https://leetcode.cn/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/"  target="_blank" rel="noopener"
+    >剑指Offer 29.顺时针打印矩阵</a>
+</h5>
 </section>
 
 
