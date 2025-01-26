@@ -13,7 +13,9 @@
         <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
         
         <guid>https://suechinrry.github.io/p/redis/</guid>
-        <description>&lt;h2 id=&#34;redis简介&#34;&gt;Redis简介
+        <description>&lt;h2 id=&#34;linux的相关知识httpssuechinrrygithubioplinuxlinux相关&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://suechinrry.github.io/p/linux/#linux%e7%9b%b8%e5%85%b3&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Linux的相关知识&lt;/a&gt;
+&lt;/h2&gt;&lt;h2 id=&#34;redis简介&#34;&gt;Redis简介
 &lt;/h2&gt;&lt;p&gt;Redis 是一个基于键值对（Key-Value）的 NoSQL 数据库，属于非关系型数据库。&lt;/p&gt;
 &lt;p&gt;官网：&lt;/p&gt;
 &lt;ul&gt;
@@ -29,11 +31,80 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;下载&#34;&gt;下载
-&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/redis/redis-hashes?tab=readme-ov-file&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;/h3&gt;&lt;h4 id=&#34;下载文件&#34;&gt;下载文件
+&lt;/h4&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/redis/redis-hashes?tab=readme-ov-file&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;redis/redis-hashes: Redis tarball SHA1 hashes&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;linux的相关知识httpssuechinrrygithubioplinuxlinux相关&#34;&gt;&lt;a class=&#34;link&#34; href=&#34;https://suechinrry.github.io/p/linux/#linux%e7%9b%b8%e5%85%b3&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Linux的相关知识&lt;/a&gt;
-&lt;/h2&gt;</description>
+&lt;h4 id=&#34;下载依赖&#34;&gt;下载依赖
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;yum -y install gcc tcl
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;上传文件&#34;&gt;上传文件
+&lt;/h4&gt;&lt;p&gt;需要root用户，是finalshell用root用户连接&lt;/p&gt;
+&lt;p&gt;并放到/usr/local/src&lt;/p&gt;
+&lt;h4 id=&#34;解压文件&#34;&gt;解压文件
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tar -zxvf redis-7.4.2.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;进入目录&#34;&gt;进入目录
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; redis-7.4.2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;运行编译命令&#34;&gt;运行编译命令
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make &amp;amp;&amp;amp; make install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;安装完成后，默认安装在/usr/local/bin下&lt;/p&gt;
+&lt;h3 id=&#34;启动&#34;&gt;启动
+&lt;/h3&gt;&lt;h4 id=&#34;直接启动redis-server&#34;&gt;直接启动&lt;code&gt;redis-server&lt;/code&gt;
+&lt;/h4&gt;&lt;h4 id=&#34;指定配置启动&#34;&gt;指定配置启动
+&lt;/h4&gt;&lt;p&gt;安装目录下的配置文件 /usr/local/src/redis-7.4.2的redis.conf&lt;/p&gt;
+&lt;p&gt;先备份&lt;code&gt;cp redis.conf redis.conf.bck&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;修改&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bind 127.0.0.1改为bind 0.0.0.0&lt;/li&gt;
+&lt;li&gt;daemonize yes&lt;/li&gt;
+&lt;li&gt;requirepass 改为 require * * * *&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;redis命令行客户端&#34;&gt;redis命令行客户端
+&lt;/h3&gt;&lt;p&gt;redis-cli&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;redis-cli [option] [commands]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;常见option
+&lt;ul&gt;
+&lt;li&gt;-h 127.0.0.1 要连接redis的ip，默认是127.0.0.1&lt;/li&gt;
+&lt;li&gt;-p 6379         要连接redis的端口，默认是6379&lt;/li&gt;
+&lt;li&gt;-a 密码          指定redis的访问密码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
         </item>
         
     </channel>
