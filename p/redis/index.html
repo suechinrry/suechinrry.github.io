@@ -278,9 +278,21 @@
           <ol>
             <li><a href="#直接启动redis-server">直接启动<code>redis-server</code></a></li>
             <li><a href="#指定配置启动">指定配置启动</a></li>
+            <li><a href="#开机自启动">开机自启动</a></li>
           </ol>
         </li>
         <li><a href="#redis命令行客户端">redis命令行客户端</a></li>
+        <li><a href="#图形化界面">图形化界面</a></li>
+        <li><a href="#常用命令">常用命令</a>
+          <ol>
+            <li><a href="#数据结构">数据结构</a></li>
+            <li><a href="#通用命令">通用命令</a></li>
+            <li><a href="#string类型">String类型</a></li>
+            <li><a href="#hash类型">Hash类型</a></li>
+            <li><a href="#list类型">List类型</a></li>
+            <li><a href="#set类型">Set类型</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
   </ol>
@@ -351,7 +363,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 1 分钟
+                    阅读时长: 7 分钟
                 </time>
             </div>
         
@@ -438,7 +450,88 @@
 <li>daemonize yes</li>
 <li>requirepass 改为 require * * * *</li>
 </ul>
-<h3 id="redis命令行客户端">redis命令行客户端
+<h4 id="开机自启动">开机自启动
+</h4><p>我们也可以通过配置来实现开机自启。</p>
+<p>首先，新建一个系统服务文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">vi /etc/systemd/system/redis.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[Unit]
+</span></span><span class="line"><span class="cl">Description=redis-server
+</span></span><span class="line"><span class="cl">After=network.target
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[Service]
+</span></span><span class="line"><span class="cl">Type=forking
+</span></span><span class="line"><span class="cl">ExecStart=/usr/local/bin/redis-server /usr/local/src/redis-7.4.2/redis.conf
+</span></span><span class="line"><span class="cl">PrivateTmp=true
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[Install]
+</span></span><span class="line"><span class="cl">WantedBy=multi-user.target
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后重载系统服务：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">systemctl daemon-reload
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>现在，我们可以用下面这组命令来操作redis了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># 启动</span>
+</span></span><span class="line"><span class="cl">systemctl start redis
+</span></span><span class="line"><span class="cl"><span class="c1"># 停止</span>
+</span></span><span class="line"><span class="cl">systemctl stop redis
+</span></span><span class="line"><span class="cl"><span class="c1"># 重启</span>
+</span></span><span class="line"><span class="cl">systemctl restart redis
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看状态</span>
+</span></span><span class="line"><span class="cl">systemctl status redis
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行下面的命令，可以让redis开机自启：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">systemctl <span class="nb">enable</span> redis
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="redis命令行客户端">redis命令行客户端
 </h3><p>redis-cli</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -449,15 +542,359 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
-<li>常见option
+<li>
+<p>常见option</p>
 <ul>
 <li>-h 127.0.0.1 要连接redis的ip，默认是127.0.0.1</li>
 <li>-p 6379         要连接redis的端口，默认是6379</li>
 <li>-a 密码          指定redis的访问密码</li>
 </ul>
 </li>
+<li>
+<p>其中的commonds就是Redis的操作命令，例如：</p>
+<ul>
+<li><code>ping</code>：与redis服务端做心跳测试，服务端正常会返回<code>pong</code></li>
 </ul>
-
+</li>
+</ul>
+<p>![屏幕截图 2025-01-27 114601](C:/Users/20387/Pictures/Screenshots/屏幕截图 2025-01-27 114601.png)</p>
+<h3 id="图形化界面">图形化界面
+</h3><p>GitHub上的大神编写了Redis的图形化桌面客户端，地址：https://github.com/uglide/RedisDesktopManager</p>
+<p>不过该仓库提供的是RedisDesktopManager的源码，并未提供windows安装包。</p>
+<p>在下面这个仓库可以找到安装包：https://github.com/lework/RedisDesktopManager-Windows/releases</p>
+<ul>
+<li>建立连接</li>
+<li>连接前要关闭centos防火墙<code>systemctl stop firewalld</code></li>
+</ul>
+<h3 id="常用命令">常用命令
+</h3><p><a class="link" href="https://redis.io/commands"  target="_blank" rel="noopener"
+    >命令参考</a></p>
+<h4 id="数据结构">数据结构
+</h4><ol>
+<li><strong>字符串（String）</strong></li>
+</ol>
+<ul>
+<li><strong>基本特性</strong>：Redis 的字符串类型是二进制安全的，可以存储任何类型的数据，比如 JPG 图片或者序列化后的对象。</li>
+<li>操作
+<ul>
+<li><code>SET key value</code>：设置键值对。</li>
+<li><code>GET key</code>：获取键的值。</li>
+<li><code>INCR key</code>：将键的值增加 1。</li>
+<li><code>DECR key</code>：将键的值减少 1。</li>
+<li><code>APPEND key value</code>：在已有值的基础上追加数据。</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>哈希（Hash）</strong></li>
+</ol>
+<ul>
+<li><strong>基本特性</strong>：哈希是键值对集合，适用于存储对象类型的数据，比如用户信息（字段：姓名、年龄、性别等）。</li>
+<li>操作
+<ul>
+<li><code>HSET key field value</code>：设置哈希表中的字段值。</li>
+<li><code>HGET key field</code>：获取哈希表中字段的值。</li>
+<li><code>HGETALL key</code>：获取哈希表中所有字段和值。</li>
+<li><code>HMSET key field1 value1 field2 value2</code>：设置多个字段的值。</li>
+<li><code>HDEL key field</code>：删除哈希表中的字段。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li><strong>列表（List）</strong></li>
+</ol>
+<ul>
+<li><strong>基本特性</strong>：列表是一个按顺序排列的字符串集合，支持从两端进行推入（push）和弹出（pop）。适合做消息队列等应用。</li>
+<li>操作
+<ul>
+<li><code>LPUSH key value</code>：将元素插入列表头部。</li>
+<li><code>RPUSH key value</code>：将元素插入列表尾部。</li>
+<li><code>LPOP key</code>：从列表头部弹出元素。</li>
+<li><code>RPOP key</code>：从列表尾部弹出元素。</li>
+<li><code>LRANGE key start stop</code>：返回列表中指定范围的元素。</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li><strong>集合（Set）</strong></li>
+</ol>
+<ul>
+<li><strong>基本特性</strong>：集合是无序的字符串集合，不允许重复元素，适合用于去重等场景。</li>
+<li>操作
+<ul>
+<li><code>SADD key member</code>：将元素添加到集合中。</li>
+<li><code>SREM key member</code>：从集合中移除元素。</li>
+<li><code>SMEMBERS key</code>：获取集合中所有的元素。</li>
+<li><code>SISMEMBER key member</code>：检查元素是否存在于集合中。</li>
+<li><code>SUNION key1 key2</code>：返回两个集合的并集。</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li><strong>有序集合（Sorted Set，Zset）</strong></li>
+</ol>
+<ul>
+<li><strong>基本特性</strong>：有序集合是一个包含分数（score）的字符串集合，每个元素都会关联一个分数，集合中的元素根据分数排序。</li>
+<li>操作
+<ul>
+<li><code>ZADD key score member</code>：添加元素及其分数。</li>
+<li><code>ZRANGE key start stop</code>：返回指定范围的元素（按分数排序）。</li>
+<li><code>ZREM key member</code>：移除元素。</li>
+<li><code>ZINCRBY key increment member</code>：给指定元素增加分数。</li>
+<li><code>ZREVRANGE key start stop</code>：返回指定范围的元素（按分数降序排序）。</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li><strong>位图（Bitmap）</strong></li>
+</ol>
+<ul>
+<li><strong>基本特性</strong>：位图是一个特殊的字符串，可以在其中操作位（bit），适合做大规模的计数、状态标记等。</li>
+<li>操作
+<ul>
+<li><code>SETBIT key offset value</code>：设置指定位置的位值。</li>
+<li><code>GETBIT key offset</code>：获取指定位置的位值。</li>
+<li><code>BITCOUNT key</code>：统计键中为 1 的位的数量。</li>
+</ul>
+</li>
+</ul>
+<ol start="7">
+<li><strong>HyperLogLog</strong></li>
+</ol>
+<ul>
+<li><strong>基本特性</strong>：HyperLogLog 是一种基数估计数据结构，适用于统计唯一元素的数量，能够在极低的内存消耗下提供近似值。</li>
+<li>操作
+<ul>
+<li><code>PFADD key element</code>：添加元素到 HyperLogLog。</li>
+<li><code>PFCOUNT key</code>：返回 HyperLogLog 中元素的基数估计值。</li>
+</ul>
+</li>
+</ul>
+<ol start="8">
+<li><strong>地理空间（Geospatial）</strong></li>
+</ol>
+<ul>
+<li><strong>基本特性</strong>：Redis 提供了对地理空间的支持，可以存储和查询地理位置数据（经纬度）。</li>
+<li>操作
+<ul>
+<li><code>GEOADD key longitude latitude member</code>：添加地理坐标。</li>
+<li><code>GEODIST key member1 member2</code>：计算两个位置之间的距离。</li>
+<li><code>GEORADIUS key longitude latitude radius</code>：根据半径获取周围的地理位置。</li>
+</ul>
+</li>
+</ul>
+<ol start="9">
+<li><strong>流（Streams）</strong></li>
+</ol>
+<ul>
+<li><strong>基本特性</strong>：流是一个用于处理数据流的结构，可以用于消息队列、事件记录等场景。</li>
+<li>操作
+<ul>
+<li><code>XADD key * field value</code>：向流中添加一条新消息。</li>
+<li><code>XRANGE key start end</code>：读取流中的消息。</li>
+<li><code>XREAD key count block</code>：阻塞式读取流中的消息。</li>
+</ul>
+</li>
+</ul>
+<ol start="10">
+<li><strong>发布/订阅（Pub/Sub）</strong></li>
+</ol>
+<ul>
+<li><strong>基本特性</strong>：Redis 支持发布/订阅模式，允许客户端订阅某个频道，然后接收该频道发布的消息。</li>
+<li>操作
+<ul>
+<li><code>PUBLISH channel message</code>：向频道发布消息。</li>
+<li><code>SUBSCRIBE channel</code>：订阅频道。</li>
+<li><code>UNSUBSCRIBE channel</code>：取消订阅。</li>
+</ul>
+</li>
+</ul>
+<h4 id="通用命令">通用命令
+</h4><p><span style="color:red;"><strong>key的层级结构：用冒号分隔</strong></span></p>
+<p>例如：学校:班级:姓名</p>
+<ul>
+<li>
+<p>KEYS</p>
+<p>查看所有符合模板的key</p>
+<ul>
+<li>
+<p>通配符</p>
+<ul>
+<li>
+<p><code>h?llo</code> matches <code>hello</code>, <code>hallo</code> and <code>hxllo</code></p>
+</li>
+<li>
+<p><code>h*llo</code> matches <code>hllo</code> and <code>heeeello</code></p>
+</li>
+<li>
+<p><code>h[ae]llo</code> matches <code>hello</code> and <code>hallo,</code> but not <code>hillo</code></p>
+</li>
+<li>
+<p><code>h[^e]llo</code> matches <code>hallo</code>, <code>hbllo</code>, &hellip; but not <code>hello</code></p>
+</li>
+<li>
+<p><code>h[a-b]llo</code> matches <code>hallo</code> and <code>hbllo</code></p>
+<p><span style="color:red;">*<em>？表示1个，<em>表示多个，[ab]是a或者b，[a-b]是a到b，[ ^b ]是除了b</em></em></span></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>DEL</p>
+<p>删除key</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">DEL key1 <span class="o">(</span>key2 key3 ... ...<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>EXISTS</p>
+<p>判断是否存在key</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">EXISTS key
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>EXPIRE</p>
+<p>设置key有效期</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">EXPIRE key time（单位是s）
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>TTL</p>
+<p>查看key有效期</p>
+<p>-1为永久有效</p>
+</li>
+</ul>
+<h4 id="string类型">String类型
+</h4><h5 id="类型最大空间不超过512m">类型，最大空间不超过512m
+</h5><ul>
+<li>整数int</li>
+<li>浮点float</li>
+<li>普通字符串</li>
+</ul>
+<h5 id="span-stylecolorred常用命令span"><span style="color:red;">常用命令</span>
+</h5><ul>
+<li>
+<p>SET添加或修改</p>
+<p><code>SET key value</code></p>
+</li>
+<li>
+<p>GET</p>
+</li>
+<li>
+<p>MSET批量添加</p>
+<p><code>MSET k1 v1 k2 v2</code></p>
+</li>
+<li>
+<p>MGET批量获取</p>
+</li>
+<li>
+<p>INCR整数型自增1</p>
+<p><code>INCR key</code></p>
+<p>返回加1后的值</p>
+</li>
+<li>
+<p>INCRBY指定增长的数值，可为负数</p>
+<p><code>INCRBY key num</code></p>
+</li>
+<li>
+<p>INCRBYFLOAT</p>
+<p>浮点型自增，并指定增长的数值</p>
+</li>
+<li>
+<p>SETNX</p>
+<p>添加一个string类型，要key不存在， <span style="color:red;">存在则不执行</span></p>
+<p><code>SETNX key value</code>等同于<code>SET key value nx</code></p>
+</li>
+<li>
+<p>SETEX</p>
+<p><code>SETEX key num value</code>在添加键值对时就设定有效期（num秒）</p>
+</li>
+</ul>
+<h4 id="hash类型">Hash类型
+</h4><h5 id="结构">结构
+</h5><img src="屏幕截图 2025-01-27 151314.png" style="zoom: 67%;" />
+<p>一个 Hash 是由多个 <strong>字段（field）</strong> 和对应的 <strong>值（value）</strong> 组成的。每个字段和值都可以是字符串类型。</p>
+<p>与普通的字符串类型相比，Hash 类型的优势在于可以将多个值存储在同一个键下。</p>
+<h5 id="span-stylecolorred常用命令span-1"><span style="color:red;">常用命令</span>
+</h5><ul>
+<li>HSET key field1 value2 （field2 value2  … …）    添加和修改多个field的值</li>
+<li>HGET key field                                                           获取一个Hash类型的key的field的value</li>
+<li>HMGET key field1 field2 … … 						         获取key的多个field的值</li>
+<li>HGETALL key                                                              获取key的所有field和value</li>
+<li>HKEYS key                                                                  获取key的所有field</li>
+<li>HVALS key                                                                  获取key的所有value</li>
+<li>HINCRBY key field increment                                  hash类型的key的整数型field指定增加量increment</li>
+<li>HINCRBYFLOAT key field increment                      Hash 类型中的字段执行浮点数的增减。</li>
+<li>HSETNX key field value                                          <span style="color:red;">   添加一个Hash类型的key的field，前提是field不存在</span></li>
+</ul>
+<h4 id="list类型">List类型
+</h4><p><strong>List 类型</strong> 是一个双向链表，支持 <strong>正向检索</strong> 和 <strong>反向检索</strong>，即可以从头到尾（正向）或从尾到头（反向）访问、添加和删除数据。</p>
+<ul>
+<li><strong>正向检索</strong> 是从左到右（插入顺序），通过正索引（如 <code>0, 1, 2</code>）访问。</li>
+<li><strong>反向检索</strong> 是从右到左（逆序），通过负索引（如 <code>-1, -2, -3</code>）访问。</li>
+</ul>
+<h5 id="特点">特点
+</h5><ul>
+<li>有序</li>
+<li>元素可重复</li>
+<li>插入删除快</li>
+<li>查询速度一般</li>
+</ul>
+<h5 id="span-stylecolorred常用命令span-2"><strong><span style="color:red;">常用命令</span></strong>
+</h5><ul>
+<li>
+<p>LPUSH key value1 value2 … …                                                         向list类型的key的左侧插入一个或多个元素</p>
+</li>
+<li>
+<p>LPOP key                                                                                             移除并返回左侧第一个元素，没有则返回<code>nil</code></p>
+</li>
+<li>
+<p>LPOP key [count]                                                                                要从左侧弹出的元素个数</p>
+</li>
+<li>
+<p>RPUSH key value1 value2 … …                                                         向list类型的key的右侧插入一个或多个元素</p>
+</li>
+<li>
+<p>RPOP key                                                                                             移除并返回右侧第一个元素，没有则返回<code>nil</code></p>
+</li>
+<li>
+<p>LRANGE key start stop                                                                      返回列表中指定范围的元素。(下标从0开始)</p>
+</li>
+<li>
+<p>BLPOP和BRPOP                                                                                功能和 <strong><code>LPOP</code></strong>、<strong><code>RPOP</code></strong> 类似，但增加了阻塞功能，</p>
+<p>​                                                                                                              不会直接返回<code>nil</code>,</p>
+<p>​                                                                                                             <code>BLPOP key [key ...] timeout</code>，其中timeout单位为秒</p>
+</li>
+</ul>
+<h4 id="set类型">Set类型
+</h4><p><code>Set</code> 类型是无序的、唯一的集合，可以存储多个不重复的元素</p>
+<h5 id="特点-1">特点
+</h5><ul>
+<li><strong>唯一性</strong>：集合中的元素是唯一的，不能重复。</li>
+<li><strong>无序性</strong>：集合中的元素是无序的，不能通过索引访问。</li>
+<li><strong>操作高效</strong>：添加、删除、判断是否存在的时间复杂度都是 O(1)O(1)O(1)。</li>
+<li><strong>支持集合运算</strong>：提供交集、并集、差集等操作。</li>
+</ul>
+<h5 id="span-stylecolorred常用命令span-3"><strong><span style="color:red;">常用命令</span></strong>
+</h5>
 </section>
 
 
