@@ -300,6 +300,19 @@
           </ol>
         </li>
         <li><a href="#707-设计链表---力扣leetcodehttpsleetcodecnproblemsdesign-linked-listdescription"><a href="https://leetcode.cn/problems/design-linked-list/description/">707. 设计链表 - 力扣（LeetCode）</a></a></li>
+        <li><a href="#206-反转链表---力扣leetcodehttpsleetcodecnproblemsreverse-linked-list"><a href="https://leetcode.cn/problems/reverse-linked-list/">206. 反转链表 - 力扣（LeetCode）</a></a>
+          <ol>
+            <li><a href="#-whilecurnext--null---whilecur--null">. <strong><code>while(cur.next != null)</code> -&gt; <code>while(cur != null)</code></strong></a></li>
+            <li><a href="#chatgpt-说">ChatGPT 说：</a></li>
+          </ol>
+        </li>
+        <li><a href="#24-两两交换链表中的节点---力扣leetcodehttpsleetcodecnproblemsswap-nodes-in-pairs---half-n"><a href="https://leetcode.cn/problems/swap-nodes-in-pairs/">24. 两两交换链表中的节点 - 力扣（LeetCode）</a>   half-N</a></li>
+        <li><a href="#19-删除链表的倒数第-n-个结点---力扣leetcodehttpsleetcodecnproblemsremove-nth-node-from-end-of-list"><a href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/">19. 删除链表的倒数第 N 个结点 - 力扣（LeetCode）</a></a>
+          <ol>
+            <li><a href="#不使用虚拟头节点">不使用虚拟头节点</a></li>
+            <li><a href="#使用span-stylecolorred虚拟头节点双指针span">使用<span style="color:red;">虚拟头节点+双指针</span></a></li>
+          </ol>
+        </li>
       </ol>
     </li>
   </ol>
@@ -382,7 +395,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 12 分钟
+                    阅读时长: 16 分钟
                 </time>
             </div>
         
@@ -1773,7 +1786,315 @@
 </ul>
 <h3 id="707-设计链表---力扣leetcodehttpsleetcodecnproblemsdesign-linked-listdescription"><a class="link" href="https://leetcode.cn/problems/design-linked-list/description/"  target="_blank" rel="noopener"
     >707. 设计链表 - 力扣（LeetCode）</a>
-</h3>
+</h3><h3 id="206-反转链表---力扣leetcodehttpsleetcodecnproblemsreverse-linked-list"><a class="link" href="https://leetcode.cn/problems/reverse-linked-list/"  target="_blank" rel="noopener"
+    >206. 反转链表 - 力扣（LeetCode）</a>
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ListNode</span><span class="w"> </span><span class="nf">reverseList</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// 反转后的链表头初始化为null</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w"> </span><span class="c1">// 当前节点指向原链表的头</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 循环直到遍历完整个链表</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">ListNode</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="p">;</span><span class="w"> </span><span class="c1">// 保存当前节点</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cur</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w"> </span><span class="c1">// 移动cur到下一个节点</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">temp</span><span class="p">.</span><span class="na">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w"> </span><span class="c1">// 当前节点指向反转后的链表头</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span><span class="w"> </span><span class="c1">// 更新反转链表头</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w"> </span><span class="c1">// 返回反转后的链表头</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="-whilecurnext--null---whilecur--null">. <strong><code>while(cur.next != null)</code> -&gt; <code>while(cur != null)</code></strong>
+</h4><p><strong>原代码</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="p">.</span><span class="na">next</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>问题</strong>：</p>
+<ul>
+<li><code>cur.next != null</code> 只会判断当前节点的下一个节点是否存在，如果是最后一个节点，<code>cur.next</code> 为 <code>null</code>，则会跳出循环，导致最后一个节点没有被反转并丢失。</li>
+<li>我们希望遍历链表中的所有节点，不论是中间节点还是最后一个节点，所以条件应该是 <code>cur != null</code>。</li>
+</ul>
+<p><strong>修改后</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样，循环会继续直到 <code>cur</code> 为 <code>null</code>，即遍历整个链表，保证所有节点都能被反转。</p>
+<p>为什么一定要将cur后移一位的操作放在对res操作之前</p>
+<h4 id="chatgpt-说">ChatGPT 说：
+</h4><p>ChatGPT</p>
+<p>将 <code>cur</code> 后移一位的操作放在对 <code>res</code> 操作之前的主要原因是为了 <strong>保护链表的完整性</strong>，避免丢失未处理的节点。如果不先移动 <code>cur</code> 而直接修改 <code>res</code>，链表中的某些节点可能会失去引用，导致链表断裂或顺序错乱。</p>
+<h5 id="核心逻辑">核心逻辑：
+</h5><p>在反转链表过程中，<code>cur</code> 指针是负责遍历原链表的。如果在处理 <code>res</code>（反转链表的头指针）之前没有将 <code>cur</code> 后移到下一个节点，当当前节点的 <code>next</code> 被修改时，原链表中后续节点的信息会丢失。</p>
+<hr>
+<h5 id="示例分析">示例分析
+</h5><p>假设我们有一个链表：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1 -&gt; 2 -&gt; 3 -&gt; 4 -&gt; null
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="正确操作顺序先移动-cur">正确操作顺序（先移动 <code>cur</code>）：
+</h5><ol>
+<li>
+<p>当前节点是 <code>cur = 1</code>，<code>res = null</code>。</p>
+<ul>
+<li>保存当前节点：<code>temp = cur</code>（即 <code>temp = 1</code>）。</li>
+<li><strong>先移动 <code>cur</code></strong>：<code>cur = cur.next</code>（即 <code>cur = 2</code>）。</li>
+<li>修改当前节点指针：<code>temp.next = res</code>（即 <code>1.next = null</code>）。</li>
+<li>更新反转链表头：<code>res = temp</code>（即 <code>res = 1</code>）。</li>
+</ul>
+<p>结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">rust复制编辑原链表：2 -&gt; 3 -&gt; 4 -&gt; null
+</span></span><span class="line"><span class="cl">反转链表：1 -&gt; null
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>当前节点是 <code>cur = 2</code>，重复以上操作，直到整个链表被反转。</p>
+</li>
+</ol>
+<h5 id="错误操作顺序不先移动-cur">错误操作顺序（不先移动 <code>cur</code>）：
+</h5><ol>
+<li>
+<p>当前节点是 <code>cur = 1</code>，<code>res = null</code>。</p>
+<ul>
+<li>保存当前节点：<code>temp = cur</code>（即 <code>temp = 1</code>）。</li>
+<li><strong>直接修改 <code>temp.next</code>：<code>temp.next = res</code></strong>（即 <code>1.next = null</code>）。</li>
+<li>更新反转链表头：<code>res = temp</code>（即 <code>res = 1</code>）。</li>
+<li><strong>然后移动 <code>cur</code>：<code>cur = cur.next</code>（此时 <code>cur = 1.next</code>）。</strong></li>
+</ul>
+<p>问题：</p>
+<ul>
+<li><code>1.next</code> 已经被修改为 <code>null</code>，因此 <code>cur = cur.next</code> 得到的是 <code>null</code>。</li>
+<li>原链表中剩余的节点 <code>2 -&gt; 3 -&gt; 4</code> 被丢失。</li>
+</ul>
+<p>最终导致链表断裂，无法继续处理。</p>
+</li>
+</ol>
+<h3 id="24-两两交换链表中的节点---力扣leetcodehttpsleetcodecnproblemsswap-nodes-in-pairs---half-n"><a class="link" href="https://leetcode.cn/problems/swap-nodes-in-pairs/"  target="_blank" rel="noopener"
+    >24. 两两交换链表中的节点 - 力扣（LeetCode）</a>   half-N
+</h3><p><img src="/p/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/IMG_20250130_211423_edit_119329575700883.jpg"
+	width="3076"
+	height="1524"
+	srcset="/p/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/IMG_20250130_211423_edit_119329575700883_hu_fc8c9c57d32e0b98.jpg 480w, /p/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/IMG_20250130_211423_edit_119329575700883_hu_36897d9de63bb59.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="201"
+		data-flex-basis="484px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ListNode</span><span class="w"> </span><span class="nf">swapPairs</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="n">dumy</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">ListNode</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">dumy</span><span class="p">.</span><span class="na">next</span><span class="o">=</span><span class="n">head</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="n">first</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="n">second</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="n">cur</span><span class="o">=</span><span class="n">dumy</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">cur</span><span class="p">.</span><span class="na">next</span><span class="o">!=</span><span class="kc">null</span><span class="o">&amp;&amp;</span><span class="n">cur</span><span class="p">.</span><span class="na">next</span><span class="p">.</span><span class="na">next</span><span class="o">!=</span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">first</span><span class="o">=</span><span class="n">cur</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">second</span><span class="o">=</span><span class="n">cur</span><span class="p">.</span><span class="na">next</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">cur</span><span class="p">.</span><span class="na">next</span><span class="o">=</span><span class="n">second</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">first</span><span class="p">.</span><span class="na">next</span><span class="o">=</span><span class="n">second</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">second</span><span class="p">.</span><span class="na">next</span><span class="o">=</span><span class="n">first</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">cur</span><span class="o">=</span><span class="n">first</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dumy</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>
+<p><span style="color:red;"><strong>为什么需要<code>dummy</code>节点？</strong></span></p>
+<p><code>dummy</code>节点作为占位头节点，可以统一处理链表头部的交换操作，避免头节点变化时的特殊处理。例如，当原链表只有两个节点时，交换后的新头节点是第二个节点，<code>dummy.next</code>能直接指向它。</p>
+</li>
+<li>
+<p><span style="color:red;"><strong>cur.next!=null&amp;&amp;cur.next.next!=null为什么循环终止条件必须是这个?</strong></span></p>
+<p>要交换两个节点，必须保证当前节点后至少有两个节点。若<code>cur.next</code>或<code>cur.next.next</code>为空，说明剩余节点不足两个，无需继续交换。</p>
+</li>
+<li>
+<p><span style="color:red;"><strong><code>cur = first</code>的作用是什么？</strong></span></p>
+<p>交换完成后，<code>cur</code>移动到已处理部分的末尾（即原第一个节点），作为下一对节点的前驱节点。例如，交换<code>1-&gt;2</code>后，<code>cur</code>移动到1的位置，以便处理后续的<code>3-&gt;4</code></p>
+</li>
+</ol>
+<p><span style="color:red;"><strong>todo可以用递归做</strong></span></p>
+<h3 id="19-删除链表的倒数第-n-个结点---力扣leetcodehttpsleetcodecnproblemsremove-nth-node-from-end-of-list"><a class="link" href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/"  target="_blank" rel="noopener"
+    >19. 删除链表的倒数第 N 个结点 - 力扣（LeetCode）</a>
+</h3><h4 id="不使用虚拟头节点">不使用虚拟头节点
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ListNode</span><span class="w"> </span><span class="nf">removeNthFromEnd</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">head</span><span class="o">==</span><span class="kc">null</span><span class="o">||</span><span class="n">head</span><span class="p">.</span><span class="na">next</span><span class="o">==</span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="n">cur</span><span class="o">=</span><span class="n">head</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">cur</span><span class="o">!=</span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">cur</span><span class="o">=</span><span class="n">cur</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cur</span><span class="o">=</span><span class="n">head</span><span class="p">;</span><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">-</span><span class="n">n</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//处理删除值为头节点</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">count</span><span class="o">==</span><span class="n">0</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">head</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">count</span><span class="o">&gt;</span><span class="n">1</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">cur</span><span class="o">=</span><span class="n">cur</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">count</span><span class="o">--</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cur</span><span class="p">.</span><span class="na">next</span><span class="o">=</span><span class="n">cur</span><span class="p">.</span><span class="na">next</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><span style="color:red;"><strong>不使用虚拟头节点，所以要处理head为空和head.next为空的特殊情况</strong></span></li>
+<li><span style="color:red;"><strong>删除head所指的节点，要单独处理</strong></span></li>
+</ul>
+<h4 id="使用span-stylecolorred虚拟头节点双指针span">使用<span style="color:red;">虚拟头节点+双指针</span>
+</h4><p><strong>双指针的经典应用，如果要删除倒数第n个节点，让fast移动n步，然后让fast和slow同时移动，直到fast指向链表末尾。删掉slow所指向的节点就可以了。</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ListNode</span><span class="w"> </span><span class="nf">removeNthFromEnd</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="n">dumy</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">ListNode</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">dumy</span><span class="p">.</span><span class="na">next</span><span class="o">=</span><span class="n">head</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="n">fast</span><span class="o">=</span><span class="n">dumy</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="n">slow</span><span class="o">=</span><span class="n">dumy</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">fast</span><span class="o">=</span><span class="n">fast</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">fast</span><span class="p">.</span><span class="na">next</span><span class="o">!=</span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">slow</span><span class="o">=</span><span class="n">slow</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">fast</span><span class="o">=</span><span class="n">fast</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">slow</span><span class="p">.</span><span class="na">next</span><span class="o">=</span><span class="n">slow</span><span class="p">.</span><span class="na">next</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">dumy</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p><span style="color:red;"><strong>循环结束条件必须是fast.next!=null,这样fast才会停在最后一个有效节点上，slow才会停在待删除节点前一个节点。</strong></span></p>
+</li>
+<li>
+<p><span style="color:red;"><strong>如果是fast！=null的话，fast会多走一次，停在最后一个有效节点的next上（即null上）。</strong></span></p>
+</li>
+</ul>
+
 </section>
 
 
