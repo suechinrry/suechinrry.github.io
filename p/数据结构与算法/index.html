@@ -313,6 +313,13 @@
             <li><a href="#使用span-stylecolorred虚拟头节点双指针span">使用<span style="color:red;">虚拟头节点+双指针</span></a></li>
           </ol>
         </li>
+        <li><a href="#面试题-0207-链表相交---力扣leetcodehttpsleetcodecnproblemsintersection-of-two-linked-lists-lcci"><a href="https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/">面试题 02.07. 链表相交 - 力扣（LeetCode）</a></a>
+          <ol>
+            <li><a href="#方法一">方法一</a></li>
+            <li><a href="#方法二">方法二：</a></li>
+          </ol>
+        </li>
+        <li><a href="#142-环形链表-ii---力扣leetcodehttpsleetcodecnproblemslinked-list-cycle-ii"><a href="https://leetcode.cn/problems/linked-list-cycle-ii/">142. 环形链表 II - 力扣（LeetCode）</a></a></li>
       </ol>
     </li>
   </ol>
@@ -384,20 +391,6 @@
             </div>
         
 
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                <time class="article-time--reading">
-                    阅读时长: 16 分钟
-                </time>
-            </div>
         
     </footer>
     
@@ -2092,6 +2085,190 @@
 </li>
 <li>
 <p><span style="color:red;"><strong>如果是fast！=null的话，fast会多走一次，停在最后一个有效节点的next上（即null上）。</strong></span></p>
+</li>
+</ul>
+<h3 id="面试题-0207-链表相交---力扣leetcodehttpsleetcodecnproblemsintersection-of-two-linked-lists-lcci"><a class="link" href="https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/"  target="_blank" rel="noopener"
+    >面试题 02.07. 链表相交 - 力扣（LeetCode）</a>
+</h3><h4 id="方法一">方法一
+</h4><ul>
+<li>
+<p><code>headA.next==null&amp;&amp;headB.next==null</code>时，也有成立的可能（例如headA为[1]，headB为[1]），不应该直接返回null。</p>
+</li>
+<li>
+<p><span style="color:red;"><strong>计算链表长度的循环条件</strong></span></p>
+<p><span style="color:red;"><strong>count=0，循环条件为cur!=null。</strong></span>若是使用cur.next!=null，则会停止在最后一个有效节点上，count=长度-1。</p>
+</li>
+<li>
+<p><span style="color:red;"><strong>遍历链表的循环条件</strong></span></p>
+</li>
+</ul>
+<p>​       <span style="color:red;"> <strong>正确循环：fast!=null&amp;&amp;slow!=null，这样不会遗漏最后一个有效节点</strong></span></p>
+<p>​        错误循环：fast.next!=null&amp;&amp;slow.next!=null，这样只是停在了最有一个有效节点，但是不能操作这个有效节点</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ListNode</span><span class="w"> </span><span class="nf">getIntersectionNode</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="n">headA</span><span class="p">,</span><span class="w"> </span><span class="n">ListNode</span><span class="w"> </span><span class="n">headB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">headA</span><span class="o">==</span><span class="kc">null</span><span class="o">||</span><span class="n">headB</span><span class="o">==</span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">countA</span><span class="o">=</span><span class="n">0</span><span class="p">,</span><span class="n">countB</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="n">cur</span><span class="o">=</span><span class="n">headA</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">cur</span><span class="o">!=</span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">cur</span><span class="o">=</span><span class="n">cur</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">countA</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">cur</span><span class="o">=</span><span class="n">headB</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">cur</span><span class="o">!=</span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">cur</span><span class="o">=</span><span class="n">cur</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">countB</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="n">fast</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ListNode</span><span class="w"> </span><span class="n">slow</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">countA</span><span class="o">&gt;</span><span class="n">countB</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">fast</span><span class="o">=</span><span class="n">headA</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">slow</span><span class="o">=</span><span class="n">headB</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">        
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">else</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">fast</span><span class="o">=</span><span class="n">headB</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">slow</span><span class="o">=</span><span class="n">headA</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">countA</span><span class="p">,</span><span class="n">countB</span><span class="p">)</span><span class="o">-</span><span class="n">Math</span><span class="p">.</span><span class="na">min</span><span class="p">(</span><span class="n">countA</span><span class="p">,</span><span class="n">countB</span><span class="p">);</span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">fast</span><span class="o">=</span><span class="n">fast</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">fast</span><span class="o">!=</span><span class="kc">null</span><span class="o">&amp;&amp;</span><span class="n">slow</span><span class="o">!=</span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">fast</span><span class="o">==</span><span class="n">slow</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">fast</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">fast</span><span class="o">=</span><span class="n">fast</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">slow</span><span class="o">=</span><span class="n">slow</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="方法二">方法二：
+</h4><p><span style="color:red;"><strong>todo</strong></span><strong>合并链表实现同步移动</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ListNode</span><span class="w"> </span><span class="nf">getIntersectionNode</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="n">headA</span><span class="p">,</span><span class="w"> </span><span class="n">ListNode</span><span class="w"> </span><span class="n">headB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="c1">// p1 指向 A 链表头结点，p2 指向 B 链表头结点</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">ListNode</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headA</span><span class="p">,</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headB</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">p1</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">p2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="c1">// p1 走一步，如果走到 A 链表末尾，转到 B 链表</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headB</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="k">else</span><span class="w">            </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="c1">// p2 走一步，如果走到 B 链表末尾，转到 A 链表</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headA</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="k">else</span><span class="w">            </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p2</span><span class="p">.</span><span class="na">next</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="n">p1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="142-环形链表-ii---力扣leetcodehttpsleetcodecnproblemslinked-list-cycle-ii"><a class="link" href="https://leetcode.cn/problems/linked-list-cycle-ii/"  target="_blank" rel="noopener"
+    >142. 环形链表 II - 力扣（LeetCode）</a>
+</h3><ul>
+<li>
+<p><span style="color:red;"><strong>使用快慢指针，快指针会和慢指针在环内相遇。这样可以判断有无环</strong></span></p>
+</li>
+<li>
+<p><span style="color:red;"><strong>计算循环链表入口</strong></span></p>
+<p>![](屏幕截图 2025-01-31 185531.png)</p>
+<ul>
+<li>
+<p>fast指针一次走两格</p>
+</li>
+<li>
+<p>slow指针一次走一格</p>
+</li>
+<li>
+<p>相遇时，fast走<code>x+y+n(y+z)</code>，slow走<code>x+y</code>。并且fast走的时slow的两倍</p>
+<p>即<span style="color:red;"><strong><code>(x + y) * 2 = x + y + n (y + z)</code></strong></span></p>
+<p>两边消掉一个（x+y）: <code>x + y = n (y + z)</code></p>
+<p>因为要找环形的入口，那么要求的是x，因为x表示 头结点到 环形入口节点的的距离。</p>
+<p>所以要求x ，将x单独放在左面：<code>x = n (y + z) - y</code> ,整理后得<code>x = (n - 1) (y + z) + z</code></p>
+</li>
+<li>
+<p><span style="color:red;"><strong>当n等于1时，x=z</strong></span>。说明两个指针，一个指向head（index1），另一个指向fast和slow的相遇点（index2），当两指针相遇，index1就是环形入口。</p>
+</li>
+<li>
+<p><span style="color:red;"> <strong>n如果大于1，就是fast指针在环形转n圈之后才遇到 slow指针。</strong></span></p>
+<p><span style="color:red;"><strong>其实这种情况和n为1的时候 效果是一样的</strong></span>，一样可以通过这个方法找到 环形的入口节点，只不过，index1 指针在环里 多转了(n-1)圈，然后再遇到index2，相遇点依然是环形的入口节点。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color:red;"><strong>循环条件</strong></span></p>
+<ul>
+<li>为什么循环条件是<code>fast!=null&amp;&amp;fast.next!=null</code>而不是<code>fast.next!=null&amp;&amp;slow!=null</code>
+<ul>
+<li>当 <code>fast</code> 为空时，仍可能尝试访问 <code>fast.next</code>，导致 <code>NullPointerException</code>。</li>
+<li><code>slow</code> 是否为空并不会影响 <code>fast</code> 的运行逻辑，加入 <code>slow != null</code> 没有意义。</li>
+</ul>
+</li>
+<li><strong>在处理链表问题时</strong>，如果循环条件是基于 <code>fast.next != null</code> 进行判断，<strong>一定要带上 <code>fast != null</code></strong>，否则可能会导致 <strong><code>NullPointerException</code></strong></li>
+</ul>
 </li>
 </ul>
 
