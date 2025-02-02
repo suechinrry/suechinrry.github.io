@@ -529,7 +529,96 @@
 &lt;li&gt;&lt;strong&gt;支持集合运算&lt;/strong&gt;：提供交集、并集、差集等操作。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5 id=&#34;span-stylecolorred常用命令span-3&#34;&gt;&lt;strong&gt;&lt;span style=&#34;color:red;&#34;&gt;常用命令&lt;/span&gt;&lt;/strong&gt;
-&lt;/h5&gt;</description>
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;SADD key member [member &amp;hellip;]&lt;/strong&gt;                                向集合 &lt;code&gt;key&lt;/code&gt; 中添加一个或多个成员。如果成员已存在，则忽略。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SREM key member [member &amp;hellip;]&lt;/strong&gt;                                移除集合 &lt;code&gt;key&lt;/code&gt; 中的一个或多个成员。如果成员不存在，则忽略。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SISMEMBER key member&lt;/strong&gt;                                            判断成员 &lt;code&gt;member&lt;/code&gt; 是否是集合 &lt;code&gt;key&lt;/code&gt; 的成员。如果是，返回 &lt;code&gt;1&lt;/code&gt;，否则返回 &lt;code&gt;0&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SMEMBERS key&lt;/strong&gt;                                                               获取集合 &lt;code&gt;key&lt;/code&gt; 中的所有成员。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SCARD key&lt;/strong&gt;                                                                        获取集合 key 中的成员数量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对多个集合&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;SINTER key [key &amp;hellip;]&lt;/strong&gt;                                      返回一个或多个集合的交集。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SUNION key [key &amp;hellip;]&lt;/strong&gt;                                    返回一个或多个集合的并集。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SDIFF key [key &amp;hellip;]&lt;/strong&gt;                                          返回一个集合与其他集合的差集。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;​       例如：&lt;code&gt;SDIFF set1 set2 set3&lt;/code&gt;这个命令的意思是：&lt;strong&gt;返回 &lt;code&gt;set1&lt;/code&gt; 中有，但 &lt;code&gt;set2&lt;/code&gt; 和 &lt;code&gt;set3&lt;/code&gt; 中都没有的元素。&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;sortedset类型&#34;&gt;SortedSet类型
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Sorted Set（有序集合）&lt;/strong&gt; 是一种&lt;strong&gt;带有权重（分数）的集合&lt;/strong&gt;，它类似于普通的 Set，但每个元素都有一个&lt;strong&gt;score（分数）&lt;/strong&gt;，并且集合中的元素按照&lt;strong&gt;分数从小到大排序&lt;/strong&gt;。&lt;/p&gt;
+&lt;h5 id=&#34;特点-2&#34;&gt;特点
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;可排序&lt;/li&gt;
+&lt;li&gt;元素不重复&lt;/li&gt;
+&lt;li&gt;查询速度快&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;span-stylecolorred常用命令span-4&#34;&gt;&lt;span style=&#34;color:red;&#34;&gt;&lt;strong&gt;常用命令&lt;/strong&gt;&lt;/span&gt;
+&lt;/h5&gt;&lt;p&gt;![](屏幕截图 2025-01-31 213148.png)&lt;/p&gt;
+&lt;h4 id=&#34;java客户端&#34;&gt;java客户端
+&lt;/h4&gt;&lt;p&gt;链接：&lt;a class=&#34;link&#34; href=&#34;https://redis.io/docs/latest/develop/clients/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Connect with Redis client API libraries | Docs&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;jedis&#34;&gt;jedis
+&lt;/h5&gt;&lt;p&gt;链接：&lt;a class=&#34;link&#34; href=&#34;https://redis.io/docs/latest/develop/clients/jedis/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Jedis guide (Java) | Docs&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;引入依赖&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;redis.clients&lt;span class=&#34;nt&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;jedis&lt;span class=&#34;nt&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;5.2.0&lt;span class=&#34;nt&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;建立连接&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;jedis&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Jedis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ip&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;6379&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 连接到 Redis&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;jedis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;auth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 密码&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;jedis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//选择库，选择data0&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;和junit依赖相关：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;@BeforeEach&lt;/code&gt; 和 &lt;code&gt;@AfterEach&lt;/code&gt; 是 JUnit 5 中的注解，用于在每个测试方法执行之前和之后执行一些初始化和清理的操作。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;@BeforeEach&lt;/code&gt;&lt;/strong&gt;：这个注解标记的方法会在每个测试方法执行之前运行。通常用于执行一些初始化操作，比如创建对象、初始化变量等。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;@AfterEach&lt;/code&gt;&lt;/strong&gt;：这个注解标记的方法会在每个测试方法执行之后运行。通常用于清理操作，比如关闭连接、释放资源等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用&lt;/p&gt;
+&lt;p&gt;使用前要关闭linux的防火墙&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关闭&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;jedis&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;close&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;jedis连接池&#34;&gt;jedis连接池
+&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;jedis直连是线程不安全的，而且频繁地创建和销毁有性能损耗，所以使用Jedi是连接池&lt;/strong&gt;&lt;/p&gt;
+</description>
         </item>
         
     </channel>

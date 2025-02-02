@@ -291,6 +291,8 @@
             <li><a href="#hash类型">Hash类型</a></li>
             <li><a href="#list类型">List类型</a></li>
             <li><a href="#set类型">Set类型</a></li>
+            <li><a href="#sortedset类型">SortedSet类型</a></li>
+            <li><a href="#java客户端">java客户端</a></li>
           </ol>
         </li>
       </ol>
@@ -880,7 +882,96 @@
 <li><strong>支持集合运算</strong>：提供交集、并集、差集等操作。</li>
 </ul>
 <h5 id="span-stylecolorred常用命令span-3"><strong><span style="color:red;">常用命令</span></strong>
-</h5>
+</h5><ul>
+<li><strong>SADD key member [member &hellip;]</strong>                                向集合 <code>key</code> 中添加一个或多个成员。如果成员已存在，则忽略。</li>
+<li><strong>SREM key member [member &hellip;]</strong>                                移除集合 <code>key</code> 中的一个或多个成员。如果成员不存在，则忽略。</li>
+<li><strong>SISMEMBER key member</strong>                                            判断成员 <code>member</code> 是否是集合 <code>key</code> 的成员。如果是，返回 <code>1</code>，否则返回 <code>0</code>。</li>
+<li><strong>SMEMBERS key</strong>                                                               获取集合 <code>key</code> 中的所有成员。</li>
+<li><strong>SCARD key</strong>                                                                        获取集合 key 中的成员数量。</li>
+</ul>
+<p>对多个集合</p>
+<ul>
+<li><strong>SINTER key [key &hellip;]</strong>                                      返回一个或多个集合的交集。</li>
+<li><strong>SUNION key [key &hellip;]</strong>                                    返回一个或多个集合的并集。</li>
+<li><strong>SDIFF key [key &hellip;]</strong>                                          返回一个集合与其他集合的差集。</li>
+</ul>
+<p>​       例如：<code>SDIFF set1 set2 set3</code>这个命令的意思是：<strong>返回 <code>set1</code> 中有，但 <code>set2</code> 和 <code>set3</code> 中都没有的元素。</strong></p>
+<h4 id="sortedset类型">SortedSet类型
+</h4><p><strong>Sorted Set（有序集合）</strong> 是一种<strong>带有权重（分数）的集合</strong>，它类似于普通的 Set，但每个元素都有一个<strong>score（分数）</strong>，并且集合中的元素按照<strong>分数从小到大排序</strong>。</p>
+<h5 id="特点-2">特点
+</h5><ul>
+<li>可排序</li>
+<li>元素不重复</li>
+<li>查询速度快</li>
+</ul>
+<h5 id="span-stylecolorred常用命令span-4"><span style="color:red;"><strong>常用命令</strong></span>
+</h5><p>![](屏幕截图 2025-01-31 213148.png)</p>
+<h4 id="java客户端">java客户端
+</h4><p>链接：<a class="link" href="https://redis.io/docs/latest/develop/clients/"  target="_blank" rel="noopener"
+    >Connect with Redis client API libraries | Docs</a></p>
+<h5 id="jedis">jedis
+</h5><p>链接：<a class="link" href="https://redis.io/docs/latest/develop/clients/jedis/"  target="_blank" rel="noopener"
+    >Jedis guide (Java) | Docs</a></p>
+<ol>
+<li>
+<p>引入依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>redis.clients<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>jedis<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;version&gt;</span>5.2.0<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>建立连接</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">jedis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Jedis</span><span class="p">(</span><span class="s">&#34;ip&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">6379</span><span class="p">);</span><span class="w">  </span><span class="c1">// 连接到 Redis</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">jedis</span><span class="p">.</span><span class="na">auth</span><span class="p">(</span><span class="s">&#34;password&#34;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 密码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">jedis</span><span class="p">.</span><span class="na">select</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="c1">//选择库，选择data0</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>和junit依赖相关：</p>
+<p><code>@BeforeEach</code> 和 <code>@AfterEach</code> 是 JUnit 5 中的注解，用于在每个测试方法执行之前和之后执行一些初始化和清理的操作。</p>
+<ul>
+<li><strong><code>@BeforeEach</code></strong>：这个注解标记的方法会在每个测试方法执行之前运行。通常用于执行一些初始化操作，比如创建对象、初始化变量等。</li>
+<li><strong><code>@AfterEach</code></strong>：这个注解标记的方法会在每个测试方法执行之后运行。通常用于清理操作，比如关闭连接、释放资源等。</li>
+</ul>
+</li>
+<li>
+<p>使用</p>
+<p>使用前要关闭linux的防火墙</p>
+</li>
+<li>
+<p>关闭</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">jedis</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h5 id="jedis连接池">jedis连接池
+</h5><p><strong>jedis直连是线程不安全的，而且频繁地创建和销毁有性能损耗，所以使用Jedi是连接池</strong></p>
+
 </section>
 
 
