@@ -295,6 +295,14 @@
             <li><a href="#java客户端">java客户端</a></li>
           </ol>
         </li>
+        <li><a href="#springdataredis">SpringDataRedis</a>
+          <ol>
+            <li><a href="#依赖">依赖</a></li>
+            <li><a href="#配置文件">配置文件</a></li>
+            <li><a href="#自动配置">自动配置</a></li>
+            <li><a href="#序列化方式">序列化方式</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
   </ol>
@@ -971,7 +979,266 @@
 </ol>
 <h5 id="jedis连接池">jedis连接池
 </h5><p><strong>jedis直连是线程不安全的，而且频繁地创建和销毁有性能损耗，所以使用Jedi是连接池</strong></p>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//配置连接池</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">JedisPoolConfig</span><span class="w"> </span><span class="n">jedisPoolConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JedisPoolConfig</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">jedisPoolConfig</span><span class="p">.</span><span class="na">setMaxIdle</span><span class="p">(</span><span class="n">8</span><span class="p">);</span><span class="w"> </span><span class="c1">// 设置连接池中最大空闲连接数，避免过多空闲连接占用资源</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">jedisPoolConfig</span><span class="p">.</span><span class="na">setMaxTotal</span><span class="p">(</span><span class="n">8</span><span class="p">);</span><span class="w"> </span><span class="c1">// 设置连接池的最大连接数，限制客户端同时可用的 Jedis 连接数量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">jedisPoolConfig</span><span class="p">.</span><span class="na">setMinIdle</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// 设置连接池的最小空闲连接数，避免没有空闲连接可用</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">jedisPoolConfig</span><span class="p">.</span><span class="na">setMaxWait</span><span class="p">(</span><span class="n">Duration</span><span class="p">.</span><span class="na">ofMillis</span><span class="p">(</span><span class="n">1000</span><span class="p">));</span><span class="w">  </span><span class="c1">// 设置最大等待时间为 1000 毫秒</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//创建连接池对象(JedisPoolConfig对象，ip，端口，超时时间，密码)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">jedisPool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JedisPool</span><span class="p">(</span><span class="n">jedisPoolConfig</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;ip地址&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">6379</span><span class="p">,</span><span class="n">1000</span><span class="p">,</span><span class="s">&#34;密码&#34;</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">jedisPool</span><span class="p">.</span><span class="na">getResource</span><span class="p">();</span><span class="w"> </span><span class="c1">// 从连接池中获取一个 Jedis 实例</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="springdataredis">SpringDataRedis
+</h3><p>官网：<a class="link" href="https://spring.io/projects/spring-data-redis"  target="_blank" rel="noopener"
+    >Spring Data Redis</a></p>
+<h4 id="依赖">依赖
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">       <span class="c">&lt;!-- redis依赖--&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-data-redis<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">       <span class="c">&lt;!--连接池依赖--&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.apache.commons<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>commons-pool2<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>2.12.0<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="配置文件">配置文件
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">redis</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l">IP地址   </span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l">端口</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">密码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">lettuce</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">pool</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">max-active</span><span class="p">:</span><span class="w"> </span><span class="m">8</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">max-idle</span><span class="p">:</span><span class="w"> </span><span class="m">8</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">min-idle</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">max-wait</span><span class="p">:</span><span class="w"> </span><span class="m">100</span><span class="w">  </span><span class="c">#连接等待时间</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="自动配置">自动配置
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.wh.springdataredis.springdatajedis</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.junit.jupiter.api.Test</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.test.context.SpringBootTest</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.data.redis.core.RedisTemplate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@SpringBootTest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nc">SpringDataJedisApplicationTests</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">RedisTemplate</span><span class="w"> </span><span class="n">redisTemplate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">testJedis</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">redisTemplate</span><span class="p">.</span><span class="na">opsForValue</span><span class="p">().</span><span class="na">set</span><span class="p">(</span><span class="s">&#34;Class&#34;</span><span class="p">,</span><span class="s">&#34;1班&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">aClass</span><span class="w"> </span><span class="o">=</span><span class="p">(</span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">redisTemplate</span><span class="p">.</span><span class="na">opsForValue</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;Class&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">aClass</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="序列化方式">序列化方式
+</h4><p>RedisTemplate可以接收任意Object对象作为值存入redis，会将object对象序列化为字节形式，默认jdk序列化。</p>
+<p>缺点：可读性差，占内存</p>
+<p>![](屏幕截图 2025-02-05 191858.png)</p>
+<p><strong>自定义序列化方式</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RedisConfig</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">RedisTemplate</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">redisTemplate</span><span class="p">(</span><span class="n">RedisConnectionFactory</span><span class="w"> </span><span class="n">redisConnectionFactory</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">RedisTemplate</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">template</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">RedisTemplate</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">//设置连接工厂</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">template</span><span class="p">.</span><span class="na">setConnectionFactory</span><span class="p">(</span><span class="n">redisConnectionFactory</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">//序列化工具</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">GenericJackson2JsonRedisSerializer</span><span class="w"> </span><span class="n">genericJackson2JsonRedisSerializer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GenericJackson2JsonRedisSerializer</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">//设置key的序列化</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">template</span><span class="p">.</span><span class="na">setKeySerializer</span><span class="p">(</span><span class="n">RedisSerializer</span><span class="p">.</span><span class="na">string</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">template</span><span class="p">.</span><span class="na">setHashKeySerializer</span><span class="p">(</span><span class="n">RedisSerializer</span><span class="p">.</span><span class="na">string</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c1">//设置value的序列化</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">template</span><span class="p">.</span><span class="na">setValueSerializer</span><span class="p">(</span><span class="n">genericJackson2JsonRedisSerializer</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">template</span><span class="p">.</span><span class="na">setHashValueSerializer</span><span class="p">(</span><span class="n">genericJackson2JsonRedisSerializer</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">template</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">RedisTemplate</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">redisTemplate</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><span style="color:red;"><strong>注意</strong></span></p>
+<p>要添加Jackson相关的依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">      <span class="c">&lt;!-- Jackson 相关的依赖--&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>com.fasterxml.jackson.core<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>jackson-databind<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>2.18.2<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><span style="color:red;"><strong>为了节省内存，一般不会用genericJackson2JsonRedisSerializer，需要存储java对象时，先手动序列化为json格式，然后再存储。获取对象时，在反序列化</strong></span></li>
+<li><span style="color:red;"><strong>Spring默认提供StringRedisTemplate类的key和value都是String的方式序列化</strong></span></li>
+</ul>
+<p><strong>即下面这种写法</strong></p>
+<ul>
+<li><span style="color:red;"><strong>ObjectMapper是springmvc默认的用于json处理的工具</strong></span></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@SpringBootTest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">class</span> <span class="nc">SpringDataJedisApplicationTests</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StringRedisTemplate</span><span class="w"> </span><span class="n">redisTemplate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">ObjectMapper</span><span class="w"> </span><span class="n">objectMapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ObjectMapper</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">testStringJedis</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">JsonProcessingException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Student</span><span class="w"> </span><span class="n">zhangsan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="s">&#34;张三&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">50</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">zhangsanJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">objectMapper</span><span class="p">.</span><span class="na">writeValueAsString</span><span class="p">(</span><span class="n">zhangsan</span><span class="p">);</span><span class="c1">//将对象转为json</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">redisTemplate</span><span class="p">.</span><span class="na">opsForValue</span><span class="p">().</span><span class="na">set</span><span class="p">(</span><span class="s">&#34;zhangsan&#34;</span><span class="p">,</span><span class="n">zhangsanJson</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Student</span><span class="w"> </span><span class="n">getZhangsan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">objectMapper</span><span class="p">.</span><span class="na">readValue</span><span class="p">(</span><span class="n">redisTemplate</span><span class="p">.</span><span class="na">opsForValue</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;zhangsan&#34;</span><span class="p">),</span><span class="w"> </span><span class="n">Student</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="c1">//将json转为对象</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">getZhangsan</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
