@@ -342,6 +342,17 @@
         <li><a href="#18-四数之和httpsleetcodecnproblems4sum"><a href="https://leetcode.cn/problems/4sum/">18. 四数之和</a></a></li>
       </ol>
     </li>
+    <li><a href="#字符串">字符串</a>
+      <ol>
+        <li><a href="#344-反转字符串httpsleetcodecnproblemsreverse-string"><a href="https://leetcode.cn/problems/reverse-string/">344. 反转字符串</a></a></li>
+        <li><a href="#541-反转字符串-ii-httpsleetcodecnproblemsreverse-string-ii"><a href="https://leetcode.cn/problems/reverse-string-ii/">541. 反转字符串 II </a></a></li>
+        <li><a href="#54-替换数字httpskamacodercomproblempagephppid1064"><a href="https://kamacoder.com/problempage.php?pid=1064">54. 替换数字</a></a></li>
+        <li><a href="#151-反转字符串中的单词-httpsleetcodecnproblemsreverse-words-in-a-string"><a href="https://leetcode.cn/problems/reverse-words-in-a-string/">151. 反转字符串中的单词 </a></a></li>
+        <li><a href="#右旋字符串55-右旋字符串第八期模拟笔试httpskamacodercomproblempagephppid1065">[右旋字符串](<a href="https://kamacoder.com/problempage.php?pid=1065">55. 右旋字符串（第八期模拟笔试）</a>)</a></li>
+        <li><a href="#28-找出字符串中第一个匹配项的下标-httpsleetcodecnproblemsfind-the-index-of-the-first-occurrence-in-a-stringdescription"><a href="https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/description/">28. 找出字符串中第一个匹配项的下标 </a></a></li>
+        <li><a href="#459-重复的子字符串httpsleetcodecnproblemsrepeated-substring-patterndescription--n"><a href="https://leetcode.cn/problems/repeated-substring-pattern/description/">459. 重复的子字符串</a>  N</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -3344,6 +3355,406 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">  
 </span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="字符串">字符串
+</h2><h3 id="344-反转字符串httpsleetcodecnproblemsreverse-string"><a class="link" href="https://leetcode.cn/problems/reverse-string/"  target="_blank" rel="noopener"
+    >344. 反转字符串</a>
+</h3><p><strong>双指针</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">reverseString</span><span class="p">(</span><span class="kt">char</span><span class="o">[]</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">left</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">right</span><span class="o">=</span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="o">-</span><span class="n">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="k">while</span><span class="p">(</span><span class="n">left</span><span class="o">&lt;</span><span class="n">right</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="kt">char</span><span class="w"> </span><span class="n">temp</span><span class="o">=</span><span class="n">s</span><span class="o">[</span><span class="n">left</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">s</span><span class="o">[</span><span class="n">left</span><span class="o">]=</span><span class="n">s</span><span class="o">[</span><span class="n">right</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">s</span><span class="o">[</span><span class="n">right</span><span class="o">]=</span><span class="n">temp</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">left</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">right</span><span class="o">--</span><span class="p">;</span><span class="w">       
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>库函数</strong>：String reversed = new StringBuilder(str).reverse().toString(); // 使用 StringBuilder 作为流的一部分</p>
+<h3 id="541-反转字符串-ii-httpsleetcodecnproblemsreverse-string-ii"><a class="link" href="https://leetcode.cn/problems/reverse-string-ii/"  target="_blank" rel="noopener"
+    >541. 反转字符串 II </a>
+</h3><ul>
+<li>
+<p>双指针fa</p>
+</li>
+<li>
+<p>计算：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>i</th>
+          <th>left</th>
+          <th>right</th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>k-1</td>
+          <td>2k-1</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>2k</td>
+          <td>3k-1</td>
+          <td>4k-1</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>4k</td>
+          <td>5k-1</td>
+          <td>6k-1</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>6k</td>
+          <td>7k-1</td>
+          <td>8k-1</td>
+      </tr>
+  </tbody>
+</table></div>
+</li>
+<li>
+<p>left的表达式： left=2 * k * i;</p>
+</li>
+<li>
+<p>right的表达式：right=2 * k * (i+1)-k-1;</p>
+</li>
+<li>
+<p>最后剩余的部分分类讨论</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">reverseStr</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="kt">char</span><span class="o">[]</span><span class="w"> </span><span class="n">schars</span><span class="o">=</span><span class="n">s</span><span class="p">.</span><span class="na">toCharArray</span><span class="p">();</span><span class="w">   
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">rest</span><span class="o">=</span><span class="n">schars</span><span class="p">.</span><span class="na">length</span><span class="o">%</span><span class="p">(</span><span class="n">2</span><span class="o">*</span><span class="n">k</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">counts</span><span class="o">=</span><span class="n">schars</span><span class="p">.</span><span class="na">length</span><span class="o">/</span><span class="p">(</span><span class="n">2</span><span class="o">*</span><span class="n">k</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">counts</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">left</span><span class="o">=</span><span class="n">2</span><span class="o">*</span><span class="n">k</span><span class="o">*</span><span class="n">i</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">right</span><span class="o">=</span><span class="n">2</span><span class="o">*</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">1</span><span class="p">)</span><span class="o">-</span><span class="n">1</span><span class="o">-</span><span class="n">k</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">left</span><span class="o">&lt;</span><span class="n">right</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="kt">char</span><span class="w"> </span><span class="n">temp</span><span class="o">=</span><span class="n">schars</span><span class="o">[</span><span class="n">left</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">schars</span><span class="o">[</span><span class="n">left</span><span class="o">]=</span><span class="n">schars</span><span class="o">[</span><span class="n">right</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">schars</span><span class="o">[</span><span class="n">right</span><span class="o">]=</span><span class="n">temp</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">left</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">right</span><span class="o">--</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="k">if</span><span class="p">(</span><span class="n">rest</span><span class="o">&lt;</span><span class="n">k</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">left</span><span class="o">=</span><span class="n">2</span><span class="o">*</span><span class="n">k</span><span class="o">*</span><span class="n">counts</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">right</span><span class="o">=</span><span class="n">schars</span><span class="p">.</span><span class="na">length</span><span class="o">-</span><span class="n">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="k">else</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">left</span><span class="o">=</span><span class="n">2</span><span class="o">*</span><span class="n">k</span><span class="o">*</span><span class="n">counts</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">right</span><span class="o">=</span><span class="n">2</span><span class="o">*</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">counts</span><span class="o">+</span><span class="n">1</span><span class="p">)</span><span class="o">-</span><span class="n">1</span><span class="o">-</span><span class="n">k</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="k">while</span><span class="p">(</span><span class="n">left</span><span class="o">&lt;</span><span class="n">right</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="kt">char</span><span class="w"> </span><span class="n">temp</span><span class="o">=</span><span class="n">schars</span><span class="o">[</span><span class="n">left</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">schars</span><span class="o">[</span><span class="n">left</span><span class="o">]=</span><span class="n">schars</span><span class="o">[</span><span class="n">right</span><span class="o">]</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">schars</span><span class="o">[</span><span class="n">right</span><span class="o">]=</span><span class="n">temp</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">left</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">right</span><span class="o">--</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="p">}</span><span class="w">     
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">schars</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="54-替换数字httpskamacodercomproblempagephppid1064"><a class="link" href="https://kamacoder.com/problempage.php?pid=1064"  target="_blank" rel="noopener"
+    >54. 替换数字</a>
+</h3><ul>
+<li>注意格式</li>
+<li>StringBuiilder效率高，多线程不安全。StringBuffer反之。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">changeNumber</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="n">StringBuilder</span><span class="w"> </span><span class="n">res</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="kt">char</span><span class="o">[]</span><span class="w"> </span><span class="n">sChars</span><span class="o">=</span><span class="n">s</span><span class="p">.</span><span class="na">toCharArray</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">sChars</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="k">if</span><span class="p">(</span><span class="n">sChars</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;=</span><span class="sc">&#39;a&#39;</span><span class="o">&amp;&amp;</span><span class="n">sChars</span><span class="o">[</span><span class="n">i</span><span class="o">]&lt;=</span><span class="sc">&#39;z&#39;</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="n">res</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">sChars</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="k">else</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="n">res</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&#34;number&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Scanner</span><span class="w"> </span><span class="n">scanner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scanner</span><span class="p">.</span><span class="na">next</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">changeNumber</span><span class="p">(</span><span class="n">s</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">scanner</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="151-反转字符串中的单词-httpsleetcodecnproblemsreverse-words-in-a-string"><a class="link" href="https://leetcode.cn/problems/reverse-words-in-a-string/"  target="_blank" rel="noopener"
+    >151. 反转字符串中的单词 </a>
+</h3><ul>
+<li>
+<p>不调用库函数</p>
+</li>
+<li>
+<p>调用库函数</p>
+</li>
+</ul>
+<h3 id="右旋字符串55-右旋字符串第八期模拟笔试httpskamacodercomproblempagephppid1065">[右旋字符串](<a class="link" href="https://kamacoder.com/problempage.php?pid=1065"  target="_blank" rel="noopener"
+    >55. 右旋字符串（第八期模拟笔试）</a>)
+</h3><ul>
+<li>
+<p><span style="color:red;"><strong>substring方法提取字符串的子串，返回值是子字符串</strong></span></p>
+<ul>
+<li>
+<p><strong>substring(int start)</strong> 从这个下标到字符串结尾</p>
+</li>
+<li>
+<p><strong>substring(int start , int end)</strong> 从start下标到end-1。包前不包后</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Scanner</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">StringBuilder</span><span class="w"> </span><span class="n">sb</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="o">-</span><span class="n">k</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">0</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="o">-</span><span class="n">k</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Scanner</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">in</span><span class="p">.</span><span class="na">nextLine</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="n">n</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">in</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="28-找出字符串中第一个匹配项的下标-httpsleetcodecnproblemsfind-the-index-of-the-first-occurrence-in-a-stringdescription"><a class="link" href="https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/description/"  target="_blank" rel="noopener"
+    >28. 找出字符串中第一个匹配项的下标 </a>
+</h3><ul>
+<li>
+<p><span style="color:red;"><strong>使用滑动窗口</strong></span></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">strStr</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">haystack</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">needle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="n">needle</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">StringBuilder</span><span class="w"> </span><span class="n">sb</span><span class="o">=</span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">end</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="n">end</span><span class="o">&lt;</span><span class="n">haystack</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="n">end</span><span class="o">++</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">haystack</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">end</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="k">if</span><span class="p">(</span><span class="n">sb</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="o">&gt;</span><span class="n">length</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">sb</span><span class="p">.</span><span class="na">deleteCharAt</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">start</span><span class="o">++</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="k">if</span><span class="p">(</span><span class="n">sb</span><span class="p">.</span><span class="na">toString</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="n">needle</span><span class="p">)){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">             </span><span class="k">return</span><span class="w"> </span><span class="n">start</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">1</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><span style="color:red;"><strong>使用KMP</strong></span></p>
+</li>
+</ul>
+<h3 id="459-重复的子字符串httpsleetcodecnproblemsrepeated-substring-patterndescription--n"><a class="link" href="https://leetcode.cn/problems/repeated-substring-pattern/description/"  target="_blank" rel="noopener"
+    >459. 重复的子字符串</a>  N
+</h3><ul>
+<li><strong>不需要把原字符串s一节一节的截出来，直接用获得的子字符串组成一个和原字符串长度相等的字符串，比较这两个就可以</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">repeatedSubstringPattern</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">2</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">len</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// 子字符串的长度</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">continue</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">sub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">0</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">verify</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">verify</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">sub</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">subLen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">counts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">subLen</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">StringBuilder</span><span class="w"> </span><span class="n">sb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">counts</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">sub</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="na">toString</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="n">s</span><span class="p">);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>

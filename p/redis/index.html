@@ -305,6 +305,35 @@
         </li>
       </ol>
     </li>
+    <li><a href="#点评项目">点评项目</a>
+      <ol>
+        <li><a href="#导入">导入</a>
+          <ol>
+            <li><a href="#pom文件">pom文件</a></li>
+            <li><a href="#mybatispuls配置文件">MybatisPuls配置文件</a></li>
+          </ol>
+        </li>
+        <li><a href="#基于session实现登录">基于Session实现登录</a>
+          <ol>
+            <li><a href="#发送验证码">发送验证码</a></li>
+            <li><a href="#登录功能">登录功能</a></li>
+            <li><a href="#登录状态校验">登录状态校验</a></li>
+          </ol>
+        </li>
+        <li><a href="#redis为解决集群的session在多台tomcat的共享问题">Redis：为解决集群的session在多台tomcat的共享问题</a>
+          <ol>
+            <li><a href="#发送验证码-1">发送验证码</a></li>
+            <li><a href="#登录功能的优化">登录功能的优化</a></li>
+          </ol>
+        </li>
+        <li><a href="#商户查询缓存">商户查询缓存</a>
+          <ol>
+            <li><a href="#缓存">缓存</a></li>
+            <li><a href="#添加redis缓存">添加redis缓存</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -1238,7 +1267,935 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
+</div><h2 id="点评项目">点评项目
+</h2><h3 id="导入">导入
+</h3><h4 id="pom文件">pom文件
+</h4><p>修改pom.xml文件。springboot的版本低了，不支持jdk17。要选择更高的版本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0&#34;</span> <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;parent&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-parent<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;version&gt;</span>2.7.18<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;relativePath/&gt;</span> <span class="c">&lt;!-- lookup parent from repository --&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/parent&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>com.hmdp<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>hm-dianping<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;version&gt;</span>0.0.1-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;name&gt;</span>hm-dianping<span class="nt">&lt;/name&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;description&gt;</span>Demo project for Spring Boot<span class="nt">&lt;/description&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;properties&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;java.version&gt;</span>17<span class="nt">&lt;/java.version&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/properties&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependencies&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-data-redis<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.apache.commons<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>commons-pool2<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-web<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>com.mysql<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>mysql-connector-j<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>8.3.0<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.projectlombok<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>lombok<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;optional&gt;</span>true<span class="nt">&lt;/optional&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-test<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter --&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>com.baomidou<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>mybatis-plus-boot-starter<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>3.5.5<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c">&lt;!--hutool--&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>cn.hutool<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>hutool-all<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>5.8.24<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependencies&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;build&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;plugins&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;plugin&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;configuration&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;excludes&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;exclude&gt;</span>
+</span></span><span class="line"><span class="cl">                            <span class="nt">&lt;groupId&gt;</span>org.projectlombok<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">                            <span class="nt">&lt;artifactId&gt;</span>lombok<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;/exclude&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;/excludes&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/configuration&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/plugin&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/plugins&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/build&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/project&gt;</span>
+</span></span></code></pre></td></tr></table>
 </div>
+</div><h4 id="mybatispuls配置文件">MybatisPuls配置文件
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.hmdp.config</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">com.baomidou.mybatisplus.annotation.DbType</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Bean</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Configuration</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MybatisConfig</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">MybatisPlusInterceptor</span><span class="w"> </span><span class="nf">mybatisPlusInterceptor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">MybatisPlusInterceptor</span><span class="w"> </span><span class="n">interceptor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MybatisPlusInterceptor</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">interceptor</span><span class="p">.</span><span class="na">addInnerInterceptor</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">PaginationInnerInterceptor</span><span class="p">(</span><span class="n">DbType</span><span class="p">.</span><span class="na">MYSQL</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">interceptor</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li><strong><code>@Configuration</code></strong>
+<ul>
+<li>该类被标注为 <strong>Spring 配置类</strong>，意味着 Spring 在启动时会自动加载它。</li>
+</ul>
+</li>
+<li><strong><code>@Bean</code></strong>
+<ul>
+<li><code>mybatisPlusInterceptor()</code> 方法被标注为 <code>@Bean</code>，Spring 会将返回的 <code>MybatisPlusInterceptor</code> 实例 <strong>注册到 Spring 容器</strong>，以便 MyBatis Plus 进行拦截处理。</li>
+</ul>
+</li>
+<li><strong><code>MybatisPlusInterceptor</code></strong>
+<ul>
+<li><code>MybatisPlusInterceptor</code> 是 <strong>MyBatis Plus 提供的插件拦截器</strong>，用于增强 MyBatis 的功能（如分页、乐观锁等）。</li>
+<li>在这个方法里，我们 <strong>添加了分页拦截器</strong>，使 MyBatis Plus <strong>支持 MySQL 的分页查询</strong>。</li>
+</ul>
+</li>
+<li><strong><code>PaginationInnerInterceptor(DbType.MYSQL)</code></strong>
+<ul>
+<li><code>PaginationInnerInterceptor</code> 是 MyBatis Plus 提供的 <strong>分页拦截器</strong>，用于自动处理 SQL 语句的分页逻辑。</li>
+<li><code>DbType.MYSQL</code> 指定了数据库类型为 <strong>MySQL</strong>，确保拦截器能够正确解析 SQL 并应用分页功能。</li>
+</ul>
+</li>
+</ol>
+<h3 id="基于session实现登录">基于Session实现登录
+</h3><p>![](屏幕截图 2025-02-08 164053.png)</p>
+<h4 id="发送验证码">发送验证码
+</h4><p>Request URL:http://localhost:8080/api/user/code?phone=xxxx</p>
+<p>user/code?phone=xxxx</p>
+<p>请求方式：POST</p>
+<p>无返回值</p>
+<h4 id="登录功能">登录功能
+</h4><p>Request URL:http://localhost:8080/api/user/login</p>
+<p>user/login</p>
+<p>参数：json</p>
+<p>请求方式：POST</p>
+<h5 id="mybatisplus">MybatisPlus
+</h5><p><strong><code>extends IService&lt;User&gt;</code> 与 <code>extends ServiceImpl&lt;UserMapper, User&gt;</code> 的关系</strong></p>
+<p>在 <strong>MyBatis-Plus</strong> 中，<code>IUserService</code> 和 <code>UserServiceImpl</code> 配合使用，分别负责 <strong>定义业务接口</strong> 和 <strong>实现业务逻辑</strong>，同时利用 <code>IService</code> 和 <code>ServiceImpl</code> 提供的通用 CRUD 方法，避免手写重复的数据库操作代码。</p>
+<p><strong>1. 代码结构</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">// 1. 业务层接口</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">IUserService</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">IService</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 额外的业务方法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">// 2. 业务层实现</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Slf4j</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserServiceImpl</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ServiceImpl</span><span class="o">&lt;</span><span class="n">UserMapper</span><span class="p">,</span><span class="w"> </span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">IUserService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//mapper</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">UserMapper</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseMapper</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>2. 详细解析</strong></p>
+<p><strong>① <code>IUserService extends IService&lt;User&gt;</code></strong></p>
+<ul>
+<li><code>IService&lt;T&gt;</code> 是 MyBatis-Plus 提供的通用接口，包含常用的 CRUD 方法。</li>
+<li><code>IUserService</code> 继承 <code>IService&lt;User&gt;</code>，自动拥有这些方法，但没有实现。</li>
+</ul>
+<p><strong>② <code>UserServiceImpl extends ServiceImpl&lt;UserMapper, User&gt; implements IUserService</code></strong></p>
+<ul>
+<li><code>ServiceImpl</code> 已经实现了 <code>IService</code> 的 CRUD 方法。</li>
+<li><code>UserServiceImpl</code> 继承 <code>ServiceImpl</code>，自动拥有这些方法，并实现 <code>IUserService</code>，可以增加自定义业务方法。</li>
+</ul>
+<h4 id="登录状态校验">登录状态校验
+</h4><p><strong>不应该往session里放入过多的无用信息</strong></p>
+<p><span style="color:red;"><strong>避免重复校验，用拦截器</strong></span></p>
+<h5 id="handlerinterceptor接口"><strong>handlerInterceptor</strong>接口
+</h5><p><span style="color:red;"><strong>自定义拦截器一般不需要使用@Component注解，需要在config类中手动注册拦截器。而且</strong></span>，Spring 的 <code>@Autowired</code> 依赖注入（DI）仅对 <strong>Spring 管理的 Bean</strong> 生效，而如果拦截器<strong>没有被 Spring 扫描</strong>（即没有使用 <code>@Component</code>、<code>@Service</code>、<code>@Controller</code> 等注解），<span style="color:red;"><strong>Spring 就不会管理它，也就不能对其中的字段进行自动注入。</strong></span></p>
+<ul>
+<li>
+<p><strong>例如</strong></p>
+<p><span style="color:red;"><strong>在LoginInterceptor类里无法注入StringRedisTemplate，则在config类中用形参的形式传入</strong></span></p>
+<ul>
+<li>
+<p>自定义拦截器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LoginInterceptor</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">HandlerInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StringRedisTemplate</span><span class="w"> </span><span class="n">stringRedisTemplate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">LoginInterceptor</span><span class="p">(</span><span class="n">StringRedisTemplate</span><span class="w"> </span><span class="n">stringRedisTemplate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">stringRedisTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stringRedisTemplate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>config类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MvcConfig</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">WebMvcConfigurer</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Resource</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">StringRedisTemplate</span><span class="w"> </span><span class="n">stringRedisTemplate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addInterceptors</span><span class="p">(</span><span class="n">InterceptorRegistry</span><span class="w"> </span><span class="n">registry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">registry</span><span class="p">.</span><span class="na">addInterceptor</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">LoginInterceptor</span><span class="p">(</span><span class="n">stringRedisTemplate</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">addPathPatterns</span><span class="p">(</span><span class="s">&#34;/**&#34;</span><span class="p">)</span><span class="c1">//拦截所有请求</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">excludePathPatterns</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ul>
+<p><code>HandlerInterceptor</code> 是 Spring 框架中的一个接口，用于在处理请求的过程中对 HTTP 请求进行拦截和处理。它类似于 Servlet 中的过滤器（Filter），但比过滤器更具针对性，能够更精细地控制请求的处理过程。</p>
+<p><strong>（1）preHandle方法</strong></p>
+<ul>
+<li><strong>触发时机：</strong> 在请求到达控制器（<code>Controller</code>）方法之前执行。</li>
+<li><strong>返回值：</strong> <code>true</code> 表示继续执行请求，<code>false</code> 表示终止请求（不会进入控制器）。</li>
+<li><strong>常见用途：</strong> 登录认证、权限检查、请求参数校验等。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">preHandle</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">handler</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;【preHandle】请求被拦截&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// 继续执行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p><strong>（2）postHandle 方法</strong></p>
+<ul>
+<li><strong>触发时机：</strong> 在控制器方法执行后，视图渲染之前执行。</li>
+<li><strong>常见用途：</strong> 修改 <code>ModelAndView</code> 数据、对返回数据进行处理等。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">postHandle</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">handler</span><span class="p">,</span><span class="w"> </span><span class="n">ModelAndView</span><span class="w"> </span><span class="n">modelAndView</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;【postHandle】处理完请求，返回数据前执行&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p><strong>（3）afterCompletion 方法</strong></p>
+<ul>
+<li><strong>触发时机：</strong> 在视图渲染完成后执行（无论请求是否成功）。</li>
+<li><strong>常见用途：</strong> 资源清理、日志记录、异常处理等。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">afterCompletion</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">handler</span><span class="p">,</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&#34;【afterCompletion】请求处理完成&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>拦截器的注册</strong></p>
+<p>在 Spring Boot 中，可以使用 <code>WebMvcConfigurer</code> 进行拦截器注册：</p>
+<ul>
+<li><code>.excludePathPatterns()</code> 是 <strong>排除某些路径</strong>，即使不写 <code>.addPathPatterns(&quot;/**&quot;)</code>，<code>excludePathPatterns()</code> 仍然有效。</span></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Configuration</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.servlet.config.annotation.InterceptorRegistry</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.servlet.config.annotation.WebMvcConfigurer</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">WebConfig</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">WebMvcConfigurer</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addInterceptors</span><span class="p">(</span><span class="n">InterceptorRegistry</span><span class="w"> </span><span class="n">registry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">registry</span><span class="p">.</span><span class="na">addInterceptor</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MyInterceptor</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">addPathPatterns</span><span class="p">(</span><span class="s">&#34;/**&#34;</span><span class="p">)</span><span class="w"> </span><span class="c1">// 拦截所有请求</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">excludePathPatterns</span><span class="p">(</span><span class="s">&#34;/login&#34;</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;/error&#34;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 排除特定路径</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h5 id="webmvcconfigurationsupport-和-webmvcconfigurer-">**WebMvcConfigurationSupport 和 WebMvcConfigurer **
+</h5><div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>维度</th>
+          <th><code>WebMvcConfigurationSupport</code></th>
+          <th><code>WebMvcConfigurer</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>作用</strong></td>
+          <td>完全接管 MVC 配置</td>
+          <td>扩展默认 MVC 配置</td>
+      </tr>
+      <tr>
+          <td><strong>自动配置影响</strong></td>
+          <td><strong>会禁用 Spring Boot 自动配置</strong>，需要手动配置静态资源、消息转换等</td>
+          <td><strong>不会影响自动配置</strong></td>
+      </tr>
+      <tr>
+          <td><strong>适用场景</strong></td>
+          <td>需要完全控制 MVC 逻辑</td>
+          <td>仅需部分扩展 MVC 配置</td>
+      </tr>
+      <tr>
+          <td><strong>配置方式</strong></td>
+          <td>继承 <code>WebMvcConfigurationSupport</code></td>
+          <td>实现 <code>WebMvcConfigurer</code></td>
+      </tr>
+      <tr>
+          <td><strong>静态资源映射</strong></td>
+          <td>需要手动配置，否则失效</td>
+          <td>仍然可用</td>
+      </tr>
+      <tr>
+          <td><strong>拦截器、跨域等</strong></td>
+          <td>需要手动配置</td>
+          <td>直接扩展</td>
+      </tr>
+  </tbody>
+</table></div>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th></th>
+          <th><code>@Resource</code></th>
+          <th><code>@Autowired</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>来源</strong></td>
+          <td>Java 标准库（<code>javax.annotation.Resource</code>）</td>
+          <td>Spring 框架（<code>org.springframework.beans.factory.annotation.Autowired</code>）</td>
+      </tr>
+      <tr>
+          <td><strong>注入方式</strong></td>
+          <td>默认按<strong>名称</strong>，若无名称则按<strong>类型</strong></td>
+          <td>默认按<strong>类型</strong></td>
+      </tr>
+      <tr>
+          <td><strong>是否支持 <code>@Qualifier</code></strong></td>
+          <td>可以搭配 <code>@Qualifier</code> 使用</td>
+          <td>可以搭配 <code>@Qualifier</code> 使用</td>
+      </tr>
+      <tr>
+          <td><strong>是否支持 <code>required=false</code></strong></td>
+          <td>不支持</td>
+          <td>支持</td>
+      </tr>
+      <tr>
+          <td><strong>是否与 Spring 强绑定</strong></td>
+          <td>不是，JSR-250 规范的一部分，可用于其他框架</td>
+          <td>是，属于 Spring 组件</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="redis为解决集群的session在多台tomcat的共享问题">Redis：为解决集群的session在多台tomcat的共享问题
+</h3><h4 id="发送验证码-1">发送验证码
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//存储验证码 key value 有效时间（long） 时间单位（min)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">stringRedisTemplate</span><span class="p">.</span><span class="na">opsForValue</span><span class="p">().</span><span class="na">set</span><span class="p">(</span><span class="n">RedisConstants</span><span class="p">.</span><span class="na">LOGIN_CODE_KEY</span><span class="o">+</span><span class="n">phone</span><span class="p">,</span><span class="n">code</span><span class="p">,</span><span class="n">RedisConstants</span><span class="p">.</span><span class="na">LOGIN_CODE_TTL</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">MINUTES</span><span class="p">);</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p><span style="color:red;"><strong>将java对象转换成map，使用的是hutool依赖的方法</strong></span></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stringObjectMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BeanUtil</span><span class="p">.</span><span class="na">beanToMap</span><span class="p">(</span><span class="n">userDTO</span><span class="p">,</span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">(),</span><span class="w">           </span><span class="n">CopyOptions</span><span class="p">.</span><span class="na">create</span><span class="p">().</span><span class="na">setIgnoreNullValue</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="na">setFieldValueEditor</span><span class="p">((</span><span class="n">fieldName</span><span class="p">,</span><span class="n">fieldValue</span><span class="p">)</span><span class="o">&gt;</span><span class="n">fieldValue</span><span class="p">.</span><span class="na">toString</span><span class="p">()));</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><span style="color:red;"><strong>生成UUID来作为token</strong></span></p>
+</li>
+<li>
+<p><span style="color:red;"><strong>session的30min有效期和redis的30min有效期的区别</strong></span></p>
+<ul>
+<li>session：每次请求都会<strong>重置30分钟有效期</strong>，只要用户一直操作，Session不会过期。</li>
+<li>有效期固定，即使30分钟内有操作，Token仍会在原定时间过期,<span style="color:red;">所以要做到session类似的效果，需要再拦截器里重置时间</span></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>
+<p><strong>登录：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="n">LoginFormDTO</span><span class="w"> </span><span class="n">loginForm</span><span class="p">,</span><span class="w"> </span><span class="n">HttpSession</span><span class="w"> </span><span class="n">session</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//校验验证码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">userCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stringRedisTemplate</span><span class="p">.</span><span class="na">opsForValue</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="n">RedisConstants</span><span class="p">.</span><span class="na">LOGIN_CODE_KEY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">loginForm</span><span class="p">.</span><span class="na">getPhone</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">userCode</span><span class="o">==</span><span class="kc">null</span><span class="o">||!</span><span class="n">userCode</span><span class="p">.</span><span class="na">toString</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="n">loginForm</span><span class="p">.</span><span class="na">getCode</span><span class="p">())){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Result</span><span class="p">.</span><span class="na">fail</span><span class="p">(</span><span class="s">&#34;验证码不正确&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//查询数据库有无用户</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lambdaQuery</span><span class="p">().</span><span class="na">eq</span><span class="p">(</span><span class="n">User</span><span class="p">::</span><span class="n">getPhone</span><span class="p">,</span><span class="w"> </span><span class="n">loginForm</span><span class="p">.</span><span class="na">getPhone</span><span class="p">()).</span><span class="na">one</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//不存在</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">user</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">user</span><span class="o">=</span><span class="n">createUserWithPhone</span><span class="p">(</span><span class="n">loginForm</span><span class="p">.</span><span class="na">getPhone</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">         </span><span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&#34;不存在&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//存在</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">UserDTO</span><span class="w"> </span><span class="n">userDTO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UserDTO</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">BeanUtils</span><span class="p">.</span><span class="na">copyProperties</span><span class="p">(</span><span class="n">user</span><span class="p">,</span><span class="n">userDTO</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//保存信息到redis</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="c1">//java对象转为map</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stringObjectMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BeanUtil</span><span class="p">.</span><span class="na">beanToMap</span><span class="p">(</span><span class="n">userDTO</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="c1">//随机生成token作为key，UUID</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UUID</span><span class="p">.</span><span class="na">randomUUID</span><span class="p">().</span><span class="na">toString</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">tokenKey</span><span class="o">=</span><span class="n">RedisConstants</span><span class="p">.</span><span class="na">LOGIN_USER_KEY</span><span class="o">+</span><span class="n">token</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="c1">//保存到redis</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">stringRedisTemplate</span><span class="p">.</span><span class="na">opsForHash</span><span class="p">().</span><span class="na">putAll</span><span class="p">(</span><span class="n">tokenKey</span><span class="p">,</span><span class="n">stringObjectMap</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="c1">//设置有效期 30min</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">stringRedisTemplate</span><span class="p">.</span><span class="na">expire</span><span class="p">(</span><span class="n">tokenKey</span><span class="p">,</span><span class="n">RedisConstants</span><span class="p">.</span><span class="na">LOGIN_USER_TTL</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">MINUTES</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="c1">//返回</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Result</span><span class="p">.</span><span class="na">ok</span><span class="p">(</span><span class="n">token</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>拦截器：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.hmdp.utils</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">cn.hutool.core.bean.BeanUtil</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">cn.hutool.core.util.StrUtil</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">com.hmdp.dto.UserDTO</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.data.redis.core.StringRedisTemplate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.servlet.HandlerInterceptor</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletRequest</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">javax.servlet.http.HttpServletResponse</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.TimeUnit</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LoginInterceptor</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">HandlerInterceptor</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">StringRedisTemplate</span><span class="w"> </span><span class="n">stringRedisTemplate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">LoginInterceptor</span><span class="p">(</span><span class="n">StringRedisTemplate</span><span class="w"> </span><span class="n">stringRedisTemplate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">stringRedisTemplate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stringRedisTemplate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">afterCompletion</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">handler</span><span class="p">,</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">UserHolder</span><span class="p">.</span><span class="na">removeUser</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">preHandle</span><span class="p">(</span><span class="n">HttpServletRequest</span><span class="w"> </span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">HttpServletResponse</span><span class="w"> </span><span class="n">response</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">handler</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//获取请求头中的token</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getHeader</span><span class="p">(</span><span class="s">&#34;authorization&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//判断是否为空</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">StrUtil</span><span class="p">.</span><span class="na">isBlank</span><span class="p">(</span><span class="n">token</span><span class="p">)){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">response</span><span class="p">.</span><span class="na">setStatus</span><span class="p">(</span><span class="n">HttpServletResponse</span><span class="p">.</span><span class="na">SC_UNAUTHORIZED</span><span class="p">);</span><span class="c1">//401</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//在redis中获取map</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Object</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">entries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stringRedisTemplate</span><span class="p">.</span><span class="na">opsForHash</span><span class="p">().</span><span class="na">entries</span><span class="p">(</span><span class="n">RedisConstants</span><span class="p">.</span><span class="na">LOGIN_USER_KEY</span><span class="o">+</span><span class="n">token</span><span class="p">);</span><span class="c1">//获取整个map</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//判断用户是否存在</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">entries</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">response</span><span class="p">.</span><span class="na">setStatus</span><span class="p">(</span><span class="n">HttpServletResponse</span><span class="p">.</span><span class="na">SC_UNAUTHORIZED</span><span class="p">);</span><span class="c1">//401</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//将map转为UserDTO</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">UserDTO</span><span class="w"> </span><span class="n">userDTO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BeanUtil</span><span class="p">.</span><span class="na">fillBeanWithMap</span><span class="p">(</span><span class="n">entries</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UserDTO</span><span class="p">(),</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//存在放入ThreadLocal</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">UserHolder</span><span class="p">.</span><span class="na">saveUser</span><span class="p">(</span><span class="n">userDTO</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//刷新有效时间</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">stringRedisTemplate</span><span class="p">.</span><span class="na">expire</span><span class="p">(</span><span class="n">RedisConstants</span><span class="p">.</span><span class="na">LOGIN_USER_KEY</span><span class="o">+</span><span class="n">token</span><span class="p">,</span><span class="n">RedisConstants</span><span class="p">.</span><span class="na">LOGIN_USER_TTL</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">MINUTES</span><span class="w"> </span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//放行</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h4 id="登录功能的优化">登录功能的优化
+</h4><p>目前的拦截器只对需要登录的请求进行拦截，如果用户存在就刷新一次redis中数据的有效时间。但是当用户进行不需要登录的请求时，无法对redis中的数据进行刷新。<span style="color:red;"><strong>所以，需要在此拦截器的前面在加一个拦截器</strong></span>，专门对已登录的用户对其存在redis的数据进行有效时间的刷新。<span style="color:red;"><strong>然后第二个拦截器就只做检查用户是否登录。</strong></span></p>
+<ul>
+<li>
+<p>第一个拦截器不做拦截，只将请求头中有token的用户通过redis获取用户并对其有效时间进行刷新，再将用户放入TreadLocal里</p>
+</li>
+<li>
+<p>第二个拦截器只在ThreadLocal里找用户，如果有就放行，没有就拦截</p>
+</li>
+<li>
+<p>在config类里注册拦截器</p>
+<ul>
+<li>可以通过默认的顺序来确定拦截顺序</li>
+<li>也可以使用,order()方法，数字越小越先执行</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MvcConfig</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">WebMvcConfigurer</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Resource</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">StringRedisTemplate</span><span class="w"> </span><span class="n">stringRedisTemplate</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addInterceptors</span><span class="p">(</span><span class="n">InterceptorRegistry</span><span class="w"> </span><span class="n">registry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">registry</span><span class="p">.</span><span class="na">addInterceptor</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">LoginInterceptor</span><span class="p">())</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">addPathPatterns</span><span class="p">(</span><span class="s">&#34;/**&#34;</span><span class="p">)</span><span class="c1">//拦截所有请求</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">.</span><span class="na">excludePathPatterns</span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="s">&#34;/shop/**&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="s">&#34;/voucher/**&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="s">&#34;/shop-type/**&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="s">&#34;/upload/**&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="s">&#34;/blog/hot&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="s">&#34;/user/code&#34;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                        </span><span class="s">&#34;/user/login&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="p">).</span><span class="na">order</span><span class="p">(</span><span class="n">1</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">//默认拦截所有</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">registry</span><span class="p">.</span><span class="na">addInterceptor</span><span class="p">((</span><span class="k">new</span><span class="w"> </span><span class="n">RefreshInterceptor</span><span class="p">(</span><span class="n">stringRedisTemplate</span><span class="p">))).</span><span class="na">order</span><span class="p">(</span><span class="n">0</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="商户查询缓存">商户查询缓存
+</h3><h4 id="缓存">缓存
+</h4><p><span style="color:red;"><strong>数据交换的缓冲区，临时存储数据，读写性能较高</strong></span></p>
+<h4 id="添加redis缓存">添加redis缓存
+</h4><p><span style="color:red;"><strong>解决ObjectMapper不能直接序列化 <code>java.time.LocalDateTime</code></strong></span></p>
+<p>因为 Jackson 默认不支持 Java 8 的时间类型。</p>
+<ul>
+<li>
+<p>添加**<code>jackson-datatype-jsr310</code> 依赖**</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>com.fasterxml.jackson.datatype<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>jackson-datatype-jsr310<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;version&gt;</span>2.15.0<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>可以创建一个 <code>@Bean</code> 来配置 <code>ObjectMapper</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">JacksonConfig</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ObjectMapper</span><span class="w"> </span><span class="nf">objectMapper</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">ObjectMapper</span><span class="w"> </span><span class="n">objectMapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ObjectMapper</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">objectMapper</span><span class="p">.</span><span class="na">registerModule</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">JavaTimeModule</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">objectMapper</span><span class="p">.</span><span class="na">disable</span><span class="p">(</span><span class="n">SerializationFeature</span><span class="p">.</span><span class="na">WRITE_DATES_AS_TIMESTAMPS</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">objectMapper</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>或者，在 <code>application.yml</code> 配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">jackson</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">serialization</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">write-dates-as-timestamps</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><span style="color:red;"><strong>new TypeReference&lt;List&lt; ShopType&raquo;()不能直接填List&lt; ShopType&gt;吗</strong></span></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">List</span><span class="o">&lt;</span><span class="n">ShopType</span><span class="o">&gt;</span><span class="w"> </span><span class="n">typeList</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">......</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">typeList</span><span class="w"> </span><span class="o">=</span><span class="n">objectMapper</span><span class="p">.</span><span class="na">readValue</span><span class="p">(</span><span class="n">listJson</span><span class="p">,</span><span class="k">new</span><span class="w"> </span><span class="n">TypeReference</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">ShopType</span><span class="o">&gt;&gt;</span><span class="p">(){});</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>不能直接填 List&lt; ShopType &gt;.class，因为 Java 的泛型会在运行时被擦除（Type Erasure），导致 ObjectMapper 无法正确推断 List&lt; ShopType &gt; 的具体类型。</p>
+</li>
+<li>
+<p>为什么不能使用 List&lt; ShopType &gt;.class？</p>
+<p>在 Java 运行时，List&lt; ShopType &gt;.class 实际上被擦除成 List.class，ObjectMapper 只知道它是一个 List，但不知道里面的元素类型。因此，它无法正确地将 JSON 反序列化为 List&lt; ShopType &gt;。</p>
+</li>
+<li>
+<p>为什么 new TypeReference&lt;List&lt; ShopType &raquo;() {} 可行？</p>
+<p>TypeReference&lt; T &gt; 通过 匿名子类 的方式 保留了泛型类型信息，使得 ObjectMapper 可以正确解析 List&lt; ShopType &gt;。</p>
+</li>
+</ul>
+</li>
+</ul>
+
 </section>
 
 

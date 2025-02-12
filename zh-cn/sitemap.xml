@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://suechinrry.github.io/</loc>
-    <lastmod>2025-01-15T00:00:00+00:00</lastmod>
+    <lastmod>2025-02-12T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://suechinrry.github.io/categories/</loc>
-    <lastmod>2025-01-15T00:00:00+00:00</lastmod>
+    <lastmod>2025-02-12T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -26,6 +26,31 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="https://suechinrry.github.io/categories/"
+                />
+  </url><url>
+    <loc>https://suechinrry.github.io/post/</loc>
+    <lastmod>2025-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://suechinrry.github.io/tags/problems/</loc>
+    <lastmod>2025-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://suechinrry.github.io/categories/problems/</loc>
+    <lastmod>2025-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://suechinrry.github.io/p/problems/</loc>
+    <lastmod>2025-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://suechinrry.github.io/tags/</loc>
+    <lastmod>2025-02-12T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://suechinrry.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://suechinrry.github.io/tags/"
                 />
   </url><url>
     <loc>https://suechinrry.github.io/tags/java/</loc>
@@ -40,9 +65,6 @@
     <loc>https://suechinrry.github.io/p/linux/</loc>
     <lastmod>2025-01-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://suechinrry.github.io/post/</loc>
-    <lastmod>2025-01-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://suechinrry.github.io/tags/redis/</loc>
     <lastmod>2025-01-15T00:00:00+00:00</lastmod>
   </url><url>
@@ -51,19 +73,6 @@
   </url><url>
     <loc>https://suechinrry.github.io/p/redis/</loc>
     <lastmod>2025-01-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://suechinrry.github.io/tags/</loc>
-    <lastmod>2025-01-15T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://suechinrry.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://suechinrry.github.io/tags/"
-                />
   </url><url>
     <loc>https://suechinrry.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2025-01-13T22:27:13+08:00</lastmod>

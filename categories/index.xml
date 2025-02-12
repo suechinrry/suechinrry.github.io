@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>SueChinrry</copyright>
-        <lastBuildDate>Wed, 15 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://suechinrry.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 12 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://suechinrry.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Problems</title>
+        <link>https://suechinrry.github.io/categories/problems/</link>
+        <pubDate>Wed, 12 Feb 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://suechinrry.github.io/categories/problems/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Linux</title>
         <link>https://suechinrry.github.io/categories/linux/</link>
         <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
