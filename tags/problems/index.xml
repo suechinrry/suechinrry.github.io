@@ -15,7 +15,7 @@
         <guid>https://suechinrry.github.io/p/problems/</guid>
         <description>&lt;h1 id=&#34;问题和注意点&#34;&gt;问题和注意点
 &lt;/h1&gt;&lt;h2 id=&#34;问题&#34;&gt;问题
-&lt;/h2&gt;&lt;h3 id=&#34;webmvcconfigurationsupport-和-webmvcconfigurer-&#34;&gt;**WebMvcConfigurationSupport 和 WebMvcConfigurer **
+&lt;/h2&gt;&lt;h3 id=&#34;webmvcconfigurationsupport-和-webmvcconfigurer&#34;&gt;WebMvcConfigurationSupport 和 WebMvcConfigurer
 &lt;/h3&gt;&lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -236,6 +236,13 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;所以，&lt;code&gt;@Slf4j&lt;/code&gt; &lt;strong&gt;的本质就是帮你省去了&lt;/strong&gt; &lt;code&gt;private static final Logger log = LoggerFactory.getLogger(XXX.class);&lt;/code&gt; &lt;strong&gt;这行代码&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;springbootapplication主要作用&#34;&gt;@SpringBootApplication主要作用
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;标记为 Spring Boot 启动类&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;启用自动配置&lt;/strong&gt;（&lt;code&gt;@EnableAutoConfiguration&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;启用组件扫描&lt;/strong&gt;（&lt;code&gt;@ComponentScan&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;允许在类中定义 Bean&lt;/strong&gt;（&lt;code&gt;@SpringBootConfiguration&lt;/code&gt;）。&lt;/li&gt;
+&lt;/ol&gt;
 </description>
         </item>
         
