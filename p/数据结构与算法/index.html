@@ -353,6 +353,26 @@
         <li><a href="#459-重复的子字符串httpsleetcodecnproblemsrepeated-substring-patterndescription--n"><a href="https://leetcode.cn/problems/repeated-substring-pattern/description/">459. 重复的子字符串</a>  N</a></li>
       </ol>
     </li>
+    <li><a href="#栈和队列">栈和队列</a>
+      <ol>
+        <li><a href="#栈数据结构stack-类">栈数据结构（<code>Stack</code> 类）</a>
+          <ol>
+            <li><a href="#1-stack-类的方法"><strong>1 <code>Stack</code> 类的方法</strong></a></li>
+            <li><a href="#2-stack-的缺点"><strong>2 <code>Stack</code> 的缺点</strong></a></li>
+            <li><a href="#3-使用-deque-作为栈"><strong>3 使用 <code>Deque</code> 作为栈</strong></a></li>
+          </ol>
+        </li>
+        <li><a href="#232-用栈实现队列-httpsleetcodecnproblemsimplement-queue-using-stacksdescription"><a href="https://leetcode.cn/problems/implement-queue-using-stacks/description/">232. 用栈实现队列 </a></a></li>
+        <li><a href="#队列">队列</a>
+          <ol>
+            <li><a href="#1-queue-接口">1. Queue 接口</a></li>
+            <li><a href="#2-deque双端队列">2. Deque（双端队列）</a></li>
+            <li><a href="#3-priorityqueue优先队列">3. PriorityQueue（优先队列）</a></li>
+            <li><a href="#4-blockingqueue阻塞队列">4. BlockingQueue（阻塞队列）</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -3759,7 +3779,276 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
+</div><h2 id="栈和队列">栈和队列
+</h2><h3 id="栈数据结构stack-类">栈数据结构（<code>Stack</code> 类）
+</h3><p>Java 提供了 <code>java.util.Stack</code> 类来实现**后进先出（LIFO）**的数据结构。</p>
+<h4 id="1-stack-类的方法"><strong>1 <code>Stack</code> 类的方法</strong>
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Stack</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Stack</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">stack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">10</span><span class="p">);</span><span class="w">  </span><span class="c1">// 入栈</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">stack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">20</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">stack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">30</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span><span class="w">  </span><span class="c1">// 出栈 -&gt; 30</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="na">peek</span><span class="p">());</span><span class="w"> </span><span class="c1">// 查看栈顶 -&gt; 20</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="na">empty</span><span class="p">());</span><span class="w"> </span><span class="c1">// 是否为空 -&gt; false</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
+</div><ul>
+<li><code>push(E item)</code>: 入栈</li>
+<li><code>pop()</code>: 出栈（删除并返回栈顶元素）</li>
+<li><code>peek()</code>: 查看栈顶元素</li>
+<li><code>empty()</code>: 判断栈是否为空</li>
+<li><code>search(Object o)</code>: 返回元素的 1-based 位置</li>
+</ul>
+<h4 id="2-stack-的缺点"><strong>2 <code>Stack</code> 的缺点</strong>
+</h4><ul>
+<li><code>Stack</code> 继承 <code>Vector</code>，是 <strong>同步</strong> 的，性能较低。</li>
+<li>建议使用 <code>Deque</code>（<code>ArrayDeque</code>）代替 <code>Stack</code>。</li>
+</ul>
+<h4 id="3-使用-deque-作为栈"><strong>3 使用 <code>Deque</code> 作为栈</strong>
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayDeque</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">stack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">10</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">stack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">20</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">stack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">30</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span><span class="w">  </span><span class="c1">// 30</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="na">peek</span><span class="p">());</span><span class="w"> </span><span class="c1">// 20</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">());</span><span class="w"> </span><span class="c1">// false</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>为什么使用 <code>Deque</code>？</strong></p>
+<ul>
+<li><code>ArrayDeque</code> <strong>比 <code>Stack</code> 更高效</strong>，因为 <code>Stack</code> 继承 <code>Vector</code>，带有同步锁，影响性能。</li>
+<li><code>Deque</code> <strong>非同步</strong>，适用于单线程环境，多线程需要 <code>ConcurrentLinkedDeque</code>。</li>
+</ul>
+<h3 id="232-用栈实现队列-httpsleetcodecnproblemsimplement-queue-using-stacksdescription"><a class="link" href="https://leetcode.cn/problems/implement-queue-using-stacks/description/"  target="_blank" rel="noopener"
+    >232. 用栈实现队列 </a>
+</h3><p><strong>用两个栈模拟队列，只在pop和peek使用两个栈</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">MyQueue</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stack1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 负责 push 操作</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Deque</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stack2</span><span class="p">;</span><span class="w"> </span><span class="c1">// 负责 pop 和 peek 操作</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">MyQueue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">stack1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayDeque</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">stack2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayDeque</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 直接将元素推入 stack1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">push</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">stack1</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 只有 stack2 为空时才将 stack1 的元素倒入 stack2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">pop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">stack2</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">stack1</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">stack2</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">stack1</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">stack2</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">   
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 获取队列前端元素，逻辑与 pop 类似，但不删除元素</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">peek</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">stack2</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">stack1</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="n">stack2</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">stack1</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">stack2</span><span class="p">.</span><span class="na">peek</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">   
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// 只有两个栈都为空时，队列才为空</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">empty</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">stack1</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">stack2</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="队列">队列
+</h3><p><strong>队列（Queue）</strong> 是一种 <strong>FIFO（先进先出）</strong> 的数据结构，常用于<strong>任务调度、缓冲区管理、消息队列</strong>等场景。</p>
+<p>Java 提供了多个队列的实现，主要包括：</p>
+<h4 id="1-queue-接口">1. Queue 接口
+</h4><p><code>Queue</code> 接口位于 <code>java.util</code> 包中，继承自 <code>Collection</code>，提供基本的队列操作方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Queue</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Collection</span><span class="o">&lt;</span><span class="n">E</span><span class="o">&gt;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>常见实现类：</p>
+<ul>
+<li><strong><code>LinkedList</code></strong>（基于链表）</li>
+<li><strong><code>PriorityQueue</code></strong>（优先级队列）</li>
+<li><strong><code>ArrayDeque</code></strong>（双端队列）</li>
+</ul>
+<p><strong>主要方法</strong></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>方法</th>
+          <th>描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>offer(E e)</code></td>
+          <td>添加元素，成功返回 <code>true</code>，失败返回 <code>false</code></td>
+      </tr>
+      <tr>
+          <td><code>poll()</code></td>
+          <td>取出并删除队首元素，若队列为空返回 <code>null</code></td>
+      </tr>
+      <tr>
+          <td><code>remove()</code></td>
+          <td>取出并删除队首元素，若队列为空抛出异常</td>
+      </tr>
+      <tr>
+          <td><code>peek()</code></td>
+          <td>获取队首元素，但不删除，队列为空返回 <code>null</code></td>
+      </tr>
+      <tr>
+          <td><code>element()</code></td>
+          <td>获取队首元素，但不删除，队列为空抛出异常</td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="2-deque双端队列">2. Deque（双端队列）
+</h4><p><code>Deque</code>（双端队列）支持 <strong>从两端插入和删除</strong>，比 <code>Queue</code> 更灵活。</p>
+<p><code>Deque</code> 的常见实现：</p>
+<ul>
+<li><strong><code>LinkedList</code></strong>（基于链表）</li>
+<li><strong><code>ArrayDeque</code></strong>（基于数组，效率更高）</li>
+</ul>
+<p><strong>主要方法</strong></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>方法</th>
+          <th>作用</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>addFirst(E e)</code></td>
+          <td>头部插入元素</td>
+      </tr>
+      <tr>
+          <td><code>addLast(E e)</code></td>
+          <td>尾部插入元素</td>
+      </tr>
+      <tr>
+          <td><code>removeFirst()</code></td>
+          <td>删除头部元素</td>
+      </tr>
+      <tr>
+          <td><code>removeLast()</code></td>
+          <td>删除尾部元素</td>
+      </tr>
+      <tr>
+          <td><code>getFirst()</code></td>
+          <td>获取头部元素但不删除</td>
+      </tr>
+      <tr>
+          <td><code>getLast()</code></td>
+          <td>获取尾部元素但不删除</td>
+      </tr>
+  </tbody>
+</table></div>
+<h4 id="3-priorityqueue优先队列">3. PriorityQueue（优先队列）
+</h4><p><code>PriorityQueue</code> 是<strong>基于堆实现的优先队列</strong>，默认按<strong>最小堆</strong>排序（最小值在队首）。</p>
+<ul>
+<li><strong>不允许存入 <code>null</code></strong></li>
+<li><strong>非线程安全</strong></li>
+<li><strong>默认升序，可传入 <code>Comparator</code> 自定义排序</strong></li>
+</ul>
+<h4 id="4-blockingqueue阻塞队列">4. BlockingQueue（阻塞队列）
+</h4><p><code>BlockingQueue</code> 适用于<strong>多线程并发</strong>场景，可在队列满/空时阻塞线程。</p>
+<p><strong>常见实现</strong></p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>类</th>
+          <th>说明</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>ArrayBlockingQueue</code></td>
+          <td>基于数组的有界队列</td>
+      </tr>
+      <tr>
+          <td><code>LinkedBlockingQueue</code></td>
+          <td>基于链表的无界队列</td>
+      </tr>
+      <tr>
+          <td><code>PriorityBlockingQueue</code></td>
+          <td>带优先级的阻塞队列</td>
+      </tr>
+      <tr>
+          <td><code>DelayQueue</code></td>
+          <td>只有到期元素才会被取出的队列</td>
+      </tr>
+  </tbody>
+</table></div>
+
 </section>
 
 
