@@ -1136,7 +1136,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$PATH&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;heading&#34;&gt;
+&lt;/div&gt;&lt;h4 id=&#34;&#34;&gt;
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;临时&lt;/p&gt;
@@ -1226,7 +1226,7 @@
 &lt;li&gt;-v：查看进度。用于显示压缩、解压过程&lt;/li&gt;
 &lt;li&gt;-f：指定&lt;strong&gt;打包或解压的文件名&lt;/strong&gt;（如 &lt;code&gt;archive.tar&lt;/code&gt;）。必须放在所有选项的&lt;strong&gt;最后一个&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id=&#34;span-stylecolor-red常用组合span&#34;&gt;&lt;span style=&#34;color: red;&#34;&gt;&lt;strong&gt;常用组合&lt;/strong&gt;&lt;/span&gt;
+&lt;h5 id=&#34;常用组合&#34;&gt;&lt;span style=&#34;color: red;&#34;&gt;&lt;strong&gt;常用组合&lt;/strong&gt;&lt;/span&gt;
 &lt;/h5&gt;&lt;h6 id=&#34;压缩&#34;&gt;&lt;strong&gt;压缩&lt;/strong&gt;
 &lt;/h6&gt;&lt;ul&gt;
 &lt;li&gt;
