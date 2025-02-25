@@ -188,11 +188,13 @@
 &lt;li&gt;
 &lt;p&gt;其中的commonds就是Redis的操作命令，例如：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;ping&lt;/code&gt;：与redis服务端做心跳测试，服务端正常会返回&lt;code&gt;pong&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ping&lt;/code&gt;：与redis服务端做心跳测试，服务端正常会返回&lt;code&gt;pong&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;![](屏幕截图 2025-01-27 114601.png)&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;![屏幕截图 2025-01-27 114601](C:/Users/20387/Pictures/Screenshots/屏幕截图 2025-01-27 114601.png)&lt;/p&gt;
 &lt;h3 id=&#34;图形化界面&#34;&gt;图形化界面
 &lt;/h3&gt;&lt;p&gt;GitHub上的大神编写了Redis的图形化桌面客户端，地址：https://github.com/uglide/RedisDesktopManager&lt;/p&gt;
 &lt;p&gt;不过该仓库提供的是RedisDesktopManager的源码，并未提供windows安装包。&lt;/p&gt;
