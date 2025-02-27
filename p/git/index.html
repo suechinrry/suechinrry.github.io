@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="git相关">
+<title>git</title>
+
+<link rel='canonical' href='https://suechinrry.github.io/p/git/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="git">
+<meta property='og:description' content="git相关">
+<meta property='og:url' content='https://suechinrry.github.io/p/git/'>
+<meta property='og:site_name' content='SueChinrry'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='git' /><meta property='article:published_time' content='2025-02-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-27T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="git">
+<meta name="twitter:description" content="git相关">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu_9d06afe20814e628.png" width="300"
+                            height="297" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">SueChinrry</a></h1>
+            <h2 class="site-description">Wellcome</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/646944564?spm_id_from=333.337.0.0'
+                        target="_blank"
+                        title="bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bilibili"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 10a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-6z" /><path d="M8 3l2 3" /><path d="M16 3l-2 3" /><path d="M9 13v-2" /><path d="M15 11v2" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/suechinrry'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    
+                        <li id="i18n-switch">  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                
+                                    <option value="https://suechinrry.github.io/en/" >English</option>
+                                
+                                    <option value="https://suechinrry.github.io/" selected>简体中文</option>
+                                
+                            </select>
+                        </li>
+                    
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#创建仓库">创建仓库</a></li>
+    <li><a href="#本地数据管理">本地数据管理</a></li>
+    <li><a href="#将文件添加到仓库">将文件添加到仓库</a></li>
+    <li><a href="#回退版本">回退版本</a></li>
+    <li><a href="#查看差异">查看差异</a>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#1-查看工作目录和暂存区之间的差异">1. <strong>查看工作目录和暂存区之间的差异</strong></a></li>
+            <li><a href="#2-查看暂存区和上次提交之间的差异">2. <strong>查看暂存区和上次提交之间的差异</strong></a></li>
+            <li><a href="#3-查看工作目录和上次提交之间的差异">3. <strong>查看工作目录和上次提交之间的差异</strong></a></li>
+            <li><a href="#4-查看某个文件的差异">4. <strong>查看某个文件的差异</strong></a></li>
+            <li><a href="#5-查看两个分支之间的差异">5. <strong>查看两个分支之间的差异</strong></a></li>
+            <li><a href="#6-查看两个提交之间的差异">6. <strong>查看两个提交之间的差异</strong></a></li>
+            <li><a href="#7-查看某个文件在两个提交之间的差异">7. <strong>查看某个文件在两个提交之间的差异</strong></a></li>
+            <li><a href="#8-查看修改的统计信息">8. <strong>查看修改的统计信息</strong></a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#删除文件">删除文件</a></li>
+    <li><a href="#gitignore文件">.gitignore文件</a>
+      <ol>
+        <li><a href="#文件格式">文件格式</a></li>
+        <li><a href="#常见规则和语法">常见规则和语法</a></li>
+      </ol>
+    </li>
+    <li><a href="#远程仓库">远程仓库</a>
+      <ol>
+        <li><a href="#使用ssh">使用ssh</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/git/" >
+                Git
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/git/">git</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            git相关
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2025-02-27</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="创建仓库">创建仓库
+</h2><ul>
+<li>
+<p>使用git init</p>
+<ul>
+<li>
+<p>会在当前目录下创建一个 <code>.git</code> 子目录，里面包含了 Git 所需的所有文件和数据结构，用于跟踪版本历史。</p>
+<p>此时，你可以开始在这个目录下使用 Git 来管理文件，进行版本控制等操作。</p>
+</li>
+<li>
+<p>后面跟名称会在当前目录下新建名称为已给名称的目录</p>
+</li>
+</ul>
+</li>
+<li>
+<p>使用git clone</p>
+<p>补充：</p>
+<p>点击 <strong>Code</strong> 按钮，你会看到一个 URL 地址框。</p>
+<ul>
+<li><strong>HTTPS URL</strong>：如果你使用 HTTPS 协议，复制 <code>https://github.com/用户名/仓库名.git</code>。</li>
+<li><strong>SSH URL</strong>：如果你使用 SSH 协议，复制 <code>git@github.com:用户名/仓库名.git</code>（前提是你已经配置了 SSH 密钥）。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/用户名/仓库名.git
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="本地数据管理">本地数据管理
+</h2><ul>
+<li>工作区</li>
+<li>暂存区</li>
+<li>本地仓库</li>
+</ul>
+<h2 id="将文件添加到仓库">将文件添加到仓库
+</h2><ul>
+<li>git status <strong>查看仓库状态</strong></li>
+</ul>
+<p><strong>追踪了并且提交到本地仓库的、且未作修改的文件</strong>，在执行 <code>git status</code> 时 <strong>不会显示</strong>。</p>
+<p>这是因为 <code>git status</code> 只会显示以下几种情况：</p>
+<ol>
+<li><strong>修改了的文件</strong>（即已经追踪的文件有更改，但尚未提交到仓库）。</li>
+<li><strong>新增文件</strong>（尚未被 Git 跟踪的新文件）。</li>
+<li><strong>已暂存的文件</strong>（已用 <code>git add</code> 添加到暂存区，准备提交的文件）。</li>
+<li><strong>与远程仓库的差异</strong>（如有未推送的提交或与远程分支不同的状态）。</li>
+</ol>
+<ul>
+<li>
+<p>git add <strong>将文件添加到暂存区</strong></p>
+<ul>
+<li>
+<p>可以使用通配符批量添加</p>
+</li>
+<li>
+<p>还可以使用<code>git add .</code> 添加当前文件夹下的所有文件</p>
+</li>
+<li>
+<p><code>git rm --cached &lt;文件名&gt;</code> <strong>从暂存区移除</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>git ls-files <strong>查看暂存区里的内容</strong></p>
+</li>
+<li>
+<p>git commit <strong>提交暂存区里的文件到本地仓库</strong></p>
+<p>正确的使用方式（包含提交信息）<code> git commit -m &quot;修复登录页面的样式问题&quot;  ``-m</code> ，选项用于为提交添加一条提交信息</p>
+<p><strong>提交信息为空，Git 会报错</strong></p>
+</li>
+<li>
+<p>git log <strong>查看提交记录</strong></p>
+<p>后面可以跟选项，展示提交记录</p>
+</li>
+</ul>
+<h2 id="回退版本">回退版本
+</h2><p><strong>默认为mixed</strong></p>
+<p>补充：<strong>提交后，暂存区的内容不会被删除，暂存区依然可以用来存放对文件的新修改，直到再次提交</strong>。</p>
+<p><code>git reset --XX 提交id（版本id）</code></p>
+<ul>
+<li>
+<p><code>git reset --soft</code></p>
+<p>回退到某个版本，但是<strong>保留工作区和暂存区的所有内容</strong></p>
+</li>
+<li>
+<p><code>git reset --hard</code></p>
+<p>回退到某个版本，但是<strong>丢弃工作区和暂存区的所有内容</strong></p>
+</li>
+<li>
+<p><code>git reset --mixed</code></p>
+<p>回退到某个版本，但是<strong>保留工作区的内容</strong></p>
+</li>
+</ul>
+<h2 id="查看差异">查看差异
+</h2><p><code>git diff</code></p>
+<h4 id="1-查看工作目录和暂存区之间的差异">1. <strong>查看工作目录和暂存区之间的差异</strong>
+</h4><p><code>git diff</code> 默认情况下，比较工作目录和暂存区的差异，也就是你已经修改但尚未使用 <code>git add</code> 暂存的文件内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git diff
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>它会显示自上次提交以来，工作目录中尚未暂存的更改。</p>
+<h4 id="2-查看暂存区和上次提交之间的差异">2. <strong>查看暂存区和上次提交之间的差异</strong>
+</h4><p>如果你已经通过 <code>git add</code> 将更改暂存，但还没有提交，可以使用以下命令查看暂存区和最后一次提交之间的差异：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git diff --cached
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个命令会显示暂存区的内容和上一次提交的内容之间的差异。</p>
+<h4 id="3-查看工作目录和上次提交之间的差异">3. <strong>查看工作目录和上次提交之间的差异</strong>
+</h4><p><span style="color:red"><strong>HEAD是分支的最新提交节点</strong></span></p>
+<p>如果你想查看工作目录和最后一次提交之间的所有差异（包括已经暂存和未暂存的更改），可以使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git diff HEAD
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里的 <code>HEAD</code> 表示当前分支的最新提交。</p>
+<h4 id="4-查看某个文件的差异">4. <strong>查看某个文件的差异</strong>
+</h4><p>你也可以指定某个文件来查看它的差异。例如，要查看 <code>file.txt</code> 的差异，可以使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git diff file.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样只会显示 <code>file.txt</code> 文件的更改。</p>
+<h4 id="5-查看两个分支之间的差异">5. <strong>查看两个分支之间的差异</strong>
+</h4><p>如果你想查看两个分支之间的差异，可以指定两个分支名。例如，查看 <code>main</code> 和 <code>feature</code> 分支之间的差异：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git diff main..feature
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这会显示 <code>feature</code> 分支相对于 <code>main</code> 分支的差异。</p>
+<h4 id="6-查看两个提交之间的差异">6. <strong>查看两个提交之间的差异</strong>
+</h4><p>如果你想查看两个特定提交之间的差异，可以使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git diff commit1 commit2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中 <code>commit1</code> 和 <code>commit2</code> 是提交的 SHA-1 哈希值、分支名或者引用（例如 <code>HEAD~1</code>）。</p>
+<h4 id="7-查看某个文件在两个提交之间的差异">7. <strong>查看某个文件在两个提交之间的差异</strong>
+</h4><p>如果你只对某个文件在两个提交之间的差异感兴趣，可以使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git diff commit1 commit2 -- file.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="8-查看修改的统计信息">8. <strong>查看修改的统计信息</strong>
+</h4><p>如果你只想查看文件修改的统计信息，而不显示具体的修改内容，可以加上 <code>--stat</code> 选项：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git diff --stat
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="删除文件">删除文件
+</h2><p><code>git rm 文件名</code></p>
+<ul>
+<li><strong><code>--cached</code></strong>
+只从 Git 跟踪中移除文件，保留文件在本地磁盘上。</li>
+<li><strong><code>-r</code> 或 <code>--recursive</code></strong>
+递归删除目录及其内容。</li>
+<li><strong><code>-f</code> 或 <code>--force</code></strong>
+强制删除文件，即使文件是只读的或有未提交的修改。</li>
+<li><strong><code>-n</code> 或 <code>--dry-run</code></strong>
+模拟删除操作，显示将被删除的文件，但不实际删除。</li>
+</ul>
+<p><strong>删除工作区和暂存区，但是版本库中还存在，所以还要记得提交</strong></p>
+<h2 id="gitignore文件">.gitignore文件
+</h2><p><span style="color:red"><strong>生效前提：要忽略的文件不能是已经添加到仓库里的文件</strong></span></p>
+<h3 id="文件格式">文件格式
+</h3><p><code>.gitignore</code> 文件的格式非常简单，每行代表一个模式，用来匹配需要忽略的文件或目录。以下是 <code>.gitignore</code> 文件的一些常见规则：</p>
+<h3 id="常见规则和语法">常见规则和语法
+</h3><p>使用标准的Blob模式匹配</p>
+<ul>
+<li>
+<p><strong><code>\*</code></strong>：匹配零个或多个字符。</p>
+<p>例子：<code>*.txt</code> 匹配所有 <code>.txt</code> 文件。</p>
+</li>
+<li>
+<p><strong><code>?</code></strong>：匹配单个字符。</p>
+<p>例子：<code>file?.txt</code> 匹配 <code>file1.txt</code>, <code>fileA.txt</code> 等，但不匹配 <code>file10.txt</code>。</p>
+</li>
+<li>
+<p><strong><code>[]</code></strong>：匹配指定范围内的单个字符。</p>
+<p>例子：<code>file[1-3].txt</code> 匹配 <code>file1.txt</code>, <code>file2.txt</code>, <code>file3.txt</code>。</p>
+</li>
+<li>
+<p><strong><code>\**</code></strong>（用于递归匹配目录）：</p>
+<p>例子：<code>**/*.txt</code> 匹配所有子目录中的 <code>.txt</code> 文件。</p>
+</li>
+</ul>
+<ol>
+<li>
+<p><strong>忽略特定文件或目录</strong></p>
+<ul>
+<li>
+<p>你可以指定要忽略的文件或目录的路径。例如：</p>
+</li>
+<li>
+<p><span style="color:red"><strong>忽略文件夹必须要带/</strong></span></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">example.txt
+</span></span><span class="line"><span class="cl">logs/
+</span></span><span class="line"><span class="cl">build/
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>上面表示 <code>example.txt</code> 文件，<code>logs</code> 目录和 <code>build</code> 目录会被 Git 忽略。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>忽略特定扩展名的文件</strong></p>
+<ul>
+<li>
+<p>使用通配符 <code>*</code> 来忽略所有符合模式的文件。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">*.log
+</span></span><span class="line"><span class="cl">*.tmp
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>这样会忽略所有 <code>.log</code> 和 <code>.tmp</code> 后缀的文件。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>忽略某个文件夹中的某种类型文件</strong></p>
+<ul>
+<li>
+<p>如果你只想忽略特定文件夹中的文件，可以指定路径。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">logs/*.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>这表示只忽略 <code>logs</code> 文件夹中的 <code>.log</code> 文件。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>忽略目录中的所有文件</strong></p>
+<ul>
+<li>
+<p>要忽略某个目录中的所有文件，使用 <code>*</code> 通配符。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">build/*
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>这会忽略 <code>build</code> 目录中的所有文件，但 <code>build</code> 目录本身不会被忽略。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>取消对已忽略文件的忽略</strong></p>
+<ul>
+<li>
+<p>如果 <code>.gitignore</code> 中的某个文件之前被忽略，但你后来希望 Git 追踪它，可以使用 <code>!</code> 取消忽略：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">!important.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>上面的规则表示取消对 <code>important.txt</code> 文件的忽略，Git 会开始追踪它。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>注释</strong></p>
+<ul>
+<li>
+<p>你可以在</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">.gitignore
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>文件中添加注释，注释以 # 开头。例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl"># 忽略所有的 .log 文件
+</span></span><span class="line"><span class="cl">*.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+</ol>
+<h2 id="远程仓库">远程仓库
+</h2><h3 id="使用ssh">使用ssh
+</h3><ol>
+<li>配置ssh密钥</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/git/">Git</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 SueChinrry
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
