@@ -6506,6 +6506,62 @@
 </div><h3 id="404-左叶子之和--n"><a class="link" href="https://leetcode.cn/problems/sum-of-left-leaves/"  target="_blank" rel="noopener"
     >404. 左叶子之和 </a> N
 </h3><p>左叶子，不是层序遍历的每一层的最左边的节点，而是<strong>某个节点的左子节点，并且这个左子节点是叶子节点（即没有左右子节点）</strong>。</p>
+<p><span style="color:red;"><strong>错误示例：</strong></span></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="o">=</span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sumOfLeftLeaves</span><span class="p">(</span><span class="n">TreeNode</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">==</span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">helper</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">helper</span><span class="p">(</span><span class="n">TreeNode</span><span class="w"> </span><span class="n">node</span><span class="p">,</span><span class="kt">boolean</span><span class="w"> </span><span class="n">isLeft</span><span class="p">){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="o">==</span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">left</span><span class="o">==</span><span class="kc">null</span><span class="o">&amp;&amp;</span><span class="n">node</span><span class="p">.</span><span class="na">right</span><span class="o">==</span><span class="kc">null</span><span class="o">&amp;&amp;</span><span class="n">isLeft</span><span class="p">)</span><span class="w"> </span><span class="n">sum</span><span class="o">+=</span><span class="n">node</span><span class="p">.</span><span class="na">val</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">helper</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">left</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">helper</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="na">right</span><span class="p">,</span><span class="kc">false</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><span style="color:red;"><strong>错误原因：</strong></span></p>
+<ul>
+<li><strong>sum不能当作形参传递</strong>，可以作为全局变量，或者使用int[]类型来</li>
+<li><strong>左叶子判断错误</strong>：
+<ul>
+<li>在 <code>if (node.left == null &amp;&amp; node.right == null)</code> 中直接将当前节点视为左叶子，这是不正确的。</li>
+<li>只有当前节点是左子节点，并且是叶子节点时，才能累加其值。你需要通过 <code>isLeft</code> 参数来判断当前节点是否是左子节点。</li>
+</ul>
+</li>
+<li><strong>递归调用逻辑错误</strong>：
+<ul>
+<li>你在 <code>if (node.left == null &amp;&amp; node.right != null)</code> 中递归调用右子树，这是不必要的。</li>
+<li>右子树的递归调用不需要条件判断，直接调用即可。</li>
+</ul>
+</li>
+<li><strong>左叶子累加条件不完整</strong>：
+<ul>
+<li>你需要在当前节点是左叶子时累加其值，而不是对所有叶子节点都累加。</li>
+</ul>
+</li>
+</ul>
 
 </section>
 
