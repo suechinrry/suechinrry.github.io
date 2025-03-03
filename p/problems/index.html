@@ -266,14 +266,11 @@
         <li><a href="#webmvcconfigurationsupport-和-webmvcconfigurer">WebMvcConfigurationSupport 和 WebMvcConfigurer</a></li>
         <li><a href="#resource和autowired">@Resource和@Autowired</a></li>
         <li><a href="#解决objectmapper不能直接序列化">解决ObjectMapper不能直接序列化</a></li>
-      </ol>
-    </li>
-    <li><a href="#注意点">注意点</a>
-      <ol>
         <li><a href="#继承handlerinterceptor接口自定义拦截器">继承<strong>handlerInterceptor</strong>接口自定义拦截器</a></li>
         <li><a href="#运行sql文件">运行sql文件</a></li>
         <li><a href="#slf4j-是什么"><strong>@Slf4j 是什么？</strong></a></li>
         <li><a href="#springbootapplication主要作用">@SpringBootApplication主要作用</a></li>
+        <li><a href="#和的区别">${}和#{}的区别</a></li>
       </ol>
     </li>
   </ol>
@@ -520,8 +517,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="注意点">注意点
-</h2><h3 id="继承handlerinterceptor接口自定义拦截器">继承<strong>handlerInterceptor</strong>接口自定义拦截器
+<h3 id="继承handlerinterceptor接口自定义拦截器">继承<strong>handlerInterceptor</strong>接口自定义拦截器
 </h3><ul>
 <li><span style="color:red;"><strong>自定义拦截器一般不需要使用@Component注解，需要在config类中手动注册拦截器。而且</strong></span>，Spring 的 <code>@Autowired</code> 依赖注入（DI）仅对 <strong>Spring 管理的 Bean</strong> 生效，而如果拦截器<strong>没有被 Spring 扫描</strong>（即没有使用 <code>@Component</code>、<code>@Service</code>、<code>@Controller</code> 等注解），<span style="color:red;"><strong>Spring 就不会管理它，也就不能对其中的字段进行自动注入。</strong></span></li>
 <li><span style="color:red;"><strong>在自定义拦截器类里无法注入某对象，可以在config类中用形参的形式传入</strong></span></li>
@@ -575,6 +571,37 @@
 <li><strong>启用组件扫描</strong>（<code>@ComponentScan</code>）。</li>
 <li><strong>允许在类中定义 Bean</strong>（<code>@SpringBootConfiguration</code>）。</li>
 </ol>
+<h3 id="和的区别">${}和#{}的区别
+</h3><ul>
+<li>
+<p>${}直接拼接字符串</p>
+</li>
+<li>
+<p>#{}会先进行预编译，防止sql注入</p>
+<p>例如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;selectUser&#34;</span> <span class="na">resultType=</span><span class="s">&#34;com.sky.entity.User&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    SELECT * FROM user WHERE username = #{username}
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/select&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>会变成</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SELECT * FROM user WHERE username = ?
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
 
 </section>
 
