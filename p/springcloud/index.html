@@ -263,14 +263,26 @@
   <ol>
     <li><a href="#微服务">微服务</a>
       <ol>
-        <li><a href="#nacos-注册中心">nacos 注册中心</a>
+        <li><a href="#nacos">nacos</a>
           <ol>
-            <li><a href="#开头">开头</a></li>
-            <li><a href="#注册服务">注册服务</a></li>
+            <li><a href="#注册中心">注册中心</a></li>
+            <li><a href="#注册中心服务发现">注册中心——服务发现</a></li>
+            <li><a href="#注册中心远程调用">注册中心——远程调用</a></li>
+            <li><a href="#配置中心">配置中心</a></li>
+            <li><a href="#配置中心动态刷新">配置中心——动态刷新</a></li>
+            <li><a href="#配置中心实时监听">配置中心——实时监听</a></li>
+            <li><a href="#配置中心重复的配置">配置中心——重复的配置</a></li>
+            <li><a href="#配置中心数据隔离">配置中心——数据隔离</a></li>
           </ol>
         </li>
-        <li><a href="#服务发现">服务发现</a></li>
-        <li><a href="#远程调用">远程调用</a></li>
+        <li><a href="#openfeign">OpenFeign</a>
+          <ol>
+            <li><a href="#远程调用业务api">远程调用——业务API</a></li>
+            <li><a href="#远程调用第三方api的调用">远程调用——第三方API的调用</a></li>
+            <li><a href="#远程调用日志">远程调用——日志</a></li>
+            <li><a href="#远程调用超时控制">远程调用——超时控制</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
   </ol>
@@ -343,9 +355,10 @@
     
     
     <h2 id="微服务">微服务
-</h2><h3 id="nacos-注册中心">nacos 注册中心
-</h3><h4 id="开头">开头
-</h4><ul>
+</h2><h3 id="nacos">nacos
+</h3><h4 id="注册中心">注册中心
+</h4><h5 id="开头">开头
+</h5><ul>
 <li>
 <p>服务注册</p>
 </li>
@@ -371,10 +384,10 @@
 <p>​	启动成功后，默认的控制台地址为 http://localhost:8848/nacos，默认的用户名和密码均为 <code>nacos</code>。</p>
 </li>
 </ul>
-<h4 id="注册服务">注册服务
-</h4><ul>
+<h5 id="注册中心注册服务">注册中心——注册服务
+</h5><ul>
 <li>
-<p>（service）添加nacos-discovery依赖</p>
+<p>（services）添加nacos-discovery依赖</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -473,12 +486,12 @@
 </div>
 </div></li>
 </ul>
-<h3 id="服务发现">服务发现
-</h3><p>DiscoveryClient对象（或NacosServiceDiscovery），getServices方法获取所有微服务。getInstances(微服务名称)获得改微服务的所有实例</p>
+<h4 id="注册中心服务发现">注册中心——服务发现
+</h4><p>DiscoveryClient对象（或NacosServiceDiscovery），<strong>getServices方法获取所有微服务</strong>。<strong>getInstances(微服务名称)获得微服务的所有实例</strong></p>
 <p>区别：<code>DiscoveryClient</code> 是 Spring Cloud 提供的服务发现客户端接口，而 <code>NacosServiceDiscovery</code> 是其在 Nacos 注册中心中的具体实现类之一。</p>
 <p>因为<strong>服务发现功能是必备的，所以直接在每个微服务的启动类加上@EnableDiscoveryClient</strong></p>
-<h3 id="远程调用">远程调用
-</h3><ul>
+<h4 id="注册中心远程调用">注册中心——远程调用
+</h4><ul>
 <li>
 <p>对于每个微服务的pojo对象，某个微服务可能会用到另一个的pojo。所以可以单独抽取一层（例如命名为model），来存放所有微服务的数据模型。<strong>model层和service同级别，使用时当作依赖引入每个微服务的pom.xml</strong></p>
 </li>
@@ -486,7 +499,7 @@
 <p>实现</p>
 <ul>
 <li>
-<p><strong>nacos实现</strong></p>
+<p><strong>nacos实现</strong> <span style="color:red;"><strong>选择了特定的某一个（1.0版）</strong></span></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -539,13 +552,472 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">private</span><span class="w"> </span><span class="n">RestTemplate</span><span class="w"> </span><span class="n">restTemplate</span><span class="p">;</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><p><strong>补充2：负载均衡</strong></p>
-<p>TODO</p>
-</li>
+</div><p><strong>补充2：</strong><span style="color:red;"><strong>负载均衡</strong></span></p>
+<p><strong>某个微服务想要负载均衡的调用另一个</strong></p>
+<p><span style="color:red;"><strong>（2.0版）</strong></span></p>
+<ul>
 <li>
-<p>openFeign</p>
+<p>依赖</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>org.springframework.cloud<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-loadbalancer<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><strong>LoadbalancerClient</strong></p>
+<p><strong>负载均衡的拿实例</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ServiceInsrance instance=LoadbalancerClient.choose(&#34;微服务名称&#34;);
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p><span style="color:red;"><strong>注解式@LoadBalanced（3.0版，基于注解）</strong></span></p>
+<p>添加依赖</p>
+<p>注解添加到上面的RestTemplate的config类上，发送请求的时候就自带负载均衡了</p>
+<p><strong>RestTemplate类</strong></p>
+<pre><code>@LoadBalanced
+@Configuration
+public class RestTemplateConfig {@Bean
+public RestTemplate restTemplate() {
+    return new RestTemplate();
+ }
+}
+</code></pre>
+<p><strong>发送请求</strong></p>
+<p>有<span style="color:red;">实例缓存</span></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="cm">/*List&lt;ServiceInstance&gt; instances=discoveryClient.getInstances(&#34;微服务名称&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="cm">ServiceInstance instance= instances.get(0);
+</span></span></span><span class="line"><span class="cl"><span class="cm">//拼接成url*/</span><span class="w">  </span><span class="c1">//不需要了</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c1">//String url=&#34;http://&#34;+instance.getHost()+&#34;:&#34;instance.getPort+&#34;改微服务的controller层的请求url&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">微服务名称会被动态替换为ip和端口</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="o">=</span><span class="s">&#34;http://微服务名称/&#34;</span><span class="o">+</span><span class="s">&#34;改微服务的controller层的请求url&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">某个类</span><span class="w"> </span><span class="n">object</span><span class="o">=</span><span class="n">restTemplate</span><span class="p">.</span><span class="na">getForObject</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">某个类</span><span class="p">.</span><span class="na">calss</span><span class="p">);</span><span class="c1">//可以自动将json转为对象   </span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>相关问题：</p>
+<p>​	使用restTemplate来发送请求，<strong>第一次</strong>会走注册中心，获取所有的微服务的上线实例。然后缓存起来。之后就会缓存这些实例，避免频繁请求注册中心，提高效率。<span style="color:red;">如果服务实例发生变更（下线/上线），定时心跳机制会刷新缓存。</span></p>
+<p>​	注册中心宕机后：</p>
+<p>​		缓存了的服务列表仍然有效，只要实例还存活</p>
+<p>​		有新的实例上线和下线也无法感知了</p>
 </li>
 </ul>
+</li>
+<li>
+<p><a class="link" href="#OpenFeign" >openFeign</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="配置中心">配置中心
+</h4><ul>
+<li>
+<p>导入依赖（services，因为每个微服务都需要）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--配置中心--&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>com.alibaba.cloud<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>在某个微服务的applocation文件里写入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span><span class="nt">import</span><span class="p">:</span><span class="w"> </span><span class="l">nacos:Data ID(填入配置的DataID即可)</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>在nacos上创建	![](屏幕截图 2025-05-15 090907.png)</p>
+</li>
+<li>
+<p>配置刷新</p>
+<p>再用到nacos的配置的类似加上 <span style="color:red;"><strong>@RefreshScope</strong></span></p>
+</li>
+<li>
+<p>禁用 Nacos Config 的自动加载功能</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cloud</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">nacos</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="配置中心动态刷新">配置中心——动态刷新
+</h4><p>springboot的配置批量绑定，无需@RefreshScope就能实现动态刷新，短横线和下划线都能映射成驼峰式</p>
+<ul>
+<li>@Data是必须的，注入需要set方法</li>
+<li>加上@Component后才能使用@ConfigurationProperties(&quot;&quot;)</li>
+<li>可以实现自动刷新</li>
+<li>可以实现短横线和下划线的映射</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">com</span><span class="p">.</span><span class="nx">wh</span><span class="p">.</span><span class="nx">springCloud</span><span class="p">.</span><span class="nx">Properties</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">lombok</span><span class="p">.</span><span class="nx">Data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">org</span><span class="p">.</span><span class="nx">springframework</span><span class="p">.</span><span class="nx">boot</span><span class="p">.</span><span class="nx">context</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">ConfigurationProperties</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nx">org</span><span class="p">.</span><span class="nx">springframework</span><span class="p">.</span><span class="nx">stereotype</span><span class="p">.</span><span class="nx">Component</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">@</span><span class="nx">Component</span>
+</span></span><span class="line"><span class="cl"><span class="err">@</span><span class="nx">Data</span>
+</span></span><span class="line"><span class="cl"><span class="err">@</span><span class="nf">ConfigurationProperties</span><span class="p">(</span><span class="s">&#34;product.test&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">public</span> <span class="nx">class</span> <span class="nx">TestProperties</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">private</span> <span class="nx">String</span> <span class="nx">name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">private</span> <span class="nx">String</span> <span class="nx">password</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">private</span> <span class="nx">String</span> <span class="nx">userAddress1</span><span class="p">;</span><span class="c1">//匹配product.test.user_address1</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">private</span> <span class="nx">String</span> <span class="nx">userAddress2</span><span class="p">;</span><span class="c1">//匹配product.test.user-address2</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">private</span> <span class="nx">String</span> <span class="nx">userAddress3</span><span class="p">;</span><span class="c1">//匹配product.test.userAddress3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="配置中心实时监听">配置中心——实时监听
+</h4><p><strong>使用ApplicationRunner配合NacosConfigManager进行监听操作</strong></p>
+<h4 id="配置中心重复的配置">配置中心——重复的配置
+</h4><p><span style="color:red;">微服务的application.properties和配置中心的配置有相同的配置项，最终生效的是配置中心的那个，因为配置中心要做到对所有微服务进行管理。</span></p>
+<p>配置生效顺序：<strong>先导入优先，外部优先。</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">spring:
+</span></span><span class="line"><span class="cl">	config:
+</span></span><span class="line"><span class="cl">	  import: nacos:DataID1，DataID2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>DataID1的优先级高于DataID2</p>
+<h4 id="配置中心数据隔离">配置中心——数据隔离
+</h4><p>有多个微服务，每个微服务都要生产（prod），测试（test），开发（dev）等多种环境下的配置</p>
+<p>NameSpace	-&gt;	Group	-&gt;	DataID</p>
+<p>命名空间			分组			数据集</p>
+<p>不同环境			不同的微服务  	 同一微服务的不同配置</p>
+<p><strong>springboot激活指定环境</strong></p>
+<p><span style="color:red;">基本</span></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nt">cloud</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nt">nacos</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="nt">server-addr</span><span class="p">:</span><span class="w"> </span><span class="m">127.0.0.1</span><span class="p">:</span><span class="m">8848</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        	</span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">命名空间名称</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span><span class="nt">import</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  	</span>- <span class="l">nacos：DataID?group=Group名</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  	</span>- <span class="l">nacos：DataID?group=Group名</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><span style="color:red;">多种开发环境</span></p>
+<p><strong>配合spring的spring: profiles: active: 环境	和	spring: activate: on-profile: 环境来实现</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nt">profiles</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nt">active</span><span class="p">:</span><span class="w"> </span><span class="l">某个环境</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nt">cloud</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nt">nacos</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="nt">server-addr</span><span class="p">:</span><span class="w"> </span><span class="m">127.0.0.1</span><span class="p">:</span><span class="m">8848</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="nt">import-check</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">				</span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">                        </span><span class="c">#关闭校验</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        	</span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">${spring.profiles.active:dev}</span><span class="w"> </span><span class="c">#:dev的作用是配置默认值，也可改成public</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span><span class="nt">import</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  	</span>- <span class="l">nacos：DataID?group=Group名</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  	</span>- <span class="l">nacos：DataID?group=Group名</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nt">activate</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    	</span><span class="nt">on-profile</span><span class="p">:</span><span class="w"> </span><span class="l">dev</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spring</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  </span><span class="nt">import</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  	</span>- <span class="l">nacos：DataID?group=Group名</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	  	</span>- <span class="l">nacos：DataID?group=Group名</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nt">activate</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    	</span><span class="nt">on-profile</span><span class="p">:</span><span class="w"> </span><span class="l">test    	</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="openfeign">OpenFeign
+</h3><p>用OpenFeign代替RestTemplate，能自己做负载均衡</p>
+<p>注意：<span style="color:red;">Spring Cloud Feign 会校验 <code>@FeignClient</code> 的 <code>value</code> 或 <code>name</code> 字段，必须是一个 <strong>合法的服务名称</strong>，而服务名称最终会被用作服务发现中的主机名，因此 <strong>不能包含下划线 <code>_</code></strong>。</span></p>
+<h4 id="远程调用业务api">远程调用——业务API
+</h4><ol>
+<li>
+<p><strong>引入依赖</strong>（在service），没有版本的原因是因为被主model管理着的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="c">&lt;!--远程调用--&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.springframework.cloud<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-openfeign<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>在<strong>启动类</strong>上开启注解@<strong>EnableFeignClients</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@EnableDiscoveryClient</span><span class="w">                  </span><span class="c1">//服务发现</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@EnableFeignClients</span><span class="w">                     </span><span class="c1">//远程调用</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@SpringBootApplication</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">orderMainApplication</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">SpringApplication</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">orderMainApplication</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>创建远程调用的接口，命名随意，见名知意</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-JAVA" data-lang="JAVA"><span class="line"><span class="cl"><span class="nd">@FeignClient</span><span class="p">(</span><span class="s">&#34;service-product&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">ProductClient</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&#34;/test/print/{id}&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="n">String</span><span class="w"> </span><span class="nf">printId</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>使用</p>
+</li>
+</ol>
+<h4 id="远程调用第三方api的调用">远程调用——第三方API的调用
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@FeignClient</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;other(随意写)&#34;</span><span class="p">,</span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;第三方的API地址&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">OtherFeign</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&#34;请求路径&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="nd">@RequestHeader</span><span class="p">(</span><span class="s">&#34;Authorization&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">auth</span><span class="w">  </span><span class="c1">//请求头</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">,</span><span class="w"> </span><span class="nd">@RequestParam</span><span class="p">(</span><span class="s">&#34;token&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">token</span><span class="w">  </span><span class="c1">//放请求参数里</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="p">,</span><span class="w"> </span><span class="nd">@RequestParam</span><span class="p">(</span><span class="s">&#34;userId&#34;</span><span class="p">)</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">);</span><span class="w">  </span><span class="c1">//放请求参数里</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="远程调用日志">远程调用——日志
+</h4><ul>
+<li>
+<p>在application文件里添加，用于指定日志级别</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">logging</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">level</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">com.wh.springCloud.service_order.FeignClient: debug #目录</span><span class="p">:</span><span class="w"> </span><span class="l">日志级别</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>配置日志全记录组件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">com.wh.springCloud.service_order.Config</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">feign.Logger</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Bean</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Configuration</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderConfig</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Bean</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Logger</span><span class="p">.</span><span class="na">Level</span><span class="w"> </span><span class="nf">feignLoggerLevel</span><span class="p">(){</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Logger</span><span class="p">.</span><span class="na">Level</span><span class="p">.</span><span class="na">FULL</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="远程调用超时控制">远程调用——超时控制
+</h4><ul>
+<li>
+<p>默认</p>
+<p><strong>某个微服务宕机</strong>或<strong>处理请求慢</strong>，可能会引发<strong>服务雪崩</strong>问题</p>
+<p>解决：限时等待，未超时正常返回，超时返回错误信息或兜底信息</p>
+<p>​			建立连接————&gt;</p>
+<p>A		 发送请求————&gt;		B</p>
+<p>​			&lt;————返回数据</p>
+<p>建立连接时可能会有<strong>连接超时</strong>（connectTimeout默认10秒）</p>
+<p>A获取B返回的数据可能会有<strong>读取超时</strong>（readTimeout默认60秒）</p>
+</li>
+<li>
+<p>自定义时间</p>
 </li>
 </ul>
 
